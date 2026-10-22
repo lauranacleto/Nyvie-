@@ -1,37 +1,35 @@
-import { StatusBar, Text, View, TouchableOpacity } from 'react-native';
+import { Link, useNavigate } from 'react-router-dom';
 
 import splashStyles from './splashStyles';
+import logoNyvie from '../../assets/LogoNyvie.svg';
 
+export default function Splash() {
+  const navigate = useNavigate();
 
-export default function Splash({ navigation }) {
   return (
-    <View style={splashStyles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#04224A" />
+    <div style={splashStyles.container}>
+      {/* Formas decorativas do fundo */}
+      <div style={splashStyles.blobTopLeft} />
+      <div style={splashStyles.blobTopRight} />
+      <div style={splashStyles.blobBottomRight} />
 
-      {/* As bola de decoração do splash la */}
-      <View style={splashStyles.blobTopLeft} />
-      <View style={splashStyles.blobTopRight} />
-      <View style={splashStyles.blobBottomRight} />
+      <div style={splashStyles.content}>
+        <img src={logoNyvie} alt="Nyvie" style={splashStyles.logo} />
 
-      <View style={splashStyles.content}>
-        <LogoNyvie width={300} height={120} />
-
-        <View style={splashStyles.buttonsContainer}>
-          <Button
-            onPress={() => navigation.replace('Login')}
-            text="Entrar"
-            backgroundColor="#1D8350"
-            textColor="#fff"
-          />
-
-          <TouchableOpacity
-            style={splashStyles.linkCriarConta}
-            onPress={() => navigation.navigate('Cadastro')}
+        <div style={splashStyles.buttonsContainer}>
+          <button
+            type="button"
+            style={splashStyles.buttonEntrar}
+            onClick={() => navigate('/login', { replace: true })}
           >
-            <Text style={splashStyles.textCriarConta}>Criar conta</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
+            Entrar
+          </button>
+
+          <Link to="/cadastro" style={splashStyles.linkCriarConta}>
+            Criar conta
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
