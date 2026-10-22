@@ -15,76 +15,79 @@ export default function Cadastro() {
   
 
   return (
-    <ImageBackground
-      source={require('../../../../assets/fundoCadastro.jpg')}
-      resizeMode="cover"
-      style={cadastroStyles.container}
-    >
-      <View style={cadastroStyles.inputContainer}>
-        <View style={cadastroStyles.inputDuo}>
-          <Text style={cadastroStyles.inputText}>Nome Completo</Text>
-          <TextInput
+    <div style={cadastroStyles.container}>
+      <form style={cadastroStyles.inputContainer} onSubmit={funcCadastro}>
+        <div style={cadastroStyles.inputDuo}>
+          <label htmlFor="nome" style={cadastroStyles.inputText}>
+            Nome Completo
+          </label>
+          <input
+            id="nome"
+            type="text"
+            className="cadastro-input"
             placeholder="Digite seu nome"
-            placeholderTextColor="#9FAEB8"
             style={cadastroStyles.input}
             value={nome}
-            onChangeText={setNome}
+            onChange={(e) => setNome(e.target.value)}
           />
-        </View>
+        </div>
 
-        <View style={cadastroStyles.inputDuo}>
-          <Text style={cadastroStyles.inputText}>Número de Telefone</Text>
-          <TextInput
+        <div style={cadastroStyles.inputDuo}>
+          <label htmlFor="telefone" style={cadastroStyles.inputText}>
+            Número de Telefone
+          </label>
+          <input
+            id="telefone"
+            type="tel"
+            className="cadastro-input"
             placeholder="Digite seu número"
-            placeholderTextColor="#9FAEB8"
             style={cadastroStyles.input}
-            keyboardType="phone-pad"
             value={telefone}
-            onChangeText={setTelefone}
+            onChange={(e) => setTelefone(e.target.value)}
           />
-        </View>
+        </div>
 
-        <View style={cadastroStyles.inputDuo}>
-          <Text style={cadastroStyles.inputText}>E-mail:</Text>
-          <TextInput
+        <div style={cadastroStyles.inputDuo}>
+          <label htmlFor="email" style={cadastroStyles.inputText}>
+            E-mail:
+          </label>
+          <input
+            id="email"
+            type="email"
+            className="cadastro-input"
             placeholder="Digite seu e-mail"
-            placeholderTextColor="#9FAEB8"
             style={cadastroStyles.input}
-            keyboardType="email-address"
-            autoCapitalize="none"
             value={email}
-            onChangeText={setEmail}
+            onChange={(e) => setEmail(e.target.value)}
           />
-        </View>
+        </div>
 
-        <View style={cadastroStyles.inputDuo}>
-          <Text style={cadastroStyles.inputText}>Senha</Text>
-          <TextInput
+        <div style={cadastroStyles.inputDuo}>
+          <label htmlFor="senha" style={cadastroStyles.inputText}>
+            Senha
+          </label>
+          <input
+            id="senha"
+            type="password"
+            className="cadastro-input"
             placeholder="Digite sua senha"
-            placeholderTextColor="#9FAEB8"
             style={cadastroStyles.input}
-            secureTextEntry
-            autoCapitalize="none"
             value={senha}
-            onChangeText={setSenha}
+            onChange={(e) => setSenha(e.target.value)}
           />
-        </View>
+        </div>
 
-        <TouchableOpacity style={cadastroStyles.botao} onPress={funcCadastro}>
-          <Text style={cadastroStyles.botaoTexto}>Criar Conta</Text>
-        </TouchableOpacity>
+        <button type="submit" style={cadastroStyles.botao}>
+          Criar Conta
+        </button>
 
-        <View style={cadastroStyles.rodape}>
-          <Text style={cadastroStyles.text}>
-            Já tem uma conta?{' '}
-            <Link href="/login" style={cadastroStyles.link}>
-              Entrar
-            </Link>
-          </Text>
-        </View>
-      </View>
-
-      <StatusBar style="auto" />
-    </ImageBackground>
+        <p style={cadastroStyles.rodape}>
+          Já tem uma conta?{' '}
+          <Link to="/login" style={cadastroStyles.link}>
+            Entrar
+          </Link>
+        </p>
+      </form>
+    </div>
   );
 }
