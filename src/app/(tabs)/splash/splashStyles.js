@@ -1,11 +1,10 @@
-import { StyleSheet } from 'react-native';
-
-import { StyleSheet } from 'react-native';
-
-const splashStyles = StyleSheet.create({
+const splashStyles = {
   container: {
-    flex: 1,
+    position: 'relative',
+    minHeight: '100vh',
+    width: '100%',
     backgroundColor: '#04224A',
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
@@ -14,10 +13,10 @@ const splashStyles = StyleSheet.create({
   // Formas decorativas do fundo
   blobTopLeft: {
     position: 'absolute',
-    // top: -120,
-    // left: -140,
-    // width: 380,
-    // height: 340,
+    top: -120,
+    left: -140,
+    width: 380,
+    height: 340,
     backgroundColor: '#0F2F63',
     borderBottomRightRadius: 220,
     borderTopRightRadius: 120,
@@ -25,20 +24,20 @@ const splashStyles = StyleSheet.create({
   },
   blobTopRight: {
     position: 'absolute',
-    // top: -140,
-    // right: -160,
-    // width: 400,
-    // height: 360,
+    top: -140,
+    right: -160,
+    width: 400,
+    height: 360,
     backgroundColor: '#021833',
     borderBottomLeftRadius: 260,
     borderBottomRightRadius: 80,
   },
   blobBottomRight: {
     position: 'absolute',
-    // bottom: -140,
-    // right: -120,
-    // width: 340,
-    // height: 320,
+    bottom: -140,
+    right: -120,
+    width: 340,
+    height: 320,
     backgroundColor: '#0D2B5C',
     borderTopLeftRadius: 240,
     borderTopRightRadius: 100,
@@ -46,24 +45,46 @@ const splashStyles = StyleSheet.create({
 
   // Conteúdo
   content: {
+    position: 'relative',
+    zIndex: 1,
     width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     gap: 60,
   },
+  logo: {
+    width: 300,
+    height: 'auto',
+  },
   buttonsContainer: {
     width: '80%',
+    maxWidth: 450,
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     gap: 24,
   },
-  linkCriarConta: {
-    alignItems: 'center',
+  buttonEntrar: {
+    width: '100%',
+    height: 60,
+    backgroundColor: '#1D8350',
+    color: '#fff',
+    border: 'none',
+    borderRadius: 6,
+    fontFamily: "'Open Sans', sans-serif",
+    fontWeight: 700,
+    fontSize: 22,
+    cursor: 'pointer',
   },
-  textCriarConta: {
-    fontFamily: 'Oswald-SemiBold',
+  linkCriarConta: {
+    fontFamily: "'Oswald', sans-serif",
+    fontWeight: 600,
     fontSize: 18,
     color: '#fff',
-    textDecorationLine: 'underline',
+    textDecoration: 'underline',
+    cursor: 'pointer',
   },
-});
+};
 
 export default splashStyles;
