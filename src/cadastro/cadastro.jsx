@@ -1,8 +1,7 @@
-import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-import { Link, useRouter } from 'expo-router';
 import { useContext, useState } from 'react';
 import cadastroStyles from './cadastroStyles';
-import { UsuarioContext } from '../../../context/UsuarioContext';
+import { UsuarioContext } from '../context/UsuarioContext';
+import { Link } from 'react-router-dom';
 
 export default function Cadastro() {
   const [nome, setNome] = useState('');
@@ -10,9 +9,10 @@ export default function Cadastro() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const { setUsuario } = useContext(UsuarioContext);
-  const router = useRouter();
 
-  
+const funcCadastro = () => {
+
+}
 
   return (
     <div style={cadastroStyles.container}>

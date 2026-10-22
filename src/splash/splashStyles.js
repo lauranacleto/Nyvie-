@@ -54,7 +54,8 @@ const splashStyles = {
     gap: 60,
   },
   logo: {
-    width: 300,
+    width: 300
+    ,
     height: 'auto',
   },
   buttonsContainer: {

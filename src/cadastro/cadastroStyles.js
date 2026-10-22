@@ -1,4 +1,4 @@
-import fundoCadastro from '../../assets/fundoCadastro.jpg';
+import fundoCadastro from "../assets/fundocadastro.svg"
 
 const cadastroStyles = {
   container: {
@@ -73,7 +73,7 @@ const cadastroStyles = {
     marginTop: 30,
     textAlign: 'center',
     color: '#fff',
-    fontSize: 13,
+    fontSize: 18,
     fontWeight: 600,
     fontFamily: 'Inter, system-ui, sans-serif',
   },

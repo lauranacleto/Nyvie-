@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 
 import splashStyles from './splashStyles';
-import logoNyvie from '../../assets/LogoNyvie.svg';
+import logoNyvie from '../assets/logo.svg';
 
 export default function Splash() {
   const navigate = useNavigate();
