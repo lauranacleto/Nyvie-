@@ -8,7 +8,7 @@
       "expo-status-bar"
     ],
     "web": {
-      "favicon": "./assets/logo.png"
+      "favicon": "./assets/logo.svg"
     }
   }
 }
