@@ -10,7 +10,6 @@ const splashStyles = {
     overflow: 'hidden',
   },
 
-  // Formas decorativas do fundo
   blobTopLeft: {
     position: 'absolute',
     top: -120,
@@ -43,7 +42,6 @@ const splashStyles = {
     borderTopRightRadius: 100,
   },
 
-  // Conteúdo
   content: {
     position: 'relative',
     zIndex: 1,
