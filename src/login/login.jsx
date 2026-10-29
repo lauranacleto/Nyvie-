@@ -12,6 +12,8 @@ export default function LoginUsuario() {
 
         <img
           src={logo}
+          width={400}
+          height={500}
           alt="Logo Nyvie"
           style={perfilStyles.logo}
         />
@@ -71,7 +73,7 @@ export default function LoginUsuario() {
             </p>
 
             <a
-              href="#cadastro"
+              href="/cadastro"
               style={perfilStyles.linkCadastro}
             >
               Cadastre-se

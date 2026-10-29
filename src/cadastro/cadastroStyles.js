@@ -33,15 +33,16 @@ const cadastroStyles = {
   inputText: {
     color: '#fff',
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '700',
     fontFamily: 'Inter, system-ui, sans-serif',
+    padding: 5
   },
 
   input: {
     backgroundColor: '#fff',
     color: '#4A5A66',
     width: '100%',
-    height: 44,
+    height: 50,
     boxSizing: 'border-box',
     padding: '0 12px',
     border: 'none',
@@ -50,6 +51,7 @@ const cadastroStyles = {
     fontSize: 14,
     fontWeight: 600,
     fontFamily: 'Inter, system-ui, sans-serif',
+
   },
 
   botao: {
@@ -65,7 +67,7 @@ const cadastroStyles = {
     marginTop: 40,
     cursor: 'pointer',
     fontSize: 18,
-    fontWeight: 600,
+    fontWeight: 700,
     fontFamily: "'Oswald', sans-serif",
   },
 
@@ -74,12 +76,12 @@ const cadastroStyles = {
     textAlign: 'center',
     color: '#fff',
     fontSize: 18,
-    fontWeight: 600,
+    fontWeight: 500,
     fontFamily: 'Inter, system-ui, sans-serif',
   },
   link: {
     color: '#1F5FD6',
-    fontWeight: 'bold',
+    fontWeight: '700',
     textDecoration: 'none',
   },
 };

@@ -1,7 +1,7 @@
-const splashStyles = {
+export const splashStyles = {
   container: {
     position: 'relative',
-    minHeight: '100vh',
+    height: '100vh',
     width: '100%',
     backgroundColor: '#04224A',
     display: 'flex',
@@ -52,9 +52,7 @@ const splashStyles = {
     gap: 60,
   },
   logo: {
-    width: 300
-    ,
-    height: 'auto',
+    marginTop: 60
   },
   buttonsContainer: {
     width: '80%',
@@ -67,7 +65,8 @@ const splashStyles = {
   buttonEntrar: {
     width: '100%',
     height: 60,
-    backgroundColor: '#1D8350',
+    backgroundColor: '#1A7E52',
+    transform: 'translateY(-180px)',
     color: '#fff',
     border: 'none',
     borderRadius: 6,
@@ -82,6 +81,7 @@ const splashStyles = {
     fontSize: 18,
     color: '#fff',
     textDecoration: 'underline',
+    transform: 'translateY(-180px)',
     cursor: 'pointer',
   },
 };

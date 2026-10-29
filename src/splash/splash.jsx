@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-import splashStyles from './splashStyles';
+import { splashStyles } from './splashStyles';
 import logoNyvie from '../assets/logo.svg';
 
 export default function Splash() {
@@ -14,7 +14,14 @@ export default function Splash() {
       <div style={splashStyles.blobBottomRight} />
 
       <div style={splashStyles.content}>
-        <img src={logoNyvie} alt="Nyvie" style={splashStyles.logo} />
+        
+        <img
+                  src={logoNyvie}
+                  width={700}
+                  height={600}
+                  alt="Logo Nyvie"
+                  style={splashStyles.logo}
+                />
 
         <div style={splashStyles.buttonsContainer}>
           <button

@@ -20,7 +20,7 @@ export const perfilStyles = {
     width: '45%',
     flex: '0 0 45%',
     minWidth: 0,
-    backgroundColor: '#0B1B38',
+    backgroundColor: '#04224A',
     overflow: 'hidden',
   },
 
@@ -56,23 +56,21 @@ export const perfilStyles = {
 
   logo: {
     display: 'block',
-    width: '310px',
-    height: 'auto',
-    maxWidth: '75%',
+  
     objectFit: 'contain',
     zIndex: 1,
   },
 
   boasVindas: {
-    position: 'relative',
-    zIndex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'center',
-    padding: '0 20px',
-  },
-
+  position: 'relative',
+  zIndex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  textAlign: 'center',
+  padding: '0 20px',
+  transform: 'translateY(-210px)',
+},
   titulo: {
     color: '#FFFFFF',
     fontSize: '30px',
@@ -83,9 +81,9 @@ export const perfilStyles = {
   subtitulo: {
     color: '#FFFFFF',
     fontSize: '18px',
-    fontWeight: '600',
+    fontWeight: '400',
     lineHeight: '24px',
-    margin: 0,
+    
   },
 
   ladoDireito: {
@@ -104,7 +102,8 @@ export const perfilStyles = {
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    maxWidth: '417px',
+    maxWidth: '590px',
+    
   },
 
   campoContainer: {
@@ -149,6 +148,7 @@ export const perfilStyles = {
     color: '#0B1B38',
     fontSize: '16px',
     margin: 0,
+    fontFamily: 'Inter, system-ui, sans-serif',
   },
 
   linkCadastro: {
@@ -159,15 +159,16 @@ export const perfilStyles = {
   },
 
   botaoEntrar: {
-    width: '90%',
+    width: '590px',
     alignSelf: 'center',
     height: '54px',
     border: 'none',
     borderRadius: '6px',
-    backgroundColor: '#198054',
+    backgroundColor: '#1A7E52',
     color: '#FFFFFF',
     fontSize: '18px',
     fontWeight: '700',
     cursor: 'pointer',
+    fontFamily: "'Oswald', sans-serif",
   },
 };
