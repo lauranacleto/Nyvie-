@@ -2,13 +2,14 @@ import { redirect } from "react-router-dom";
 
 export const editarPerfilStyles = {
     container: {
-        minHeight: '100vh',
-        width: '100%',
-        backgroundColor: '#F4F9FC',
-        fontFamily: 'Arial, sans-serif',
-        color: '#102D55',
-        margin: 0,
-    },
+    minHeight: '100vh',
+    width: 'calc(100% - 65px)',
+    marginLeft: '65px',
+    boxSizing: 'border-box',
+    backgroundColor: '#F4F9FC',
+    fontFamily: 'Arial, sans-serif',
+    color: '#102D55',
+},
 
     banner: {
         height: '280px',

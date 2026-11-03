@@ -1,8 +1,7 @@
-
 export const styles = {
-      menu: {
-        position: "absolute",
-        top: 65,
+    menu: {
+        position: "fixed",
+        top: 0,
         left: 0,
         bottom: 0,
         width: 65,
@@ -10,14 +9,17 @@ export const styles = {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        paddingTop: 45,
+        paddingTop: 140,
         gap: 28,
         color: "#FFFFFF",
+        zIndex: 1000,
+        boxSizing: "border-box",
     },
+
     menuSair: {
         position: "absolute",
         bottom: 30,
         fontSize: 32,
         color: "#FFFFFF",
     },
-}
+};
