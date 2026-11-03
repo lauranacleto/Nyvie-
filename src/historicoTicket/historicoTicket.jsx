@@ -5,6 +5,8 @@ import perfisIcon from "../assets/perfil azul.svg"
 import statusIcon from "../assets/status.svg"
 import checkIcon from "../assets/check.svg"
 import finalIcon from "../assets/keylock.svg"
+import yellowTicket from "../assets/yellowTicket.svg"
+import departamentoIcon from "../assets/departamento.svg"
 import { useState } from "react";
 import Header from "../components/header/header.jsx";
 import Aside from "../components/aside/aside.jsx";
@@ -15,6 +17,8 @@ const iconesTela = {
     "Status alterado": statusIcon,
     "Ticket concluído": checkIcon,
     "Ticket finalizado": finalIcon,
+    "Ticket amarelo": yellowTicket,
+    "Departamento": departamentoIcon,
 }
 
 export default function HistoricoTicket() {
@@ -237,11 +241,11 @@ export default function HistoricoTicket() {
 
                             <div style={historicoTicketStyles.linhaDetalhe}>
                                 <img
-                                    src={ticketIcon}
-                                    alt="Ticket"
+                                    src={departamentoIcon}
+                                    alt="Departamento"
                                     style={{
-                                        width: '50px',
-                                        height: '50px',
+                                        width: '40px',
+                                        height: '40px',
                                         objectFit: 'contain',
                                     }}
                                 />
