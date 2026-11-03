@@ -4,6 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Splash from './splash/splash';
 import Login from './login/login';
 import Cadastro from './cadastro/cadastro';
+import EditarPerfil from './editarPerfil/editarPerfil';
+import HistoricoTicket from './historicoTicket/historicoTicket.jsx';
+import HistoricoRecorrentes from './historicoRecorrentes/historicoRecorrentes';
+import TelaN1 from './telaN1/telaN1.jsx'
 
 
 export default function App() {
@@ -13,6 +17,11 @@ export default function App() {
         <Route path="/" element={<Splash />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/editarPerfil" element={<EditarPerfil />} />
+        <Route path="/historicoTicket" element={<HistoricoTicket />} />
+        <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
+        <Route path="/telaN1" element={<TelaN1 />} />
+
       </Routes>
     </BrowserRouter>
   );
