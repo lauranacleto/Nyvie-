@@ -8,6 +8,8 @@ import EditarPerfil from './editarPerfil/editarPerfil';
 import HistoricoTicket from './historicoTicket/historicoTicket.jsx';
 import HistoricoRecorrentes from './historicoRecorrentes/historicoRecorrentes';
 
+import EditarPerfil from './editarPerfil/editarPerfil';
+
 export default function App() {
   return (
     <BrowserRouter>
