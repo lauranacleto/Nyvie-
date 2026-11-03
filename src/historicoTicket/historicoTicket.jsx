@@ -7,6 +7,10 @@ import checkIcon from "../assets/check.svg"
 import finalIcon from "../assets/keylock.svg"
 import yellowTicket from "../assets/yellowTicket.svg"
 import departamentoIcon from "../assets/departamento.svg"
+import calendarioIcon from "../assets/calendar.svg"
+import atualizacaoIcon from "../assets/atualização.svg"
+import comentarioIcon from "../assets/chat.svg"
+import voltarIcon from "../assets/Group.svg"
 import { useState } from "react";
 import Header from "../components/header/header.jsx";
 import Aside from "../components/aside/aside.jsx";
@@ -19,6 +23,10 @@ const iconesTela = {
     "Ticket finalizado": finalIcon,
     "Ticket amarelo": yellowTicket,
     "Departamento": departamentoIcon,
+    "Calendario": calendarioIcon,
+    "Atualização": atualizacaoIcon,
+    "Comentario": comentarioIcon,
+    "Voltar": voltarIcon
 }
 
 export default function HistoricoTicket() {
@@ -33,14 +41,27 @@ export default function HistoricoTicket() {
 
     return (
         <>
-            <Aside />
+            
             <Header />
+            <div style={{width: "100%"}}>
+            <div style={historicoTicketStyles.flexContainer}>
+            <Aside />
+            
             <div style={historicoTicketStyles.container}>
-
-                <div style={historicoTicketStyles.title}>
+                <div style={historicoTicketStyles.title} >
+                    <img
+                        src={voltarIcon}
+                        alt="Voltar"
+                        style={{
+                            width: 25,
+                            height: 25,
+                            marginRight: 10,
+                            border: "none",
+                        }}
+                    />
 
                     <span style={{
-                        fontSize: '24px',
+                        fontSize: '28px',
                         fontWeight: 'bold',
                         color: '#1C4691',
                     }}>
@@ -48,11 +69,14 @@ export default function HistoricoTicket() {
                         Historico do Ticket
                     </span>
                 </div>
+
+                <div style={historicoTicketStyles.areaSuperior}>
                 <div style={historicoTicketStyles.caixaCima}>
                     <div style={{
                         display: 'flex',
                         flexDirection: 'row',
                         alignItems: 'center',
+                        justifyContent: 'center',
                         gap: '12px',
                     }}>
                         <img
@@ -87,8 +111,9 @@ export default function HistoricoTicket() {
                         Concluído
                     </span>
                 </div>
+                </div>
                 <div style={historicoTicketStyles.areaInferior}>
-
+                
 
 
                     <div style={historicoTicketStyles.caixaBaixo}>
@@ -99,7 +124,7 @@ export default function HistoricoTicket() {
                                 {
                                     titulo: 'Ticket aberto',
                                     descricao: 'O Ticket foi aberto por Laura Kauany.',
-                                    icone: ticketIcon,
+                                    icone: yellowTicket,
                                     usuario: 'Laura Kauany',
                                     data: '10/05/2026 10:45',
                                 },
@@ -121,6 +146,34 @@ export default function HistoricoTicket() {
                                     titulo: 'Ticket concluído',
                                     descricao: 'O ticket foi marcado como Concluído por Lorenzo Mangile.',
                                     icone: checkIcon,
+                                    usuario: 'Lorenzo Mangile',
+                                    data: '11/05/2026 14:45',
+                                },
+                                {
+                                    titulo: 'Ticket finalizado',
+                                    descricao: 'O ticket foi encerrado por Lorenzo Mangile.',
+                                    icone: finalIcon,
+                                    usuario: 'Lorenzo Mangile',
+                                    data: '11/05/2026 14:45',
+                                },
+                                {
+                                    titulo: 'Ticket finalizado',
+                                    descricao: 'O ticket foi encerrado por Lorenzo Mangile.',
+                                    icone: finalIcon,
+                                    usuario: 'Lorenzo Mangile',
+                                    data: '11/05/2026 14:45',
+                                },
+                                {
+                                    titulo: 'Ticket finalizado',
+                                    descricao: 'O ticket foi encerrado por Lorenzo Mangile.',
+                                    icone: finalIcon,
+                                    usuario: 'Lorenzo Mangile',
+                                    data: '11/05/2026 14:45',
+                                },
+                                {
+                                    titulo: 'Ticket finalizado',
+                                    descricao: 'O ticket foi encerrado por Lorenzo Mangile.',
+                                    icone: finalIcon,
                                     usuario: 'Lorenzo Mangile',
                                     data: '11/05/2026 14:45',
                                 },
@@ -239,7 +292,75 @@ export default function HistoricoTicket() {
 
                         <div style={historicoTicketStyles.dados}>
 
-                            <div style={historicoTicketStyles.linhaDetalhe}>
+                            <div style={historicoTicketStyles.linhaData}>
+                                <img
+                                    src={calendarioIcon}
+                                    alt="Calendario"
+                                    style={{
+                                        width: '40px',
+                                        height: '40px',
+                                        objectFit: 'contain',
+                                    }}
+                                />
+
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '2px',
+                                }}>
+                                    <span style={{
+                                        fontSize: '16px',
+                                        fontWeight: 'bold',
+                                        color: '#4B71B4',
+                                    }}>
+                                        Data de criação
+                                    </span>
+
+                                    <span style={{
+                                        fontSize: '16px',
+                                        fontWeight: 'bold',
+                                        color: '#1C4691',
+                                    }}>
+                                        10/05/2026 10:45
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div style={historicoTicketStyles.linhaAtualizacao}>
+                                <img
+                                    src={atualizacaoIcon}
+                                    alt="Atualizacao"
+                                    style={{
+                                        width: '40px',
+                                        height: '40px',
+                                        objectFit: 'contain',
+                                    }}
+                                />
+
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '2px',
+                                }}>
+                                    <span style={{
+                                        fontSize: '16px',
+                                        fontWeight: 'bold',
+                                        color: '#4B71B4',
+                                    }}>
+                                        Ultima atualização
+                                    </span>
+
+                                    <span style={{
+                                        fontSize: '16px',
+                                        fontWeight: 'bold',
+                                        color: '#1C4691',
+                                    }}>
+                                        11/05/2026 14:45
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div style={historicoTicketStyles.linhaDepartamento}>
                                 <img
                                     src={departamentoIcon}
                                     alt="Departamento"
@@ -250,22 +371,61 @@ export default function HistoricoTicket() {
                                     }}
                                 />
 
-                                <span style={{
-                                    fontSize: '16px',
-                                    fontWeight: 'bold',
-                                    color: '#4B71B4',
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '2px',
                                 }}>
-                                    Data de criação
-                                </span>
+                                    <span style={{
+                                        fontSize: '16px',
+                                        fontWeight: 'bold',
+                                        color: '#4B71B4',
+                                    }}>
+                                        Departamento
+                                    </span>
 
-                                 <span style={{
-                                    fontSize: '16px',
-                                    fontWeight: 'bold',
-                                    color: '#1C4691',
+                                    <span style={{
+                                        fontSize: '16px',
+                                        fontWeight: 'bold',
+                                        color: '#1C4691',
+                                    }}>
+                                        SOC
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div style={historicoTicketStyles.linhaComentario}>
+                                <img
+                                    src={comentarioIcon}
+                                    alt="Comentario"
+                                    style={{
+                                        width: '40px',
+                                        height: '40px',
+                                        objectFit: 'contain',
+                                    }}
+                                />
+
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '2px',
                                 }}>
-                                    10/05/2026 10:45
-                                </span>
-                               
+                                    <span style={{
+                                        fontSize: '16px',
+                                        fontWeight: 'bold',
+                                        color: '#4B71B4',
+                                    }}>
+                                        Interações
+                                    </span>
+
+                                    <span style={{
+                                        fontSize: '16px',
+                                        fontWeight: 'bold',
+                                        color: '#1C4691',
+                                    }}>
+                                        7
+                                    </span>
+                                </div>
                             </div>
 
                         </div>
@@ -275,7 +435,8 @@ export default function HistoricoTicket() {
 
                 </div>
             </div>
-
+            </div>
+            </div>
         </>
     )
 }
