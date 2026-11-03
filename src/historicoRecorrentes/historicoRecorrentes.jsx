@@ -3,21 +3,40 @@ import wifi from "../assets/wifi - reco.svg";
 import { styles } from "./historicoRecorrentesStyleSheet.js";
 import Header from "../components/header/header.jsx";
 import Aside from "../components/aside/aside.jsx";
+import Group from "../assets/Group.svg";
 
 const HistoricoRecorrentes = () => {
     return (
         <div style={styles.container}>
-            <Aside /> 
+            <Aside />
             <Header />
 
             {/* Conteúdo principal */}
             <main style={styles.conteudo}>
-                <h2 style={styles.titulo}>← Recorrentes</h2>
+                <h2 style={styles.titulo}>
+                    <img
+                        src={Group}
+                        alt="Voltar"
+                        style={{
+                            width: 18,
+                            height: 18,
+                            marginRight: 10,
+                            border: "none",
+                        }}
+                    />
+                    Recorrentes
+                </h2>
 
                 {/* Categoria */}
                 <section style={styles.categoria}>
                     <div style={styles.iconeWifi}>
-                        <img src={wifi} alt="Ícone de Wi-Fi" style={{ width: 44, height: 44 }} />
+                        <img
+                            src={wifi}
+                            alt="Ícone de Wi-Fi"
+                            style={{
+                                width: 44,
+                                height: 44
+                            }} />
                     </div>
                     <h2 style={styles.nomeCategoria}>Internet e conexão</h2>
                 </section>
