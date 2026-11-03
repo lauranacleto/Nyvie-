@@ -25,7 +25,6 @@ export const historicoTicketStyles = {
         boxSizing: 'border-box',
         alignItems: 'center',
         justifyContent: 'center',
-
         paddingLeft: '5%',
     },
 
