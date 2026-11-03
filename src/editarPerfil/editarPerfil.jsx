@@ -27,8 +27,8 @@ export default function EditarPerfil() {
                 <div style={editarPerfilStyles.banner}>
                     <img
                         src={logo}
-                        width={400}
-                        height={500}
+                        width={300}
+                        height={400}
                         alt="Logo Nyvie"
                         style={editarPerfilStyles.logo}
                     />
