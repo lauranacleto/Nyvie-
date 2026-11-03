@@ -1,8 +1,21 @@
 import logo from '../assets/logo.svg';
+import { useState } from 'react';
 import profile from '../assets/profile.svg';
 import { editarPerfilStyles } from './editarPerfilStyles';
 
 export default function EditarPerfil() {
+
+    const [fotoPerfil, setFotoPerfil] = useState(profile);
+
+
+    function alterarFoto(event) {
+        const arquivo = event.target.files[0];
+
+        if (arquivo) {
+            setFotoPerfil(URL.createObjectURL(arquivo));
+        }
+    }
+
     return (
         <div style={editarPerfilStyles.container}>
 
@@ -19,6 +32,12 @@ export default function EditarPerfil() {
             <div style={editarPerfilStyles.conteudo}>
 
                 <div style={editarPerfilStyles.perfil}>
+                    <img
+                        src={fotoPerfil}
+                        alt="Foto do perfil"
+                        style={editarPerfilStyles.profile}
+                    />
+
                     <h3 style={editarPerfilStyles.nome}>
                         Lorenzo Mangile
                     </h3>
@@ -28,7 +47,7 @@ export default function EditarPerfil() {
                     </p>
 
                     <div style={editarPerfilStyles.campoContainer}>
-                        <label htmlFor="telefone">
+                        <label htmlFor="telefone" >
                             Telefone:
                         </label>
                         <input
@@ -41,7 +60,7 @@ export default function EditarPerfil() {
                     </div>
 
                     <div style={editarPerfilStyles.campoContainer}>
-                        <label htmlFor="email">
+                        <label htmlFor="email" >
                             E-mail:
                         </label>
                         <input
@@ -54,7 +73,7 @@ export default function EditarPerfil() {
                     </div>
 
                     <div style={editarPerfilStyles.campoContainer}>
-                        <label htmlFor="departamento">
+                        <label htmlFor="departamento" >
                             Departamento:
                         </label>
                         <input
@@ -78,17 +97,27 @@ export default function EditarPerfil() {
                     </p>
                     <div style={editarPerfilStyles.info}>
 
-                        <div>
-                            <h3 style={editarPerfilStyles.subtitulofoto}>
-                                Foto Perfil
-                            </h3>
+                       <div style={editarPerfilStyles.fotoContainer}>
+    <h3 style={editarPerfilStyles.subtitulofoto}>
+        Foto Perfil
+    </h3>
 
-                            <img
-                                src={profile}
-                                alt="Foto do perfil"
-                                style={editarPerfilStyles.profile}
-                            />
-                        </div>
+    <img
+        src={fotoPerfil}
+        alt="Foto do perfil"
+        style={editarPerfilStyles.profileInfo}
+    />
+
+    <label style={editarPerfilStyles.botaoAlterarFoto}>
+        Alterar foto
+        <input
+            type="file"
+            accept="image/*"
+            onChange={alterarFoto}
+            style={editarPerfilStyles.inputFoto}
+        />
+    </label>
+</div>
 
                         <div>
                             <h3 style={editarPerfilStyles.subtituloinfo}>
@@ -98,7 +127,7 @@ export default function EditarPerfil() {
                             <div style={editarPerfilStyles.formulario}>
 
                                 <div style={editarPerfilStyles.campoContainer}>
-                                    <label htmlFor="nome">
+                                    <label htmlFor="nome" >
                                         Nome:
                                     </label>
                                     <input
@@ -111,7 +140,7 @@ export default function EditarPerfil() {
                                 </div>
 
                                 <div style={editarPerfilStyles.campoContainer}>
-                                    <label htmlFor="emailPerfil">
+                                    <label htmlFor="emailPerfil" >
                                         E-mail:
                                     </label>
                                     <input
@@ -124,7 +153,7 @@ export default function EditarPerfil() {
                                 </div>
 
                                 <div style={editarPerfilStyles.campoContainer}>
-                                    <label htmlFor="telefonePerfil">
+                                    <label htmlFor="telefonePerfil" >
                                         Telefone:
                                     </label>
                                     <input
@@ -137,7 +166,7 @@ export default function EditarPerfil() {
                                 </div>
 
                                 <div style={editarPerfilStyles.campoContainer}>
-                                    <label htmlFor="departamentoPerfil">
+                                    <label htmlFor="departamentoPerfil" >
                                         Departamento:
                                     </label>
                                     <input
@@ -154,11 +183,17 @@ export default function EditarPerfil() {
                     </div>
 
                     <div style={editarPerfilStyles.botoes}>
-                        <button type="button">
+                        <button
+                            type="button"
+                            style={editarPerfilStyles.botaoCancelar}
+                        >
                             Cancelar
                         </button>
 
-                        <button type="button">
+                        <button
+                            type="button"
+                            style={editarPerfilStyles.botaoSalvar}
+                        >
                             Salvar
                         </button>
                     </div>

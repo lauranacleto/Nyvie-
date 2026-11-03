@@ -1,3 +1,5 @@
+import { redirect } from "react-router-dom";
+
 export const editarPerfilStyles = {
     container: {
         minHeight: '100vh',
@@ -32,25 +34,28 @@ export const editarPerfilStyles = {
     },
 
     perfil: {
-        width: '255px',
-        minWidth: '220px',
-        boxSizing: 'border-box',
-        backgroundColor: '#EFF6FD',
-        borderRadius: '9px',
-        boxShadow: '3px 3px 5px rgba(0, 0, 0, 0.25)',
-        padding: '24px 20px',
-        color: '#111111',
-        flexShrink: 0,
-    },
+    width: '255px',
+    minWidth: '220px',
+    boxSizing: 'border-box',
+    backgroundColor: '#EFF6FD',
+    borderRadius: '9px',
+    boxShadow: '3px 3px 5px rgba(0, 0, 0, 0.25)',
+    padding: '24px 20px',
+    color: '#111111',
+    flexShrink: 0,
+
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+},
 
     nome: {
-        textAlign: 'center',
-        fontSize: '17px',
-        fontWeight: 'bold',
-        margin: '12px 0 2px',
-        color: '#111111',
-        marginTop: 130,
-    },
+    textAlign: 'center',
+    fontSize: '17px',
+    fontWeight: '700',
+    margin: '12px 0 2px',
+    color: '#183B6B',
+},
 
     email: {
         textAlign: 'center',
@@ -78,34 +83,37 @@ export const editarPerfilStyles = {
     },
 
     subtitulo: {
-        fontSize: '12px',
+        fontSize: '14px',
         color: '#A0A8B1',
         margin: '0 0 16px',
         lineHeight: 1.5,
+        marginTop: 10
     },
 
     info: {
-        display: 'grid',
-        gridTemplateColumns: 'minmax(180px, 0.8fr) minmax(240px, 1.2fr)',
-        gap: '28px',
-        backgroundColor: '#FFFFFF',
-        border: '1px solid #D5DCE3',
-        borderRadius: '9px',
-        padding: '20px 24px',
-        boxShadow: '2px 3px 4px rgba(0, 0, 0, 0.15)',
-    },
+    display: 'grid',
+    gridTemplateColumns: 'minmax(180px, 0.8fr) minmax(240px, 1.2fr)',
+    gap: '28px',
+    borderRadius: '9px',
+    padding: '20px 24px',
+    boxShadow: '2px 3px 4px rgba(0, 0, 0, 0.15)',
+},
 
-    subtitulofoto: {
-        fontSize: '16px',
-        margin: '0 0 14px',
-        color: '#183B6B',
-    },
-
+   subtitulofoto: {
+    fontSize: '20px',
+    margin: '10px 0 14px',
+    color: '#183B6B',
+    fontWeight: '700',
+},
     subtituloinfo: {
-        fontSize: '16px',
+        fontSize: '20px',
         margin: '0 0 14px',
         color: '#183B6B',
+        fontWeight: "700",
+        marginTop: 10,
+        marginBottom:15
     },
+
 
     formulario: {
         display: 'flex',
@@ -119,7 +127,12 @@ export const editarPerfilStyles = {
         gap: '10px',
         minWidth: 0,
         marginBottom: 10,
+        color: "#183B6B"
+        
+
     },
+
+    
 
     label: {
         fontSize: '12px',
@@ -128,12 +141,13 @@ export const editarPerfilStyles = {
     },
 
     input: {
-        width: '100%',
+        width: '85%',
+        height:"50",
         boxSizing: 'border-box',
         padding: '10px 12px',
         border: '1px solid #E1E1E1',
         borderRadius: '5px',
-        backgroundColor: '#E9E7E7',
+        backgroundColor: '#fafafa',
         color: '#555555',
         fontSize: '12px',
         outline: 'none',
@@ -145,4 +159,76 @@ export const editarPerfilStyles = {
         gap: '16px',
         marginTop: '30px',
     },
+
+    botaoCancelar:{
+        color:"white",
+        backgroundColor:"#0A1934",
+        width: "50%",
+        height: 45,
+        borderRadius: 5,
+         cursor: 'pointer',
+         border: 'none',
+        outline: 'none',
+
+    },
+     botaoSalvar:{
+         width: "50%",
+        height: 45,
+        backgroundColor:"#1A8052",
+        color:"white",
+        borderRadius: 5,
+        cursor: 'pointer',
+        border: 'none',
+        outline: 'none',
+
+
+     },
+
+    fotoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: '0 15px 15px',
+    gap: '15px',
+    minWidth: 0,
+    backgroundColor: '#fafafa',
+    height: 350,
+    borderRadius: 5
+},
+
+profile: {
+    width: '120px',
+    height: '120px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    alignSelf: 'center',
+    marginTop: 10
+},
+
+profileInfo: {
+    width: '160px',
+    height: '160px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    alignSelf: 'center',
+    marginTop: 10,
+},
+
+botaoAlterarFoto: {
+    display: 'inline-block',
+    padding: '6px 20px',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    textAlign: 'center',
+    alignSelf: 'center',
+    backgroundColor:"#0A1934",
+    color: "white"
+     
+},
+
+inputFoto: {
+    display: 'none',
+},
+    
+ 
 };
