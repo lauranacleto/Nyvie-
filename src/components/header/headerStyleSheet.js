@@ -1,6 +1,5 @@
-
 export const styles = {
-     header: {
+    header: {
         height: 65,
         backgroundColor: "#0B1B38",
         display: "flex",
@@ -9,6 +8,13 @@ export const styles = {
         justifyContent: "space-between",
         paddingLeft: 64,
         paddingRight: 38,
-        color: "#FFFFFF"
+        color: "#FFFFFF",
+
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        zIndex: 1000,
+        boxSizing: "border-box"
     },
-}
+};
