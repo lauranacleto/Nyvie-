@@ -2,9 +2,11 @@
 
 export const styles = {
     container: {
+        width: "100%",
         minHeight: "100vh",
         backgroundColor: "#EDF5FC",
         fontFamily: "Arial, sans-serif",
+        boxSizing: "border-box",
     },
 
     logo: {
@@ -77,7 +79,7 @@ export const styles = {
     titulo: {
         margin: "0 0 12px",
         fontSize: 22,
-        fontWeight: "500",
+        fontWeight: "semi-bold",
         color: "#204C9B",
     },
 
@@ -110,22 +112,25 @@ export const styles = {
         backgroundColor: "#FFFFFF",
         border: "1px solid #DCE8F5",
         borderRadius: 7,
-        padding: 7,
-        minHeight: 388,
+        padding: 11,
+        width: "100%",
+        minHeight: 480,
         boxSizing: "border-box",
     },
 
     ticket: {
-        minHeight: 66,
+        minHeight: 78,
+        width: "100%",
         backgroundColor: "#EFF6FD",
         border: "1px solid #DCE7F1",
         borderRadius: 7,
         boxShadow: "0 1px 2px #C2CBD4",
         display: "grid",
-        gridTemplateColumns: "minmax(150px, 1fr) 105px 92px",
+        gridTemplateColumns: "minmax(0, 1fr) 122px 108px",
         alignItems: "stretch",
-        marginBottom: 5,
+        marginBottom: 7,
         overflow: "hidden",
+        boxSizing: "border-box",
     },
 
     infoTicket: {
@@ -143,7 +148,7 @@ export const styles = {
 
     descricao: {
         margin: 0,
-        fontSize: 10,
+        fontSize: 15,
         color: "#0B1B38",
     },
 
@@ -158,7 +163,7 @@ export const styles = {
     },
 
     rotulo: {
-        fontSize: 9,
+        fontSize: 13,
         color: "#0B1B38",
     },
 
@@ -168,7 +173,7 @@ export const styles = {
         borderRadius: 15,
         border: "1px solid",
         textAlign: "center",
-        fontSize: 9,
+        fontSize: 13,
         whiteSpace: "nowrap",
     },
 

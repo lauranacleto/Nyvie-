@@ -5,6 +5,7 @@ import Splash from './splash/splash';
 import Login from './login/login';
 import Cadastro from './cadastro/cadastro';
 
+
 export default function App() {
   return (
     <BrowserRouter>
