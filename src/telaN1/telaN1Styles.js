@@ -208,6 +208,34 @@ dadosP: {
     backgroundColor: "#FFEEEE",
     borderRadius: 5,
     border: "1px solid #571414",
-}
+},
+
+table:{
+    
+    width: "90%",  
+    
+},
+
+cabecalho:{
+    width: "90%",
+    height: 40,
+    backgroundColor: "#233D6A",
+},
+
+titulos:{
+    width: "90%",
+    height: 40,
+    backgroundColor: "#233D6A",
+    color: "#E9F1F8"
+  
+},
+
+id:{
+    backgroundColor: "red"
+},
+
+td:{
+    color: "white"
+},
 
 };
