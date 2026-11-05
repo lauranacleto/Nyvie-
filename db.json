@@ -1,16 +1,25 @@
 {
   "usuarios": [
     {
-      "id": "1",
-      "nome": "Matheus",
-      "email": "matheus@gmail.com",
-      "senha": "123456"
+      "nome": "loras",
+      "telefone": "11999999999",
+      "email": "loras@email.com",
+      "senha": "63634",
+      "id": "1"
     },
     {
-      "id": "2",
-      "nome": "Maria",
-      "email": "maria@gmail.com",
-      "senha": "654321"
+      "nome": "matheus",
+      "telefone": "11999999999",
+      "email": "felix@email.com",
+      "senha": "felix",
+      "id": "2"
+    },
+    {
+      "nome": "lucas",
+      "telefone": "11988888888",
+      "email": "marinho@email.com",
+      "senha": "5678",
+      "id": "3"
     }
   ],
   
@@ -27,6 +36,4 @@
       }
   ]
 }
-    
-
-
+  
