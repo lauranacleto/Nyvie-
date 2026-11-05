@@ -4,5 +4,18 @@
             "id": 1,
             "nome": "João Silva"
         }
+    ],
+
+    "tickets": [
+        {
+            "id": 1,
+            "descricao": "Problema na Rede de Wi-fi",
+            "prioridade": "P3 .Alto",
+            "sla": "00:23:45",
+            "tempoExcedido":"09:45:98",
+            "status":"Em adoção"
+
+
+        }
     ]
 }
