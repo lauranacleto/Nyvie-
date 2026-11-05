@@ -22,7 +22,7 @@
       "id": "3"
     }
   ],
-  
+
   "tickets": [
       {
           "id": 1,
@@ -31,8 +31,14 @@
           "sla": "00:23:45",
           "tempoExcedido":"09:45:98",
           "status":"Em adoção"
-  
-  
+      },
+      {
+          "id": 2,
+          "descricao": "Rede de Wi-fi",
+          "prioridade": "P2 .Baixo",
+          "sla": "00:23:45",
+          "tempoExcedido":"09:50:98",
+          "status":"Em adoção"
       }
   ]
 }

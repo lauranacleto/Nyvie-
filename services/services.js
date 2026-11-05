@@ -8,6 +8,7 @@ export const apiPort = "3000"; //porta do swagger
 const localApi = `http://localhost:3000/`; //end do swagger 
 //https://localhost:${apiPort}/api
 
+
 // Define uma variável para uma API externa, mas no momento ela está como 'null' (não sendo usada)
 const externalApi = null;
 
