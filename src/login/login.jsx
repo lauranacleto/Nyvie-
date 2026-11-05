@@ -1,11 +1,49 @@
-
-
 import logo from '../assets/logo.svg';
 import { perfilStyles } from './perfilStyles';
+import api from "../../services/services";
+
+const funcEntrar = async (e) => {
+  e.preventDefault();
+
+  if (!email || !senha) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  try {
+    const response = await api.get(
+      `usuarios?email=${encodeURIComponent(email)}`
+    );
+
+    const usuarioEncontrado = response.data.find(
+      (item) => item.senha === senha
+    );
+
+    if (!usuarioEncontrado) {
+      alert("E-mail ou senha incorretos!");
+      return;
+    }
+
+    localStorage.setItem(
+      "usuario",
+      JSON.stringify(usuarioEncontrado)
+    );
+
+    alert("Login realizado com sucesso!");
+
+    navigate("/home");
+
+  } catch (error) {
+    console.error("Erro ao fazer login:", error);
+    alert("Erro ao conectar com o servidor!");
+  }
+};
+
 
 export default function LoginUsuario() {
   return (
     <div style={perfilStyles.container}>
+
       <div style={perfilStyles.ladoEsquerdo}>
         <div style={perfilStyles.bolaSE} />
         <div style={perfilStyles.bolaSD} />
@@ -33,7 +71,12 @@ export default function LoginUsuario() {
       </div>
 
       <div style={perfilStyles.ladoDireito}>
-        <div style={perfilStyles.formulario}>
+
+        <form
+          style={perfilStyles.formulario}
+          onSubmit={funcEntrar}
+        >
+
           <div style={perfilStyles.campoContainer}>
             <label
               htmlFor="email"
@@ -48,6 +91,8 @@ export default function LoginUsuario() {
               placeholder="Digite seu e-mail"
               style={perfilStyles.input}
               autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -65,6 +110,8 @@ export default function LoginUsuario() {
               placeholder="Digite sua senha"
               style={perfilStyles.input}
               autoComplete="current-password"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
             />
           </div>
 
@@ -81,13 +128,23 @@ export default function LoginUsuario() {
             </a>
           </div>
 
+          {mensagem && (
+            <p style={{
+              color: "red",
+              textAlign: "center"
+            }}>
+              {mensagem}
+            </p>
+          )}
+
           <button
-            type="button"
+            type="submit"
             style={perfilStyles.botaoEntrar}
           >
             Entrar
           </button>
-        </div>
+
+        </form>
       </div>
     </div>
   );

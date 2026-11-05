@@ -1,26 +1,16 @@
 {
-    "usuarios": [
-        {
-            "id": 1,
-            "nome": "João Silva",
-            "telefone": "(11) 98765-4321",
-            "email": "joao.silva@email.com",
-            "senha": "senha123",
-            "cargo": ""
-        }
-    ],
-    "cargos": [
-        {
-            "id": 1,
-            "nome": "Administrador"
-        },
-        {
-            "id": 2,
-            "nome": "Gerente"
-        },
-        {
-            "id": 3,
-            "nome": "N1"
-        }
-    ]
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Matheus",
+      "email": "matheus@gmail.com",
+      "senha": "123456"
+    },
+    {
+      "id": "2",
+      "nome": "Maria",
+      "email": "maria@gmail.com",
+      "senha": "654321"
+    }
+  ]
 }
