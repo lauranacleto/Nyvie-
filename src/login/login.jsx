@@ -1,46 +1,53 @@
-import logo from '../assets/logo.svg';
-import { perfilStyles } from './perfilStyles';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import logo from "../assets/logo.svg";
+import { perfilStyles } from "./perfilStyles";
 import api from "../../services/services";
 
-const funcEntrar = async (e) => {
-  e.preventDefault();
+export default function LoginUsuario() {
 
-  if (!email || !senha) {
-    alert("Preencha todos os campos!");
-    return;
-  }
+  const navigate = useNavigate();
 
-  try {
-    const response = await api.get(
-      `usuarios?email=${encodeURIComponent(email)}`
-    );
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
-    const usuarioEncontrado = response.data.find(
-      (item) => item.senha === senha
-    );
+  const funcEntrar = async (e) => {
+    e.preventDefault();
 
-    if (!usuarioEncontrado) {
-      alert("E-mail ou senha incorretos!");
+    if (!email || !senha) {
+      alert("Preencha todos os campos!");
       return;
     }
 
-    localStorage.setItem(
-      "usuario",
-      JSON.stringify(usuarioEncontrado)
-    );
+    try {
+      const response = await api.get(
+        `/usuarios?email=${encodeURIComponent(email)}`
+      );
 
-    alert("Login realizado com sucesso!");
+      const usuarioEncontrado = response.data.find(
+        (item) => item.senha === senha
+      );
 
-    navigate("/home");
+      if (!usuarioEncontrado) {
+        alert("E-mail ou senha incorretos!");
+        return;
+      }
 
-  } catch (error) {
-    console.error("Erro ao fazer login:", error);
-    alert("Erro ao conectar com o servidor!");
-  }
-};
+      localStorage.setItem(
+        "usuario",
+        JSON.stringify(usuarioEncontrado)
+      );
 
+      alert("Login realizado com sucesso!");
+      navigate("/home");
 
-export default function LoginUsuario() {
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      alert("Erro ao conectar com o servidor!");
+    }
+  };
+
   return (
     <div style={perfilStyles.container}>
 
@@ -127,15 +134,6 @@ export default function LoginUsuario() {
               Cadastre-se
             </a>
           </div>
-
-          {mensagem && (
-            <p style={{
-              color: "red",
-              textAlign: "center"
-            }}>
-              {mensagem}
-            </p>
-          )}
 
           <button
             type="submit"
