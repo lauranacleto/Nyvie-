@@ -12,41 +12,26 @@ export default function LoginUsuario() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  const funcEntrar = async (e) => {
-    e.preventDefault();
+     const funcEntrar = async () => {
+        console.log("Email:", email);
+        console.log("Senha:", senha);
+     
+        try
+        {   
+            const objLogin = {
+                email: email,
+                senha: senha
+            }
 
-    if (!email || !senha) {
-      alert("Preencha todos os campos!");
-      return;
-    }
+            const response = await api.post('/Login', objLogin);
+            console.log("Resposta do login:", response.data);
 
-    try {
-      const response = await api.get(
-        `/usuarios?email=${encodeURIComponent(email)}`
-      );
-
-      const usuarioEncontrado = response.data.find(
-        (item) => item.senha === senha
-      );
-
-      if (!usuarioEncontrado) {
-        alert("E-mail ou senha incorretos!");
-        return;
-      }
-
-      localStorage.setItem(
-        "usuario",
-        JSON.stringify(usuarioEncontrado)
-      );
-
-      alert("Login realizado com sucesso!");
-      navigate("/home");
-
-    } catch (error) {
-      console.error("Erro ao fazer login:", error);
-      alert("Erro ao conectar com o servidor!");
-    }
-  };
+        } 
+        catch (error) 
+        {
+            console.error("Erro ao fazer login:", error);
+        }
+    } 
 
   return (
     <div style={perfilStyles.container}>
@@ -81,7 +66,6 @@ export default function LoginUsuario() {
 
         <form
           style={perfilStyles.formulario}
-          onSubmit={funcEntrar}
         >
 
           <div style={perfilStyles.campoContainer}>
@@ -136,8 +120,9 @@ export default function LoginUsuario() {
           </div>
 
           <button
-            type="submit"
+            type="button"
             style={perfilStyles.botaoEntrar}
+            onClick={funcEntrar}
           >
             Entrar
           </button>
