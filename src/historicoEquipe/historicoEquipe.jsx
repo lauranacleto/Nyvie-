@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 
 import historicoStyles from '../historicoEquipe/historicoEquipe';
 
@@ -7,185 +8,267 @@ import Aside from '../components/aside/aside';
 
 import perfilAzul from '../assets/perfil azul.svg';
 
-const funcionarios = [
-  { id: 1, nome: 'Lorenzo Mangile', email: 'mangile@gmail.com' },
-  { id: 2, nome: 'Lucas Souza Marinho', email: 'lucas@gmail.com' },
-  { id: 3, nome: 'Laura Kauany', email: 'laura@gmail.com' },
-  { id: 4, nome: 'Walyson Menezes', email: 'walyson@gmail.com' },
-  { id: 5, nome: 'Matheus Felix', email: 'matheus@gmail.com' },
-  { id: 6, nome: 'Gabriel Figueira', email: 'gabriel@gmail.com' },
-];
-
-// tipo pode ser: atribuido, concluido, atualizado ou prazo
-const historico = [
-  {
-    id: 1,
-  funcionarioId: 3,
-  tipo: 'atribuido',
-  titulo: 'Laura Kauany atribuiu o ticket #00128 para você',
-  detalhe: 'Agora você é responsável por este atendimento.',
-  data: 'Atribuído em: 28/10/2026',
-  },
-  {
-    id: 2,
-    funcionarioId: 1,
-    tipo: 'concluido',
-    titulo: 'Lorenzo Mangile concluiu o ticket #00117',
-    detalhe: 'O ticket #00117 foi concluído e finalizado com sucesso.',
-    data: 'Concluído em: 28/10/2026',
-  },
-  {
-    id: 3,
-    funcionarioId: 3,
-    tipo: 'atualizado',
-    titulo: 'Laura Kauany atualizou o ticket #00129 para Em Andamento',
-    detalhe: 'O ticket #00129 foi atualizado para o status "Em Andamento".',
-    data: 'Alterado: 28/10/2026',
-  },
-  {
-    id: 4,
-    funcionarioId: 1,
-    tipo: 'atualizado',
-    titulo: 'Você atualizou o ticket #00127 para Em Andamento',
-    detalhe: 'O ticket #00127 foi atualizado para o status "Em Andamento".',
-    data: 'Alterado: 28/10/2026',
-  },
-  {
-    id: 5,
-    funcionarioId: 2,
-    tipo: 'prazo',
-    titulo: 'O prazo do ticket #00118 está próximo ao vencimento.',
-    detalhe: 'Faltam 3 horas para o vencimento.',
-    data: 'Vence em: 28/10/2026',
-  },
-  {
-    id: 6,
-    funcionarioId: 4,
-    tipo: 'atribuido',
-    titulo: 'Walyson Menezes atribuiu o ticket #00127 para você',
-    detalhe: 'Agora você é responsável por este atendimento.',
-    data: 'Atribuído em: 18/10/2026',
-  },
-  {
-    id: 7,
-    funcionarioId: 5,
-    tipo: 'concluido',
-    titulo: 'Matheus Felix concluiu o ticket #00128',
-    detalhe: 'O ticket #00128 foi concluído e finalizado com sucesso.',
-    data: 'Concluído em: 18/10/2026',
-  },
-  {
-    id: 8,
-    funcionarioId: 6,
-    tipo: 'prazo',
-    titulo: 'O prazo do ticket #00115 está próximo ao vencimento.',
-    detalhe: 'Faltam 3 horas para o vencimento.',
-    data: 'Vence em: 18/10/2026',
-  },
-];
+import api from '../../services/services';
 
 export default function Historico() {
-  // guarda quem está selecionado: 'todos' ou o id do funcionário
+
+  // Estados
   const [selecionado, setSelecionado] = useState('todos');
 
-  // procura o funcionário selecionado (em "todos" fica undefined)
-  const funcionarioAtual = funcionarios.find((f) => f.id === selecionado);
+  const [funcionarios, setFuncionarios] = useState([]);
+  const [historico, setHistorico] = useState([]);
 
-  // se for "todos" mostra tudo, senão mostra só os do funcionário
-  let eventos = historico;
-  if (selecionado !== 'todos') {
-    eventos = historico.filter((e) => e.funcionarioId === selecionado);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState('');
+
+  // Buscar funcionários
+  async function buscarFuncionarios() {
+    try {
+      const response = await api.get('/funcionarios');
+      setFuncionarios(response.data);
+    } catch (error) {
+      console.error('Erro ao buscar funcionários:', error);
+      setErro('Não foi possível carregar os funcionários.');
+    }
   }
 
- return (
+  // Buscar histórico
+  async function buscarHistorico() {
+    try {
+      const response = await api.get('/historico');
+      setHistorico(response.data);
+    } catch (error) {
+      console.error('Erro ao buscar histórico:', error);
+      setErro('Não foi possível carregar o histórico.');
+    }
+  }
+
+  // Carregar dados ao abrir a tela
+  useEffect(() => {
+    async function carregarDados() {
+      setCarregando(true);
+      setErro('');
+
+      try {
+        const [responseFuncionarios, responseHistorico] =
+          await Promise.all([
+            api.get('/funcionarios'),
+            api.get('/historico')
+          ]);
+
+        setFuncionarios(responseFuncionarios.data);
+        setHistorico(responseHistorico.data);
+
+      } catch (error) {
+        console.error('Erro ao carregar dados:', error);
+        setErro('Erro ao carregar os dados do histórico.');
+      } finally {
+        setCarregando(false);
+      }
+    }
+
+    carregarDados();
+  }, []);
+
+  // Encontrar funcionário selecionado
+  const funcionarioAtual = funcionarios.find(
+    (func) => String(func.id) === String(selecionado)
+  );
+
+  // Filtrar eventos
+  const eventos = selecionado === 'todos'
+    ? historico
+    : historico.filter(
+        (evento) =>
+          String(evento.funcionarioId) === String(selecionado)
+      );
+
+  return (
     <div style={historicoStyles.container}>
+
       <Header />
 
       <div style={historicoStyles.corpo}>
+
         <Aside />
 
         <main style={historicoStyles.content}>
-          <h2 style={historicoStyles.pageTitle}>← Histórico da equipe</h2>
+
+          <h2 style={historicoStyles.pageTitle}>
+            ← Histórico da equipe
+          </h2>
 
           <div style={historicoStyles.painel}>
-            {/* Lado esquerdo: lista de funcionários */}
+
+            {/* Lista de funcionários */}
             <section style={historicoStyles.colunaEsquerda}>
+
               <div
-                style={selecionado === 'todos' ? historicoStyles.cardSelecionado : historicoStyles.card}
+                style={
+                  selecionado === 'todos'
+                    ? historicoStyles.cardSelecionado
+                    : historicoStyles.card
+                }
                 onClick={() => setSelecionado('todos')}
               >
-                <img src={perfilAzul} alt="Todos" style={historicoStyles.foto} />
-                <p style={historicoStyles.nomeTodos}>Todos</p>
+                <img
+                  src={perfilAzul}
+                  alt="Todos"
+                  style={historicoStyles.foto}
+                />
+
+                <p style={historicoStyles.nomeTodos}>
+                  Todos
+                </p>
               </div>
 
               {funcionarios.map((func) => (
+
                 <div
                   key={func.id}
-                  style={selecionado === func.id ? historicoStyles.cardSelecionado : historicoStyles.card}
+                  style={
+                    String(selecionado) === String(func.id)
+                      ? historicoStyles.cardSelecionado
+                      : historicoStyles.card
+                  }
                   onClick={() => setSelecionado(func.id)}
                 >
+
                   <div style={historicoStyles.foto}></div>
+
                   <div>
-                    <p style={historicoStyles.nome}>{func.nome}</p>
-                    <p style={historicoStyles.cargo}>Atendente</p>
+                    <p style={historicoStyles.nome}>
+                      {func.nome}
+                    </p>
+
+                    <p style={historicoStyles.cargo}>
+                      {func.cargo}
+                    </p>
                   </div>
+
                 </div>
+
               ))}
+
             </section>
 
-            {/* Lado direito: histórico */}
+            {/* Histórico do funcionário */}
             <section style={historicoStyles.colunaDireita}>
+
               <div style={historicoStyles.topoDireita}>
+
                 <div>
+
                   {funcionarioAtual ? (
+
                     <div>
-                      <p style={historicoStyles.nome}>{funcionarioAtual.nome}</p>
-                      <p style={historicoStyles.cargo}>{funcionarioAtual.email}</p>
+                      <p style={historicoStyles.nome}>
+                        {funcionarioAtual.nome}
+                      </p>
+
+                      <p style={historicoStyles.cargo}>
+                        {funcionarioAtual.email}
+                      </p>
                     </div>
+
                   ) : (
+
                     <div>
-                      <p style={historicoStyles.nome}>Todos</p>
-                      <p style={historicoStyles.cargo}>Histórico de toda a equipe</p>
+                      <p style={historicoStyles.nome}>
+                        Todos
+                      </p>
+
+                      <p style={historicoStyles.cargo}>
+                        Histórico de toda a equipe
+                      </p>
                     </div>
+
                   )}
+
                 </div>
 
                 <div style={historicoStyles.botoes}>
-                  <button style={historicoStyles.botao}>Filtrar</button>
-                  <button style={historicoStyles.botao}>Data</button>
+
+                  <button style={historicoStyles.botao}>
+                    Filtrar
+                  </button>
+
+                  <button style={historicoStyles.botao}>
+                    Data
+                  </button>
+
                 </div>
+
               </div>
 
+              {/* Lista de atividades */}
               <div style={historicoStyles.lista}>
-                {eventos.length === 0 && (
-                  <p style={historicoStyles.vazio}>Nenhuma atividade encontrada.</p>
+
+                {carregando ? (
+
+                  <p style={historicoStyles.vazio}>
+                    Carregando histórico...
+                  </p>
+
+                ) : erro ? (
+
+                  <p style={historicoStyles.vazio}>
+                    {erro}
+                  </p>
+
+                ) : eventos.length === 0 ? (
+
+                  <p style={historicoStyles.vazio}>
+                    Nenhuma atividade encontrada.
+                  </p>
+
+                ) : (
+
+                  eventos.map((evento) => (
+
+                    <div
+                      key={evento.id}
+                      style={
+                        evento.tipo === 'atribuido'
+                          ? historicoStyles.eventoAtribuido
+                          : evento.tipo === 'concluido'
+                          ? historicoStyles.eventoConcluido
+                          : evento.tipo === 'atualizado'
+                          ? historicoStyles.eventoAtualizado
+                          : historicoStyles.eventoPrazo
+                      }
+                    >
+
+                      <div>
+                        <p style={historicoStyles.eventoTitulo}>
+                          {evento.titulo}
+                        </p>
+
+                        <p style={historicoStyles.eventoDetalhe}>
+                          {evento.detalhe}
+                        </p>
+                      </div>
+
+                      <span style={historicoStyles.eventoData}>
+                        {evento.data}
+                      </span>
+
+                    </div>
+
+                  ))
+
                 )}
 
-                {eventos.map((evento) => (
-                  <div
-                    key={evento.id}
-                    style={
-                      evento.tipo === 'atribuido'
-                        ? historicoStyles.eventoAtribuido
-                        : evento.tipo === 'concluido'
-                        ? historicoStyles.eventoConcluido
-                        : evento.tipo === 'atualizado'
-                        ? historicoStyles.eventoAtualizado
-                        : historicoStyles.eventoPrazo
-                    }
-                  >
-                    <div>
-                      <p style={historicoStyles.eventoTitulo}>{evento.titulo}</p>
-                      <p style={historicoStyles.eventoDetalhe}>{evento.detalhe}</p>
-                    </div>
-                    <span style={historicoStyles.eventoData}>{evento.data}</span>
-                  </div>
-                ))}
               </div>
+
             </section>
+
           </div>
+
         </main>
+
       </div>
+
     </div>
   );
 }

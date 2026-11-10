@@ -1,4 +1,79 @@
 {
+  "funcionarios": [
+    { "id": 1, "nome": "Lorenzo Mangile", "email": "mangile@gmail.com", "cargo": "Atendente" },
+    { "id": 2, "nome": "Lucas Souza Marinho", "email": "lucas@gmail.com", "cargo": "Atendente" },
+    { "id": 3, "nome": "Laura Kauany", "email": "laura@gmail.com", "cargo": "Atendente" },
+    { "id": 4, "nome": "Walyson Menezes", "email": "walyson@gmail.com", "cargo": "Atendente" },
+    { "id": 5, "nome": "Matheus Felix", "email": "matheus@gmail.com", "cargo": "Atendente" },
+    { "id": 6, "nome": "Gabriel Figueira", "email": "gabriel@gmail.com", "cargo": "Atendente" }
+  ],
+  "historico": [
+    {
+      "id": 1,
+      "funcionarioId": 3,
+      "tipo": "atribuido",
+      "titulo": "Laura Kauany atribuiu o ticket #00128 para você",
+      "detalhe": "Agora você é responsável por este atendimento.",
+      "data": "Atribuído em: 28/10/2026"
+    },
+    {
+      "id": 2,
+      "funcionarioId": 1,
+      "tipo": "concluido",
+      "titulo": "Lorenzo Mangile concluiu o ticket #00117",
+      "detalhe": "O ticket #00117 foi concluído e finalizado com sucesso.",
+      "data": "Concluído em: 28/10/2026"
+    },
+    {
+      "id": 3,
+      "funcionarioId": 3,
+      "tipo": "atualizado",
+      "titulo": "Laura Kauany atualizou o ticket #00129 para Em Andamento",
+      "detalhe": "O ticket #00129 foi atualizado para o status Em Andamento.",
+      "data": "Alterado: 28/10/2026"
+    },
+    {
+      "id": 4,
+      "funcionarioId": 1,
+      "tipo": "atualizado",
+      "titulo": "Você atualizou o ticket #00127 para Em Andamento",
+      "detalhe": "O ticket #00127 foi atualizado para o status Em Andamento.",
+      "data": "Alterado: 28/10/2026"
+    },
+    {
+      "id": 5,
+      "funcionarioId": 2,
+      "tipo": "prazo",
+      "titulo": "O prazo do ticket #00118 está próximo ao vencimento.",
+      "detalhe": "Faltam 3 horas para o vencimento.",
+      "data": "Vence em: 28/10/2026"
+    },
+    {
+      "id": 6,
+      "funcionarioId": 4,
+      "tipo": "atribuido",
+      "titulo": "Walyson Menezes atribuiu o ticket #00127 para você",
+      "detalhe": "Agora você é responsável por este atendimento.",
+      "data": "Atribuído em: 18/10/2026"
+    },
+    {
+      "id": 7,
+      "funcionarioId": 5,
+      "tipo": "concluido",
+      "titulo": "Matheus Felix concluiu o ticket #00128",
+      "detalhe": "O ticket #00128 foi concluído e finalizado com sucesso.",
+      "data": "Concluído em: 18/10/2026"
+    },
+    {
+      "id": 8,
+      "funcionarioId": 6,
+      "tipo": "prazo",
+      "titulo": "O prazo do ticket #00115 está próximo ao vencimento.",
+      "detalhe": "Faltam 3 horas para o vencimento.",
+      "data": "Vence em: 18/10/2026"
+    }],
+
+
   "usuarios": [
     {
       "nome": "loras",
