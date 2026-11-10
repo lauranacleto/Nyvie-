@@ -6,11 +6,14 @@ import Header from "../header/header";
 import icone  from "../../assets/group.svg"
 import { CalendarDays, TriangleAlert, UserRound, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { useEffect } from "react";
 import iconTicket from "../../assets/ticket.svg"
 import iconTicketDS from "../../assets/check.svg"
 import iconTicketTFS from "../../assets/danger.svg"
 import iconTicketTMR from "../../assets/time.svg"
 import iconTicketTR from "../../assets/yellowTicket.svg"
+import api from "../../../services/services";
+import seta from "../../assets/seta.svg"
 
 export default function TelaN2() {
 
@@ -18,6 +21,24 @@ export default function TelaN2() {
 const [periodo, setPeriodo] = useState("7");
 const [prioridade, setPrioridade] = useState("");
 const [atendente, setAtendente] = useState("");
+
+const [dadosTickets, setDadosTickets] = useState([]);
+
+    const getTickets = async () => {
+        try {
+            const response = await api.get('/tickets');
+            setDadosTickets(response.data);
+        } catch (error) {
+            console.error("Erro ao buscar tickets:", error);
+        }
+    };
+
+
+    useEffect(() => {
+        getTickets();
+    }, []);
+
+
 
     return(
         <div style={{ display: 'flex', minHeight: '99vh', width: '100%' }}>
@@ -146,7 +167,21 @@ const [atendente, setAtendente] = useState("");
                                                     />
                                                     <h3 style={TelaN2Styles.h3SecTt}>248</h3>
                                                     </div>
+
+                                                    <div style={TelaN2Styles.setaTt}>
+                                                     <img
+                                                        src={seta}
+                                                        alt="seta"
+                                                        width={13}
+                                                        height={13}
+                                                         style={{
+                                                            display: "block",
+                                                            margin: "0 auto",
+                                                            marginTop: "5px"
+                                                         }}
+                                                    />
                                                     <p style={TelaN2Styles.pDSecTt}>15% em relação ao período anterior </p>
+                                                    </div>
                                                     </section>
                                                     
 
@@ -164,7 +199,22 @@ const [atendente, setAtendente] = useState("");
                                                     <h3 style={TelaN2Styles.h3SecDSla}>92%</h3>
                                                     </div>
 
+                                                    <div style={TelaN2Styles.setaDS}>
+                                                     <img
+                                                        src={seta}
+                                                        alt="seta"
+                                                        width={13}
+                                                        height={13}
+                                                        style={{
+                                                            display: "block",
+                                                            margin: "0 auto",
+                                                            marginTop: "5px"
+                                                         }}
+
+                                                    />
                                                     <p  style={TelaN2Styles.pDSecDSla}>4% em relação ao período anterior </p>
+                                                    </div>
+
                                                     </section>
                                                     
 
@@ -181,7 +231,21 @@ const [atendente, setAtendente] = useState("");
                                                     />
                                                     <h3 style={TelaN2Styles.h3SecFSla}>18</h3>
                                                     </div>
+                                                    <div style={TelaN2Styles.setaPFS}>
+                                                    <img
+                                                        src={seta}
+                                                        alt="seta"
+                                                        width={13}
+                                                        height={13}
+                                                        style={{
+                                                            display: "block",
+                                                            margin: "0 auto",
+                                                            marginTop: "5px"
+                                                         }}
+
+                                                    />
                                                     <p  style={TelaN2Styles.pDSecFSla}>6% em relação ao período anterior </p>
+                                                    </div>
                                                     </section>
                                                     
 
@@ -198,7 +262,22 @@ const [atendente, setAtendente] = useState("");
                                                     />
                                                     <h3 style={TelaN2Styles.h3SecTMR}>00:38</h3>
                                                     </div>
+
+                                                    <div style={TelaN2Styles.setaTMR}>
+                                                     <img
+                                                        src={seta}
+                                                        alt="seta"
+                                                        width={13}
+                                                        height={13}
+                                                        style={{
+                                                            display: "block",
+                                                            margin: "0 auto",
+                                                            marginTop: "5px"
+                                                         }}
+
+                                                    />
                                                     <p  style={TelaN2Styles.pDSecTMR}>15% em relação ao período anterior </p>
+                                                    </div>
                                                     </section>
                                                     
                                                     {/* Tickets Recorrentes  */}
@@ -214,7 +293,22 @@ const [atendente, setAtendente] = useState("");
                                                     />
                                                     <h3 style={TelaN2Styles.h3SecTtr}>38</h3>
                                                     </div>
+
+                                                    <div style={TelaN2Styles.setaTR}>
+                                                     <img
+                                                        src={seta}
+                                                        alt="seta"
+                                                        width={13}
+                                                        height={13}
+                                                        style={{
+                                                            display: "block",
+                                                            margin: "0 auto",
+                                                            marginTop: "5px"
+                                                         }}
+
+                                                    />
                                                     <p  style={TelaN2Styles.pDSecTtr}>15% em relação ao período anterior </p>
+                                                    </div>
                                                     </section>
 
                                                  </div>
@@ -251,6 +345,69 @@ const [atendente, setAtendente] = useState("");
                                                     Não Atribuídos
                                                 </button>
                                             </div>
+
+
+                                            <div style={TelaN2Styles.tableContainer}>
+                                                <table style={TelaN2Styles.table}>
+
+                                                    <colgroup>
+                                                        <col style={TelaN2Styles.colTicket} />
+                                                        <col style={TelaN2Styles.colDescricao} />
+                                                        <col style={TelaN2Styles.colHorario} />
+                                                        <col style={TelaN2Styles.colPrazo} />
+                                                        <col style={TelaN2Styles.colStatus} />
+                                                    </colgroup>
+
+                                                    <thead style={TelaN2Styles.cabecalho}>
+                                                        <tr style={TelaN2Styles.titulos}>
+                                                            <th style={{ borderRadius: "15px 0 0 0" }}>N° do Ticket</th>
+                                                            <th style={{ textAlign: "left" }}>Descrição</th>
+                                                            <th style={{ textAlign: "left" }}>Horario</th>
+                                                            <th style={{ textAlign: "left" }}>Prazo</th>
+                                                            <th style={{ borderRadius: "0 15px 0 0", textAlign: "left" }}>Status</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        {dadosTickets.map((item) => (
+                                                            <tr key={item.id} style={TelaN2Styles.linhas}>
+
+                                                                <td style={{ ...TelaN2Styles.td, ...TelaN2Styles.id }}>
+                                                                    <div style={{ width: "5%", height: "40px", backgroundColor: item.status === "Em Andamento" ? "#feffb7" : item.status === "Concluído" ? "#C1EAD7" : "#FFE0E7" }}></div>
+                                                                    #{item.id}
+                                                                </td>
+
+                                                                <td style={TelaN2Styles.descricao}>
+                                                                    <div style={{ width: "50%", height: "30px" }}>
+                                                                    {item.descricao}
+                                                                    </div>
+                                                                </td>
+
+                                                                <td style={TelaN2Styles.horario}>
+                                                                    {item.horario}
+                                                                </td>
+
+                                                                <td style={TelaN2Styles.prazo}>
+                                                                    {item.prazo}
+                                                                </td>
+
+                                                                <td style={TelaN2Styles.status}>
+                                                                    <div style={{ width: "50%", height: "30px", 
+                                                                        backgroundColor: item.status === "Em Andamento" ? "#feffb7" : item.status === "Concluído" ? "#C1EAD7" : "#FFC2D0", 
+                                                                        borderColor: item.status === 'Em Andamento' ? '#9C8A4D' : item.status === 'Concluído' ? '#245543' : '#AB2642',
+                                                                        color: item.status === 'Em Andamento' ? '#9C8A4D' : item.status === 'Concluído' ? '#245543' : '#AB2642',
+                                                                        borderRadius: "22px", display: "flex", alignItems: "center", justifyContent: "center", borderWidth: "1px", borderStyle: "solid" }}>
+                                                                        {item.status}
+                                                                    </div>
+
+                                                                </td>
+
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                        </div>
+
 
 
 

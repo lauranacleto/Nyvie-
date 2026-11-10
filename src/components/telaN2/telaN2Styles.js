@@ -10,7 +10,6 @@ export const TelaN2Styles ={
     container: {
         backgroundColor: "#F5FAFE",
         minHeight: '100vh',
-        height: '99vh',
         alignItems: 'center',
         display: "flex",
         flexDirection: "column",
@@ -124,7 +123,7 @@ dados:{
 
 //Total Tickets
 dadosTt:{
-    width:"270px",
+    width:"290px",
     height:"120px",
     backgroundColor:"#EDF6FD",
     border: "1px solid #0A3882",
@@ -161,6 +160,12 @@ alignItems:"center",
 gap:"10px",
     marginTop:"3px"
 
+},
+setaTt: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    
 },
 
 //Dentro do SLA
@@ -203,6 +208,16 @@ gap:"10px",
     marginTop:"3px"
 
 },
+setaDS:{
+display:"flex",
+alignItems:"center",
+},
+setaDS: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    
+},
 
 //Fora do SLA
 dadosFSla:{
@@ -243,6 +258,16 @@ gap:"10px",
     marginTop:"3px"
 
 },
+setaPFS:{
+display:"flex",
+alignItems:"center",
+},
+setaPFS: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    
+},
 
 // Tempo Médio de resposta
 dadosTMR:{
@@ -282,6 +307,16 @@ alignItems:"center",
 gap:"10px",
     marginTop:"3px"
 
+},
+setaTMR:{
+display:"flex",
+alignItems:"center",
+},
+setaTMR: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    
 },
 
 //Tickets recorrentes
@@ -324,6 +359,18 @@ gap:"10px",
     marginTop:"3px"
 
 },
+setaTR:{
+display:"flex",
+alignItems:"center",
+},
+setaTR: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    
+},
+
+
 //buttons
 
 buttons: {
@@ -381,6 +428,86 @@ naoAtribuidos: {
     border: "none"
 },
 
+
+//tabela
+
+titulos: {
+        height: 40,
+        backgroundColor: "#233D6A",
+        color: "#E9F1F8",
+        padding: 0,
+
+    },
+
+    cabecalho: {
+        height: 40,
+        backgroundColor: "#233D6A",
+        padding: 0
+    },
+
+    tableContainer: {
+        width: "90%",
+        borderRadius: "15px",
+        boxShadow: "3px 3px 5px rgba(0, 0, 0, 0.25)",
+        overflow: "hidden",
+        backgroundColor: "#FFFFFF",
+        marginTop:"50px",
+        marginBottom:"20px"
+    },
+
+    table: {
+        width: "100%",
+        borderCollapse: "collapse",
+        borderSpacing: 0,
+        tableLayout: "fixed",
+        border: "none"
+    },
+
+    linhas: {
+        height: 40,
+        borderBottom: "1px solid #f2f2f2",
+        color: "#05193D",
+    },
+
+    id: {
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+    },
+
+    sla: {
+        color: "red",
+        textAlign: "center"
+    },
+
+    tempoExcedido: {
+        color: "red",
+        textAlign: "center"
+    },
+
+    colTicket: {
+        width: "15%"
+    },
+
+    colDescricao: {
+        width: "30%"
+    },
+
+    colPrioridade: {
+        width: "10%"
+    },
+
+    colSLA: {
+        width: "7%"
+    },
+
+    colExcedido: {
+        width: "16%"
+    },
+
+    colStatus: {
+        width: "22%"
+    }
 
 
 }
