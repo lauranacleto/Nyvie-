@@ -20,37 +20,84 @@
       "email": "marinho@email.com",
       "senha": "5678",
       "id": "3"
+    },
+    {
+      "email": "loras@email.com",
+      "senha": "63634",
+      "id": "w-dmkEDol2g"
+    },
+    {
+      "email": "loras@email.com",
+      "senha": "63634",
+      "id": "u3IexHsEMI4"
+    },
+    {
+      "email": "loras@email.com",
+      "senha": "63634",
+      "id": "aGWkKgevssM"
+    },
+    {
+      "email": "loras@email.com",
+      "senha": "63634",
+      "id": "_aDIWVkTa7g"
+    },
+    {
+      "email": "loras@email.com",
+      "senha": "63634",
+      "id": "AuzK7ezbT98"
     }
   ],
-
   "tickets": [
-      {
-          "id": 1,
-          "descricao": "Problema na Rede de Wi-fi",
-          "prioridade": "P3 .Alto",
-          "sla": "00:23:45",
-          "tempoExcedido":"09:45:98",
-          "status":"Em adoção"
-      },
-      {
-          "id": 2,
-          "descricao": "Rede de Wi-fi",
-          "prioridade": "P2 .Baixo",
-          "sla": "00:23:45",
-          "tempoExcedido":"09:50:98",
-          "status":"Em adoção"
-      }
+    {
+      "id": "1",
+      "descricao": "Problema na Rede de Wi-fi",
+      "prioridade": "P3 .Alto",
+      "sla": "00:23:45",
+      "tempoExcedido": "09:45:98",
+      "status": "Em adoção"
+    },
+    {
+      "id": "2",
+      "descricao": "Rede de Wi-fi",
+      "prioridade": "P2 .Baixo",
+      "sla": "00:23:45",
+      "tempoExcedido": "09:50:98",
+      "status": "Em adoção"
+    }
   ],
-
-    "notificacoes": [
-      {
-        "id": 1,
-        "usuarioId": 1,
-        "titulo": "Atendimento finalizado",
-        "mensagem": "Seu atendimento foi finalizado com sucesso. O equipamento já está pronto para uso.",
-        "tipo": "check",
-         "data": "2026-11-10T08:00:00"
-      }
-    ]
+  "notificacoes": [
+    {
+      "id": "1",
+      "usuarioId": 1,
+      "titulo": "Atendimento finalizado",
+      "mensagem": "Seu atendimento foi finalizado com sucesso. O equipamento já está pronto para uso.",
+      "tipo": "finalizado",
+      "data": "01/02/2026 16:00"
+    },
+    {
+      "id": "2",
+      "usuarioId": 1,
+      "titulo": "Atualização no sistema",
+      "mensagem": "O status de um atendimento foi atualizado.",
+      "tipo": "atualizacao",
+      "data": "01/02/2026 16:00"
+    },
+    {
+      "id": "3",
+      "usuarioId": 1,
+      "titulo": "Atendimento em atraso",
+      "mensagem": "O ticket #00109 está em atraso. Por favor verifique o andamento",
+      "tipo": "alerta",
+      "data": "01/02/2026 16:00"
+    },
+    {
+      "id": "4",
+      "usuarioId": 1,
+      "titulo": "Nova Mensagem",
+      "mensagem": "Você recebeu uma nova mensagem no ticket #00128.",
+      "tipo": "mensagem",
+      "data": "01/02/2026 16:00"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
-  
