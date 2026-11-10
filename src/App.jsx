@@ -8,6 +8,7 @@ import EditarPerfil from './editarPerfil/editarPerfil';
 import HistoricoTicket from './historicoTicket/historicoTicket.jsx';
 import HistoricoRecorrentes from './historicoRecorrentes/historicoRecorrentes';
 import TelaOverview from './telaOverview/TelaOverview.jsx';
+import telaOverview from './telaOverview/TelaOverview.jsx'
 import HistoricoEquipe from './historicoEquipe/historicoEquipe.jsx';
 import CriarTicket from './criarTicket/criarTicket.jsx';
 
@@ -26,7 +27,12 @@ export default function App() {
         <Route path="/editarPerfil" element={<EditarPerfil />} />
         <Route path="/historicoTicket" element={<HistoricoTicket />} />
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
+<<<<<<< HEAD
         <Route path="/telaOverview" element={<TelaOverview />} />
+=======
+        <Route path="/telaOverview" element={<telaOverview />} />
+
+>>>>>>> historicoEquipe
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
       </Routes>
     </BrowserRouter>
