@@ -10,9 +10,11 @@ import HistoricoRecorrentes from './historicoRecorrentes/historicoRecorrentes';
 import TelaOverview from './telaOverview/TelaOverview.jsx'
 import HistoricoEquipe from './historicoEquipe/historicoEquipe.jsx';
 import TelaN2 from './components/telaN2/telaN2.jsx'
+import UsuarioProvider from './context/UsuarioProvinder.jsx'
 
 
 export default function App() {
+
   return (
     <UsuarioProvider>
     <BrowserRouter>

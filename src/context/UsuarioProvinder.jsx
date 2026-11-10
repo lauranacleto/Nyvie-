@@ -13,3 +13,5 @@ export const UsuarioProvider = ({ children }) => {
         </UsuarioContext.Provider>
     )
 }
+
+export default UsuarioProvider
