@@ -40,6 +40,17 @@
           "tempoExcedido":"09:50:98",
           "status":"Em adoção"
       }
-  ]
+  ],
+
+    "notificacoes": [
+      {
+        "id": 1,
+        "usuarioId": 1,
+        "titulo": "Atendimento finalizado",
+        "mensagem": "Seu atendimento foi finalizado com sucesso. O equipamento já está pronto para uso.",
+        "tipo": "check",
+         "data": "2026-11-10T08:00:00"
+      }
+    ]
 }
   
