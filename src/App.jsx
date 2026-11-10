@@ -11,6 +11,10 @@ import TelaOverview from './telaOverview/TelaOverview.jsx';
 import HistoricoEquipe from './historicoEquipe/historicoEquipe.jsx';
 
 import { UsuarioProvider } from './context/UsuarioProvinder.jsx';
+import TelaOverview from './telaOverview/TelaOverview.jsx'
+import HistoricoEquipe from './historicoEquipe/historicoEquipe.jsx';
+import CriarTicket from './criarTicket/criarTicket.jsx';
+import EditarTicket from './editarTicket/editarTicket.jsx';
 
 
 export default function App() {
@@ -26,6 +30,15 @@ export default function App() {
         <Route path="/historicoTicket" element={<HistoricoTicket />} />
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
         <Route path="/Overview" element={<TelaOverview />} />
+        <Route path="/criarTicket" element={<CriarTicket />} />
+        <Route path="/telaOverview" element={<TelaOverview />} />
+
+        {/* editar ticket */}
+        <Route
+          path="/editarTicket/:id"
+          element={<EditarTicket />}
+        />
+        
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
       </Routes>
     </BrowserRouter>
