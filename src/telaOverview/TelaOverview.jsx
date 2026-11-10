@@ -26,7 +26,6 @@ export default function TelaOverview() {
     }, []);
 
     return (
-<<<<<<< HEAD
         <div style={{ display: 'flex', minHeight: '99vh', width: '100%' }}>
             <Aside />
             <div style={telaOverviewStyles.flexgrid}>
@@ -178,9 +177,6 @@ export default function TelaOverview() {
                 </div>
             </div>
         </div>
-=======
-        <TelaN2/>
->>>>>>> n2
     );
 }
 
