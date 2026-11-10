@@ -7,6 +7,23 @@ import { useEffect, useState } from "react";
 import api from "../../services/services";
 
 export default function TelaOverview() {
+
+
+    const [dadosTickets, setDadosTickets] = useState([]);
+
+    const getTickets = async () => {
+        try {
+            const response = await api.get('/tickets');
+            setDadosTickets(response.data);
+        } catch (error) {
+            console.error("Erro ao buscar tickets:", error);
+        }
+    };
+
+    useEffect(() => {
+        getTickets();
+    }, []);
+
     return (
         <div style={{ display: 'flex', minHeight: '99vh', width: '100%' }}>
             <Aside />
@@ -16,98 +33,138 @@ export default function TelaOverview() {
 
                     <div style={telaOverviewStyles.container}>
                         <div style={telaOverviewStyles.banner}>
-                            <img 
-                            src={icone}
-                            width={90}
-                            height={150}
-                            alt="Icone planilha" />
-
-                            <h2 style={telaOverviewStyles.saudacao}>
-                                Bom dia, Lorenzo!
-                            </h2>
-                            <p style={telaOverviewStyles.text}>
-                                Você tem 2 tickets em adoção
-                            </p>
+                            <div style={{display: "flex", gap: "15px", alignItems: "center"}}>
+                            <img
+                                src={icone}
+                                width={100}
+                                height={140}
+                                alt="Icone planilha" />
+                            <div>
+                                <h2 style={telaOverviewStyles.saudacao}>
+                                    Bom dia, Lorenzo!
+                                </h2>
+                                <p style={telaOverviewStyles.text}>
+                                    Você tem 2 tickets em adoção
+                                </p>
+                            </div>
+                            </div>
 
                             <div style={telaOverviewStyles.section}>
-                               <div style={telaOverviewStyles.dados}>
-                                   
+                                <div style={telaOverviewStyles.dados}>
+
                                     <section style={telaOverviewStyles.dadosTt}>
-                                     <h3>12</h3>
-                                    <p>Total de Tickets</p>
+                                        <h3>12</h3>
+                                        <p>Total de Tickets</p>
                                     </section>
 
                                     <section style={telaOverviewStyles.dadosEa}>
-                                    <h3>2</h3>
-                                    <p>Em adoção</p>
+                                        <h3>2</h3>
+                                        <p>Em adoção</p>
                                     </section>
 
                                     <section style={telaOverviewStyles.dadosC}>
-                                    <h3>2</h3>
-                                    <p>Concluídos</p>
+                                        <h3>2</h3>
+                                        <p>Concluídos</p>
                                     </section>
 
                                     <section style={telaOverviewStyles.dadosP}>
-                                    <h3>2</h3>
-                                    <p>Pendentes</p>
+                                        <h3>2</h3>
+                                        <p>Pendentes</p>
                                     </section>
 
                                 </div>
                             </div>
                         </div>
 
-                        <div style={telaN1Styles.buttons}>
+                        <div style={telaOverviewStyles.buttons}>
                             <button
                                 type="button"
-                                style={telaN1Styles.todos}
+                                style={telaOverviewStyles.todos}
                             >
                                 Todos
                             </button>
 
                             <button
                                 type="button"
-                                style={telaN1Styles.recentes}
+                                style={telaOverviewStyles.recentes}
                             >
                                 Recentes
                             </button>
 
                             <button
                                 type="button"
-                                style={telaN1Styles.recorrentes}
+                                style={telaOverviewStyles.recorrentes}
                             >
                                 Recorrentes
                             </button>
                         </div>
 
-                        <div style={telaN1Styles.subtitulo}>
-                            <h2 style={telaN1Styles.mTickets}
-                            >Meus Tickets</h2>
+                        <div style={telaOverviewStyles.subtitulo}>
+                            <h2 style={telaOverviewStyles.mTickets}
+                            >Meus Tickets
+                            </h2>
                         </div>
 
 
 
-                        <table style={telaN1Styles.table}>
-                            <thead style={telaN1Styles.cabecalho}>
-                                <tr style={telaN1Styles.titulos}>
-                                    <th style={{ borderRadius: "10px 0 0 0" }}>N do Ticket</th>
-                                    <th>Descrição</th>
+                        <table style={telaOverviewStyles.table}>
+
+                            <colgroup>
+                                <col style={telaOverviewStyles.colTicket} />
+                                <col style={telaOverviewStyles.colDescricao} />
+                                <col style={telaOverviewStyles.colPrioridade} />
+                                <col style={telaOverviewStyles.colSLA} />
+                                <col style={telaOverviewStyles.colExcedido} />
+                                <col style={telaOverviewStyles.colStatus} />
+                            </colgroup>
+
+                            <thead style={telaOverviewStyles.cabecalho}>
+                                <tr style={telaOverviewStyles.titulos}>
+                                    <th style={{ borderRadius: "15px 0 0 0" }}>N° do Ticket</th>
+                                    <th style={{ textAlign: "left" }}>Descrição</th>
                                     <th>Prioridade</th>
                                     <th>SLA</th>
                                     <th>Tempo Excedido</th>
-                                    <th style={{ borderRadius: "0 10px 0 0" }}>Status</th>
+                                    <th style={{ borderRadius: "0 15px 0 0", textAlign: "left" }}>Status</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 {dadosTickets.map((item) => (
-                                    <tr key={item.id}>
-                                        <td style={{ ...telaN1Styles.td, ...telaN1Styles.id }}>
-                                            {item.id}
+                                    <tr key={item.id} style={telaOverviewStyles.linhas}>
+
+                                        <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.id }}>
+                                            <div style={{ width: "5%", height: "40px", backgroundColor: item.status === "Em Andamento" ? "rgb(232, 234, 108)" : item.status === "Concluído" ? "#C1EAD7" : "#FFE0E7" }}></div>
+                                            #{item.id}
                                         </td>
-                                        <td style={telaN1Styles.descricao}>{item.descricao}</td>
-                                        <td style={telaN1Styles.prioridade}>{item.prioridade}</td>
-                                        <td style={telaN1Styles.sla}>{item.sla}</td>
-                                        <td style={telaN1Styles.tempoExcedido}>{item.tempoExcedido}</td>
-                                        <td style={telaN1Styles.status}>{item.status}</td>
+
+                                        <td style={telaOverviewStyles.descricao}>
+                                            {item.descricao}
+                                        </td>
+
+                                        <td style={telaOverviewStyles.prioridade}>
+                                            {item.prioridade}
+                                        </td>
+
+                                        <td style={telaOverviewStyles.sla}>
+                                            {item.sla}
+                                        </td>
+
+                                        <td style={telaOverviewStyles.tempoExcedido}>
+                                            {item.tempoExcedido}
+                                        </td>
+
+                                        <td style={telaOverviewStyles.status}>
+                                            <div style={{ width: "70%", height: "30px", 
+                                                backgroundColor: item.status === "Em Andamento" ? "#e8ea6c" : item.status === "Concluído" ? "#C1EAD7" : "#FFC2D0", 
+                                                borderColor: item.status === 'Em Andamento' ? '#9C8A4D' : item.status === 'Concluído' ? '#245543' : '#AB2642',
+                                                color: item.status === 'Em Andamento' ? '#9C8A4D' : item.status === 'Concluído' ? '#245543' : '#AB2642',
+                                                borderRadius: "22px", display: "flex", alignItems: "center", justifyContent: "center", borderWidth: "1px", borderStyle: "solid" }}>
+                                                {item.status}
+                                            </div>
+
+                                        </td>
+
                                     </tr>
                                 ))}
                             </tbody>

@@ -1,25 +1,76 @@
-import { useEffect, useRef, useState } from 'react';
-import { Camera } from 'lucide-react';
-import { criarTicketStyles } from './criarTicket.js';
 
-import iconeTicket from '../assets/ticket.svg';
+import { useEffect, useRef, useState } from "react";
+import { Camera } from "lucide-react";
+import { criarTicketStyles } from "./criarTicket.js";
+import iconeTicket from "../assets/ticket.svg";
+import api from "../../services/services";
 
-const DEPARTAMENTOS = [];
-const CLIENTES = [];
+
+async function buscarDepartamentos() {
+  try {
+    const response = await api.get("/departamentos");
+    return response.data;
+  } catch (error) {
+    console.log("Erro ao buscar departamentos:", error);
+    return [];
+  }
+}
+
+
+
+
+// Formatar telefone
+function formatarTelefone(valor) {
+  const numeros = valor.replace(/\D/g, "").slice(0, 11);
+
+  if (numeros.length <= 2) return numeros;
+
+  if (numeros.length <= 6) {
+    return `(${numeros.slice(0, 2)}) ${numeros.slice(2)}`;
+  }
+
+  if (numeros.length <= 10) {
+    return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 6)}-${numeros.slice(6)}`;
+  }
+
+  return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7)}`;
+}
+
+// Converter imagem para Base64
+function converterImagem(arquivo) {
+  return new Promise((resolve, reject) => {
+    if (!arquivo) {
+      resolve(null);
+      return;
+    }
+
+    const leitor = new FileReader();
+
+    leitor.onload = () => resolve(leitor.result);
+    leitor.onerror = () => reject(new Error("Erro ao ler a imagem."));
+
+    leitor.readAsDataURL(arquivo);
+  });
+}
 
 export default function CriarTicket() {
   const inputArquivoRef = useRef(null);
 
-  const [titulo, setTitulo] = useState('');
-  const [departamento, setDepartamento] = useState('');
-  const [cliente, setCliente] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [descricao, setDescricao] = useState('');
+  const [titulo, setTitulo] = useState("");
+  const [departamento, setDepartamento] = useState("");
+  const [cliente, setCliente] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [descricao, setDescricao] = useState("");
   const [imagem, setImagem] = useState(null);
   const [previa, setPrevia] = useState(null);
-  const [mensagem, setMensagem] = useState(null);
-
+  const [departamentos, setDepartamentos] = useState([]);
   const s = criarTicketStyles;
+
+  useEffect(() => {
+    buscarDepartamentos().then((dados) => {
+      setDepartamentos(dados);
+    });
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -29,97 +80,92 @@ export default function CriarTicket() {
     };
   }, [previa]);
 
-
-
-
-  // Imagem
+  // Escolher imagem
   function escolherImagem(e) {
     const arquivo = e.target.files?.[0];
 
-    if (!arquivo) {
-      return;
-    }
+    if (!arquivo) return;
 
-    if (!arquivo.type.startsWith('image/')) {
-      setMensagem({
-        tipo: 'erro',
-        texto: 'Selecione um arquivo de imagem válido.',
-      });
-
-      e.target.value = '';
+    if (!arquivo.type.startsWith("image/")) {
+      alert("Selecione um arquivo de imagem válido.");
+      e.target.value = "";
       return;
     }
 
     if (arquivo.size > 5 * 1024 * 1024) {
-      setMensagem({
-        tipo: 'erro',
-        texto: 'A imagem deve ter no máximo 5 MB.',
-      });
-
-      e.target.value = '';
+      alert("A imagem deve ter no máximo 5 MB.");
+      e.target.value = "";
       return;
     }
 
     setImagem(arquivo);
     setPrevia(URL.createObjectURL(arquivo));
-    setMensagem(null);
   }
 
 
-
-  // Barras
-  function funcEnviar(e) {
+  async function funcEnviar(e) {
     e.preventDefault();
-    setMensagem(null);
+
+    const numeroTelefone = telefone.replace(/\D/g, "");
 
     if (!titulo.trim()) {
-      setMensagem({
-        tipo: 'erro',
-        texto: 'Digite o título do ticket.',
-      });
+      alert("Digite o título do ticket.");
+      return;
+    }
+
+    if (!departamento) {
+      alert("Selecione um departamento.");
       return;
     }
 
     if (!cliente.trim()) {
-      setMensagem({
-        tipo: 'erro',
-        texto: 'Informe o nome do cliente.',
-      });
+      alert("Informe o nome do cliente.");
       return;
     }
 
     if (numeroTelefone.length < 10) {
-      setMensagem({
-        tipo: 'erro',
-        texto: 'Informe um telefone com DDD.',
-      });
+      alert("Informe um telefone válido com DDD.");
       return;
     }
 
     if (!descricao.trim()) {
-      setMensagem({
-        tipo: 'erro',
-        texto: 'Descreva o problema relatado pelo cliente.',
-      });
+      alert("Descreva o problema relatado pelo cliente.");
       return;
     }
 
-    const dadosTicket = {
-      titulo: titulo.trim(),
-      departamento,
-      cliente: cliente.trim(),
-      telefone: numeroTelefone,
-      descricao: descricao.trim(),
-      imagem,
-    };
+    try {
+      const imagemBase64 = await converterImagem(imagem);
 
-    console.log('Dados do ticket:', dadosTicket);
+      const dadosTicket = {
+        titulo: titulo.trim(),
+        departamento,
+        cliente: cliente.trim(),
+        telefone: numeroTelefone,
+        descricao: descricao.trim(),
+        imagem: imagemBase64,
+        status: "Aberto",
+        dataCriacao: new Date()
+      };
 
-    setMensagem({
-      tipo: 'sucesso',
-      texto:
-        'Dados validados! Para cadastrar o ticket, conecte o formulário à API.',
-    });
+      const response = await api.post("/tickets", dadosTicket);
+
+      console.log("Ticket cadastrado:", response.data);
+
+      alert("Ticket cadastrado com sucesso!");
+
+      // Limpar formulário
+      setTitulo("");
+      setDepartamento("");
+      setCliente("");
+      setTelefone("");
+      setDescricao("");
+      setImagem(null);
+      setPrevia(null);
+
+    } catch (error) {
+      console.error("Erro ao cadastrar ticket:", error);
+      alert("Não foi possível cadastrar o ticket.");
+    }
   }
 
   return (
@@ -136,12 +182,13 @@ export default function CriarTicket() {
 
       <form style={s.card} onSubmit={funcEnviar}>
         <div style={s.topo}>
+
           {/* Foto do problema */}
           <div style={s.fotoWrapper}>
             {previa ? (
               <img
                 src={previa}
-                alt="Prévia da foto do problema"
+                alt="Foto do problema"
                 style={s.foto}
               />
             ) : (
@@ -182,13 +229,11 @@ export default function CriarTicket() {
 
               <input
                 id="titulo"
-                name="titulo"
                 type="text"
                 placeholder="Digite o título do ticket"
                 style={s.input}
                 value={titulo}
                 onChange={(e) => setTitulo(e.target.value)}
-                required
               />
             </div>
 
@@ -199,21 +244,15 @@ export default function CriarTicket() {
 
               <select
                 id="departamento"
-                name="departamento"
                 style={s.input}
                 value={departamento}
                 onChange={(e) => setDepartamento(e.target.value)}
               >
-                <option value="">
-                  Selecione o departamento
-                </option>
+                <option value="">Selecione o departamento</option>
 
-                {DEPARTAMENTOS.map((d) => (
-                  <option
-                    key={d.IdDepartamento}
-                    value={d.IdDepartamento}
-                  >
-                    {d.Nome}
+                {departamentos.map((d) => (
+                  <option key={d.id} value={d.id}>
+                    {d.nome}
                   </option>
                 ))}
               </select>
@@ -224,27 +263,16 @@ export default function CriarTicket() {
                 <label htmlFor="cliente" style={s.label}>
                   Cliente:
                 </label>
-
+                
                 <input
                   id="cliente"
-                  name="cliente"
                   type="text"
-                  list="lista-clientes"
-                  placeholder="Selecione ou digite o cliente"
+                  placeholder="Digite o nome do cliente"
                   style={s.input}
                   value={cliente}
                   onChange={(e) => setCliente(e.target.value)}
-                  required
                 />
 
-                <datalist id="lista-clientes">
-                  {CLIENTES.map((c) => (
-                    <option
-                      key={c.IdCliente}
-                      value={c.Nome}
-                    />
-                  ))}
-                </datalist>
               </div>
 
               <div style={s.campoTelefone}>
@@ -254,7 +282,6 @@ export default function CriarTicket() {
 
                 <input
                   id="telefone"
-                  name="telefone"
                   type="tel"
                   placeholder="(11) 99999-9999"
                   style={s.input}
@@ -262,7 +289,6 @@ export default function CriarTicket() {
                   onChange={(e) =>
                     setTelefone(formatarTelefone(e.target.value))
                   }
-                  required
                 />
               </div>
             </div>
@@ -278,13 +304,11 @@ export default function CriarTicket() {
           <div style={s.descricaoBox}>
             <textarea
               id="descricao"
-              name="descricao"
               style={s.textarea}
               maxLength={512}
               placeholder="Descreva o problema relatado pelo cliente"
               value={descricao}
               onChange={(e) => setDescricao(e.target.value)}
-              required
             />
 
             <button
@@ -294,23 +318,8 @@ export default function CriarTicket() {
               Enviar
             </button>
           </div>
-
-          {mensagem && (
-            <p
-              role="status"
-              style={{
-                ...s.mensagem,
-                color:
-                  mensagem.tipo === 'erro'
-                    ? '#B42318'
-                    : '#1A7E52',
-              }}
-            >
-              {mensagem.texto}
-            </p>
-          )}
         </div>
       </form>
-    </main>
+    </main >
   );
 }
