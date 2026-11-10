@@ -33,7 +33,55 @@
       "status": "Aberto",
       "dataCriacao": "2026-11-10T13:46:04.613Z",
       "id": "mLZMAWHgvpg"
-    }
+    },
+    {
+          "id": "00121",
+          "descricao": "Problema na Rede de Wi-fi",
+          "prioridade": "P3 .Alto",
+          "sla": "00:23:45",
+          "tempoExcedido":"09:45:98",
+          "status":"Em adoção"
+      },
+      {
+          "id": "00122",
+          "descricao": "Rede de Wi-fi",
+          "prioridade": "P2 .Baixo",
+          "sla": "00:23:45",
+          "tempoExcedido":"09:50:98",
+          "status":"Em adoção"
+      },
+      {
+          "id": "00123",
+          "descricao": "Rede de Wi-fi",
+          "prioridade": "P2 .Baixo",
+          "sla": "00:23:45",
+          "tempoExcedido":"09:50:98",
+          "status":"Concluído"
+      },
+      {
+          "id": "00124",
+          "descricao": "Rede de Wi-fi",
+          "prioridade": "P2 .Baixo",
+          "sla": "00:23:45",
+          "tempoExcedido":"09:50:98",
+          "status":"Concluído"
+      },
+      {
+          "id": "00125",
+          "descricao": "Rede de Wi-fi",
+          "prioridade": "P2 .Baixo",
+          "sla": "00:23:45",
+          "tempoExcedido":"09:50:98",
+          "status":"Concluído"
+      },
+      {
+          "id": "00127",
+          "descricao": "Rede de Wi-fi",
+          "prioridade": "P2 .Baixo",
+          "sla": "00:23:45",
+          "tempoExcedido":"09:50:98",
+          "status":"Concluído"
+      }
   ],
   "departamentos": [
     {
@@ -47,3 +95,4 @@
   ],
   "$schema": "./node_modules/json-server/schema.json"
 }
+  

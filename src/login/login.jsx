@@ -25,6 +25,7 @@ export default function LoginUsuario() {
 
             const response = await api.post('/Login', objLogin);
             console.log("Resposta do login:", response.data);
+            navigate('/Overview');
 
         } 
         catch (error) 

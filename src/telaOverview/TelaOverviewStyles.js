@@ -14,7 +14,7 @@ export const telaOverviewStyles = {
         alignItems: 'center',
         display: "flex",
         flexDirection: "column",
-
+        gap: "5px",
     },
 
     banner: {
@@ -22,13 +22,12 @@ export const telaOverviewStyles = {
         width: "90%",
         height: 130,
         boxSizing: 'border-box',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        borderRadius: 5,
+        borderRadius: 15,
         boxShadow: '3px 3px 5px rgba(0, 0, 0, 0.25)',
         display: "flex",
-        gap: "25px",
-        marginTop: "-190px",
+        gap: "25px",    
     },
 
     imgTex: {
@@ -42,11 +41,10 @@ export const telaOverviewStyles = {
     },
 
     icone: {
-
+   
         objectFit: "contain",
         display: "block",
         alignSelf: "center",
-        marginTop: "-10px"
     },
 
     caixaText: {
@@ -63,7 +61,7 @@ export const telaOverviewStyles = {
     },
 
     text: {
-        fontSize: '16px',
+        fontSize: '15px',
         margin: 0,
         color: '#0A1934'
     },
@@ -76,169 +74,210 @@ export const telaOverviewStyles = {
     dados: {
         display: "flex",
         gap: "6px",
-        marginLeft: 150
     },
 
-    numberTt: {
-        fontSize: 24,
-        color: "#0A1934"
+    numberTt:{
+        fontSize:24,
+        color:"#0A1934"
     },
-    numberEa: {
-        fontSize: 24,
-        color: "#87782D",
+    numberEa:{
+        fontSize:24,
+        color:"#87782D",
     },
-    numberC: {
-        fontSize: 24,
-        color: "#2A685F"
+    numberC:{
+        fontSize:24,
+        color:"#2A685F"
     },
-    numberP: {
-        fontSize: 24,
-        color: "#571414"
+    numberP:{
+        fontSize:24,
+        color:"#571414"
     },
 
-    subtitulo: {
+    subtitulo:{
         width: '90%',
-        marginTop: 40,
+        marginTop: 40, 
         display: "flex",
         alignItems: "flex-start"
     },
-    mTickets: {
-        color: "#0A1934",
-        display: "flex",
+    mTickets:{
+        color:"#0A1934",
+        display:"flex",
         marginTop: "1000",
-        fontSize: 32,
+        fontSize:32,
+        fontWeight:400,
 
-
+        marginBottom: 20
     },
 
     buttons: {
-        display: "flex",
-        alignItems: "center",
-        gap: "15px",
-        width: "90%",
-        marginTop: "50px",
+    display: "flex",
+    alignItems: "center",
+    gap: "15px",
+    width: "90%",
+    marginTop: "50px",
 
-    },
+},
 
-    todos: {
-        width: "110px",
-        height: "35px",
-        backgroundColor: "#233D6A",
-        color: "#E9F1F8",
-        border: "none",
-        borderRadius: "20px",
-        fontSize: "18px",
-        fontWeight: "600",
-        cursor: "pointer",
-    },
+todos: {
+    width: "110px",
+    height: "35px",
+    backgroundColor: "#233D6A",
+    color: "#E9F1F8",
+    border: "none",
+    borderRadius: "20px",
+    fontSize: "18px",
+    fontWeight: "600",
+    cursor: "pointer",
+},
 
-    recentes: {
-        width: "210px",
-        height: "35px",
-        backgroundColor: "#E9F1F8",
-        color: "#233D6A",
-        borderRadius: "20px",
-        fontSize: "18px",
-        fontWeight: "600",
-        cursor: "pointer",
-        border: "none"
-    },
+recentes: {
+    width: "210px",
+    height: "35px",
+    backgroundColor: "#E9F1F8",
+    color: "#233D6A",
+    borderRadius: "20px",
+    fontSize: "18px",
+    fontWeight: "600",
+    cursor: "pointer",
+    border: "none"
+},
 
-    recorrentes: {
-        width: "210px",
-        height: "35px",
-        backgroundColor: "#E9F1F8",
-        color: "#233D6A",
-        borderRadius: "20px",
-        fontSize: "18px",
-        fontWeight: "600",
-        cursor: "pointer",
-        border: "none"
-    },
+recorrentes: {
+    width: "210px",
+    height: "35px",
+    backgroundColor: "#E9F1F8",
+    color: "#233D6A",
+    borderRadius: "20px",
+    fontSize: "18px",
+    fontWeight: "600",
+    cursor: "pointer",
+    border: "none"
+},
 
 
-
+    
     dadosTt: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        paddingLeft: "12px",
-        height: 80,
-        width: "145px",
-        backgroundColor: "#F4FBFF",
-        borderRadius: 5,
-        border: "1px solid #0A1934",
-    },
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    paddingLeft: "12px",
+    height: 80,
+    width: "145px",
+    backgroundColor: "#F4FBFF",
+    borderRadius: 5,
+    border: "1px solid #0A1934",
+    color: "#0A1934",
+},
 
-    dadosEa: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        paddingLeft: "12px",
-        height: 80,
-        width: "145px",
-        backgroundColor: "#FFFDF3",
-        borderRadius: 5,
-        border: "1px solid #87782D",
-    },
+dadosEa: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    paddingLeft: "12px",
+    height: 80,
+    width: "145px",
+    backgroundColor: "#FFFDF3",
+    borderRadius: 5,
+    border: "1px solid #87782D",
+    color: "#87782D",
+},
 
-    dadosC: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        paddingLeft: "12px",
-        height: 80,
-        width: "145px",
-        backgroundColor: "#F1FFFD",
-        borderRadius: 5,
-        border: "1px solid #2A685F",
-    },
+dadosC: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    paddingLeft: "12px",
+    height: 80,
+    width: "145px",
+    backgroundColor: "#EEF9FA",
+    border: "1px solid #245543",
+    color: "#245543",
+    borderRadius: 5,
+},
 
-    dadosP: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "flex-start",
-        paddingLeft: "12px",
-        height: 80,
-        width: "145px",
-        backgroundColor: "#FFEEEE",
-        borderRadius: 5,
-        border: "1px solid #571414",
-    },
+dadosP: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    paddingLeft: "12px",
+    height: 80,
+    width: "145px",
+    backgroundColor: "#FFE0E7",
+    borderRadius: 5,
+    border: "1px solid #571414",
+    color: "#571414",
+},
 
-    table: {
+titulos: {
+    height: 40,
+    backgroundColor: "#233D6A",
+    color: "#E9F1F8",
+    padding: 0,
+    
+},
 
-        width: "90%",
+cabecalho: {
+    height: 40,
+    backgroundColor: "#233D6A",
+    padding: 0
+},
 
-    },
+table: {
+    width: "90%",
+    borderCollapse: "collapse",
+    borderSpacing: 0,
+    borderRadius: "15px",
+    boxShadow: 'rgba(0, 0, 0, 0.25) 3px 3px 5px'
+},
 
-    cabecalho: {
-        width: "90%",
-        height: 40,
-        backgroundColor: "#233D6A",
-    },
+linhas: {
+    height: 40,
+    borderBottom: "1px solid #f2f2f2",
+    color: "#05193D",
+},
 
-    titulos: {
-        width: "90%",
-        height: 40,
-        backgroundColor: "#233D6A",
-        color: "#E9F1F8"
+id: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+},
 
-    },
+sla: {
+    color: "red",
+    textAlign: "center"
+},
 
-    id: {
-        backgroundColor: "red"
-    },
+tempoExcedido: {
+    color: "red",
+    textAlign: "center"
+},
 
-    td: {
-        color: "white"
-    },
- 
-    t: {
-        color: "white"
-    },
+colTicket: {
+    width: "15%"
+},
+
+colDescricao: {
+    width: "30%"
+},
+
+colPrioridade: {
+    width: "10%"
+},
+
+colSLA: {
+    width: "7%"
+},
+
+colExcedido: {
+    width: "16%"
+},
+
+colStatus: {
+    width: "22%"
+}
+
 };
