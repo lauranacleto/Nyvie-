@@ -9,7 +9,6 @@ export const styles = {
         paddingLeft: 64,
         paddingRight: 38,
         color: "#FFFFFF",
-
         position: "fixed",
         top: 0,
         left: 0,
@@ -17,43 +16,87 @@ export const styles = {
         zIndex: 1000,
         boxSizing: "border-box"
     },
+
     painelNotificacoes: {
-        position: 'absolute',
-        top: '40px',
-        right: '45px',
-        width: '320px',
-        maxHeight: '350px',
-        overflowY: 'auto',
-        backgroundColor: '#FFFFFF',
-        borderRadius: '8px',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-        zIndex: 1000,
-        padding: '12px',
+        position: "fixed",
+        top: "40px",
+        right: "0px",
+        width: "320px",
+        maxHeight: "320px",
+        overflowY: "auto",
+        backgroundColor: "#EAF2FA",
+        borderRadius: "5px",
+        boxShadow: '0 1px 2px #00000020',
+        zIndex: 1001,
+        padding: "0 0 10px",
+        boxSizing: "border-box"
     },
 
     tituloNotificacoes: {
-        margin: '0 0 12px',
-        color: '#19345B',
-        fontSize: '16px',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        textAlign: "left",
+        gap: "7px",
+        margin: 0,
+        padding: "12px 14px",
+        color: "#19345B",
+        fontSize: "24px",
+        fontWeight: "bold",
+        backgroundColor: "#FFFFFF",
+        borderBottom: '2px solid #A6BBDE',
     },
 
+
     cardNotificacao: {
-        padding: '10px',
-        marginBottom: '8px',
-        border: '1px solid #DCE5EF',
-        borderRadius: '8px',
-        backgroundColor: '#FFFFFF',
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: "10px",
+        padding: "9px 10px",
+        margin: "8px 10px 0",
+        border: "1px solid #A6BBDE",
+        borderRadius: "8px",
+        backgroundColor: "#FFFFFF",
+        boxShadow: '0 1px 2px #00000020',
+        textAlign: "left",
+        boxSizing: "border-box"
+    },
+
+    conteudoNotificacao: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "center",
+        flex: 1,
+        minWidth: 0,
+        textAlign: "right"
+    },
+
+    tituloCard: {
+        fontSize: "12px",
+        color: "#1C4691",
+        fontWeight: "bold",
+        margin: "0 0 4px 0",
+        textAlign: "left",
+        display: "block",
+        width: "100%"
     },
 
     mensagemNotificacao: {
-        fontSize: '12px',
-        margin: '5px 0',
-        color: '#555555',
+        fontSize: "10px",
+        margin: 0,
+        color: "#0A1934",
+        lineHeight: "14px",
+        textAlign: "left",
+        width: "100%"
     },
+
+
     usuario: {
-    display: "flex",
-    alignItems: "center",
-    gap: 20,
-    position: "relative"
-},
+        display: "flex",
+        alignItems: "center",
+        gap: 20,
+        position: "relative"
+    },
 };

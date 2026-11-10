@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { UsuarioContext } from "../context/UsuarioContext";
 import logo from "../assets/logo.svg";
 import { perfilStyles } from "./perfilStyles";
 import api from "../../services/services";
@@ -11,6 +12,7 @@ export default function LoginUsuario() {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const { setUsuario } = useContext(UsuarioContext);
 
      const funcEntrar = async () => {
         console.log("Email:", email);
@@ -23,9 +25,11 @@ export default function LoginUsuario() {
                 senha: senha
             }
 
-            const response = await api.post('/Login', objLogin);
+            const response = await api.post('/usuarios', objLogin);
             console.log("Resposta do login:", response.data);
             navigate('/Overview');
+
+            setUsuario(response.data)
 
         } 
         catch (error) 
