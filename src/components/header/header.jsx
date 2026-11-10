@@ -37,17 +37,14 @@ const Header = () => {
             return;
         }
 
+        setAberto(true);
+
         try {
             const resposta = await api.get("/notificacoes");
-
             setNotificacoes(resposta.data);
-            setAberto(true);
-
         } catch (error) {
             console.error("Erro ao buscar notificações:", error);
         }
-
-
     };
 
     return (

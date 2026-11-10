@@ -103,8 +103,32 @@
       "usuarioId": 1,
       "titulo": "Atendimento finalizado",
       "mensagem": "Seu atendimento foi finalizado com sucesso. O equipamento já está pronto para uso.",
-      "tipo": "check",
-      "data": "2026-11-10T08:00:00"
+      "tipo": "finalizado",
+      "data": "01/02/2026 16:00"
+    },
+    {
+      "id": 2,
+      "usuarioId": 1,
+      "titulo": "Atualização no sistema",
+      "mensagem": "O status de um atendimento foi atualizado.",
+      "tipo": "atualizacao",
+      "data": "01/02/2026 16:00"
+    },
+    {
+      "id": 3,
+      "usuarioId": 1,
+      "titulo": "Atendimento em atraso",
+      "mensagem": "O ticket #00109 está em atraso. Por favor verifique o andamento",
+      "tipo": "alerta",
+      "data": "01/02/2026 16:00"
+    },
+    {
+      "id": 4,
+      "usuarioId": 1,
+      "titulo": "Nova Mensagem",
+      "mensagem": "Você recebeu uma nova mensagem no ticket #00128.",
+      "tipo": "mensagem",
+      "data": "01/02/2026 16:00"
     }
   ],
   "departamentos": [
