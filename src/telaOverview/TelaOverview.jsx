@@ -1,51 +1,51 @@
 import Header from "../components/header/header";
 import Aside from "../components/aside/aside";
-import { telaN1Styles } from './telaN1Styles';
+import { telaOverviewStyles } from './telaOverviewStyles';
 import icone from "../assets/clipboard.svg"
 import { Ticket } from "lucide-react";
 
-export default function TelaN1() {
+export default function TelaOverview() {
     return (
         <div style={{ display: 'flex', minHeight: '99vh', width: '100%' }}>
             <Aside />
-            <div style={telaN1Styles.flexgrid}>
+            <div style={telaOverviewStyles.flexgrid}>
                 <div style={{ flex: 1 }}>
                     <Header />
 
-                    <div style={telaN1Styles.container}>
-                        <div style={telaN1Styles.banner}>
+                    <div style={telaOverviewStyles.container}>
+                        <div style={telaOverviewStyles.banner}>
                             <img 
                             src={icone}
                             width={90}
                             height={150}
                             alt="Icone planilha" />
 
-                            <h2 style={telaN1Styles.saudacao}>
+                            <h2 style={telaOverviewStyles.saudacao}>
                                 Bom dia, Lorenzo!
                             </h2>
-                            <p style={telaN1Styles.text}>
+                            <p style={telaOverviewStyles.text}>
                                 Você tem 2 tickets em adoção
                             </p>
 
-                            <div style={telaN1Styles.section}>
-                               <div style={telaN1Styles.dados}>
+                            <div style={telaOverviewStyles.section}>
+                               <div style={telaOverviewStyles.dados}>
                                    
-                                    <section style={telaN1Styles.dadosTt}>
+                                    <section style={telaOverviewStyles.dadosTt}>
                                      <h3>12</h3>
                                     <p>Total de Tickets</p>
                                     </section>
 
-                                    <section style={telaN1Styles.dadosEa}>
+                                    <section style={telaOverviewStyles.dadosEa}>
                                     <h3>2</h3>
                                     <p>Em adoção</p>
                                     </section>
 
-                                    <section style={telaN1Styles.dadosC}>
+                                    <section style={telaOverviewStyles.dadosC}>
                                     <h3>2</h3>
                                     <p>Concluídos</p>
                                     </section>
 
-                                    <section style={telaN1Styles.dadosP}>
+                                    <section style={telaOverviewStyles.dadosP}>
                                     <h3>2</h3>
                                     <p>Pendentes</p>
                                     </section>

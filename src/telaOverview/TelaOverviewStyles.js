@@ -1,4 +1,4 @@
-export const telaN1Styles = {
+export const telaOverviewStyles = {
 
     flexgrid:{
         width: "calc(100% - 63px)",
