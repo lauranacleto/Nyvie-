@@ -7,8 +7,9 @@ import Cadastro from './cadastro/cadastro';
 import EditarPerfil from './editarPerfil/editarPerfil';
 import HistoricoTicket from './historicoTicket/historicoTicket.jsx';
 import HistoricoRecorrentes from './historicoRecorrentes/historicoRecorrentes';
-import TelaN1 from './telaN1/telaN1.jsx'
+import TelaOverview from './telaOverview/TelaOverview.jsx'
 import HistoricoEquipe from './historicoEquipe/historicoEquipe.jsx';
+import TelaN2 from './components/telaN2/telaN2.jsx'
 
 
 export default function App() {
@@ -21,7 +22,9 @@ export default function App() {
         <Route path="/editarPerfil" element={<EditarPerfil />} />
         <Route path="/historicoTicket" element={<HistoricoTicket />} />
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
-        <Route path="/telaN1" element={<TelaN1 />} />
+        <Route path="/Overview" element={<TelaOverview />} />
+        <Route path="/tela2" element={<TelaN2 />} />
+
 
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
       </Routes>

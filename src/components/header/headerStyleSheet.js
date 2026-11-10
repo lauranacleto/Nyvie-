@@ -10,11 +10,8 @@ export const styles = {
         paddingRight: 38,
         color: "#FFFFFF",
 
-        position: "fixed",
-        top: 0,
-        left: 0,
+        position: "relative",
         width: "100%",
-        zIndex: 1000,
         boxSizing: "border-box"
     },
 };
