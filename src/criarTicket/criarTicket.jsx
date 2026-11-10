@@ -64,7 +64,6 @@ export default function CriarTicket() {
   const [imagem, setImagem] = useState(null);
   const [previa, setPrevia] = useState(null);
   const [departamentos, setDepartamentos] = useState([]);
-
   const s = criarTicketStyles;
 
   useEffect(() => {
