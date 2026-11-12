@@ -1,34 +1,39 @@
-import { AlignCenter } from "lucide-react";
 
 export const TelaN2Styles ={
      flexgrid: {
-        width: "calc(100% - 63px)",
+        width: "calc(100% )",
         display: 'flex',
-        marginLeft: '63px'
+        marginLeft: '63px',
+        backgroundColor: "#F5FAFE",
     },
 
-    container: {
-        backgroundColor: "#F5FAFE",
-        minHeight: '100vh',
+    containerFundo: {
+        width: '100%',
         alignItems: 'center',
         display: "flex",
         flexDirection: "column",
+        margin:'0 auto',
+    },
+    container: { 
+      width: "100%",
+      backgroundColor: "#F0F7FE",
+      borderBottom: "2px solid #DCECFD",
 
+      display: "flex",
+      justifyContent: "center",
+
+      paddingBottom: "50px"
     },
     banner: {
-    backgroundColor: "#F0F7FE",
-    height: "400px",
     display: "flex",
     flexDirection: "column",
-    width: "100%",
-    borderBottom: "2px solid #DCECFD"
+    width: "80%"    
 },
   group: {
     display: "flex",
     alignItems: "center",
     gap: "20px",
     marginTop: "40px",
-    marginLeft: "60px"
 },
 
 iconBox: {
@@ -46,7 +51,8 @@ iconBox: {
 imgG: {
     width: "65px",
     height: "65px",
-    objectFit: "contain"
+    objectFit: "contain",
+    alignItems:"start"
 },
 
 cText: {
@@ -70,12 +76,12 @@ text: {
 filtros: {
     display: "flex",
     gap: "27px",
-    marginLeft: "60px",
     marginTop: "40px",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    justifyContent: "space-between"
 },
 filtro: {
-    width: "350px",
+    width: "30%",
     height: "45px",
     backgroundColor: "#FFFFFF",
     border: "1px solid #D6E5F8",
@@ -86,7 +92,8 @@ filtro: {
     padding: "0 12px",
     boxSizing: "border-box",
     color: "#17449B",
-    position: "relative"
+    position: "relative",
+    
 },
 
 filtroTexto: {
@@ -109,9 +116,8 @@ dados:{
     marginTop:"30px",
     display:"flex",
     gap:"10px",
-    justifyContent: "center",
-    
-
+    justifyContent: "space-between",
+    width: "80%",
 },
 
 
@@ -123,23 +129,25 @@ dados:{
 
 //Total Tickets
 dadosTt:{
-    width:"290px",
-    height:"120px",
+    width:"24%",
+    height:"150px",
     backgroundColor:"#EDF6FD",
     border: "1px solid #0A3882",
     borderRadius: "5px",
-    paddingLeft:"10px",
-    paddingTop:"10px"
+    
 
 },
 pSecTt: {
-    fontSize: "18px",
+    fontSize: "22px",
     fontWeight: "bold",
     margin: "0",
-    color:"#0A3882"
+    color:"#0A3882",
+    paddingTop:"5px",
+    paddingLeft:"5px"
+
 },
 h3SecTt:{
-     fontSize: "30px",
+     fontSize: "38px",
     fontWeight: "bold",
     margin: "0",
     color:"#0A3882",
@@ -148,7 +156,6 @@ h3SecTt:{
 pDSecTt:{
      fontSize: "14px",
     fontWeight: "bold",
-    margin: "0",
     color:"#0A3882",
     paddingTop:"5px"
 
@@ -165,26 +172,26 @@ setaTt: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    
+    color: "#0A3882",
+    padding:"5px"
 },
 
 //Dentro do SLA
 
 dadosDSla:{
-    width:"270px",
-    height:"120px",
+    width:"24%",
+    height:"150px",
     backgroundColor:"#EEF9FA",
     border: "1px solid #026C60",
     borderRadius: "5px",
-    paddingLeft:"10px",
-    paddingTop:"10px"
-
 },
 pSecDSla:{
-     fontSize: "18px",
+     fontSize: "22px",
     fontWeight: "bold",
     margin: "0",
-    color:"#026C60"
+    color:"#026C60",
+    paddingTop:"5px",
+    paddingLeft:"5px"
 },
 h3SecDSla:{
      fontSize: "30px",
@@ -197,8 +204,8 @@ pDSecDSla:{
     fontWeight: "bold",
     margin: "0",
     color:"#026C60",
-        paddingTop:"5px"
-
+    
+  
 },
 iconDS:{
 display:"flex",
@@ -206,35 +213,32 @@ padding:"1px",
 alignItems:"center",
 gap:"10px",
     marginTop:"3px"
+},
 
-},
-setaDS:{
-display:"flex",
-alignItems:"center",
-},
 setaDS: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    marginTop:"10px"
+    
     
 },
 
 //Fora do SLA
 dadosFSla:{
-    width:"270px",
-    height:"120px",
+    width:"24%",
+    height:"150px",
     backgroundColor:"#FFE0E7",
     border: "1px solid #6C2626",
     borderRadius: "5px",
-    paddingLeft:"10px",
-    paddingTop:"10px"
-
 },
 pSecFSla:{
-     fontSize: "18px",
+     fontSize: "22px",
     fontWeight: "bold",
     margin: "0",
-    color:"#AB2642"
+    color:"#AB2642",
+    paddingTop:"5px",
+    paddingLeft:"5px"
 },
 h3SecFSla:{
      fontSize: "30px",
@@ -248,7 +252,6 @@ pDSecFSla:{
     margin: "0",
     color:"#AB2642",
         paddingTop:"5px"
-
 },
 iconTFS:{
 display:"flex",
@@ -258,84 +261,31 @@ gap:"10px",
     marginTop:"3px"
 
 },
-setaPFS:{
-display:"flex",
-alignItems:"center",
-},
+
 setaPFS: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    
+    marginTop:"5px"
 },
 
-// Tempo Médio de resposta
-dadosTMR:{
-    width:"270px",
-    height:"120px",
-    backgroundColor:"#E0E0F6",
-    border: "1px solid #4142C0",
-    borderRadius: "5px",
-    paddingLeft:"10px",
-    paddingTop:"10px"
-
-},
-pSecTMR:{
-     fontSize: "18px",
-    fontWeight: "bold",
-    margin: "0",
-    color:"#4142C0"
-},
-h3SecTMR:{
-     fontSize: "30px",
-    fontWeight: "bold",
-    margin: "0",
-    color:"#4142C0"
-},
-pDSecTMR:{
-     fontSize: "14px",
-    fontWeight: "bold",
-    margin: "0",
-    color:"#4142C0",
-        paddingTop:"5px"
-
-},
-iconTTMR:{
-display:"flex",
-padding:"1px",
-alignItems:"center",
-gap:"10px",
-    marginTop:"3px"
-
-},
-setaTMR:{
-display:"flex",
-alignItems:"center",
-},
-setaTMR: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    
-},
 
 //Tickets recorrentes
 dadosTR:{
-    width:"270px",
-    height:"120px",
+    width:"24%",
+    height:"150px",
     backgroundColor:"#FFFDF3",
     border: "1px solid #87782D",
     borderRadius: "5px",
-    paddingLeft:"10px",
-    paddingTop:"10px",
-
 },
 
 pSecTtr:{
-     fontSize: "18px",
+     fontSize: "22px",
     fontWeight: "bold",
     margin: "0",
-    color:"#87782D"
+    color:"#87782D",
+    paddingTop:"5px",
+    paddingLeft:"5px"
 },
 h3SecTtr:{
      fontSize: "30px",
@@ -357,7 +307,6 @@ padding:"1px",
 alignItems:"center",
 gap:"10px",
     marginTop:"3px"
-
 },
 setaTR:{
 display:"flex",
@@ -367,6 +316,7 @@ setaTR: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    marginTop:"5px"
     
 },
 
