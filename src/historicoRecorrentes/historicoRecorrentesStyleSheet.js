@@ -1,5 +1,3 @@
-
-
 export const styles = {
     container: {
         width: "100%",
@@ -9,106 +7,54 @@ export const styles = {
         boxSizing: "border-box",
     },
 
-    logo: {
-        fontSize: 32,
-        fontWeight: "bold",
-        color: "#FFFFFF",
-        margin: 0,
-    },
-
-    usuario: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 28,
-    },
-
-    sino: {
-        fontSize: 24,
-        color: "#FFFFFF",
-    },
-
-    avatar: {
-        width: 46,
-        height: 46,
-        borderRadius: 50,
-        backgroundColor: "#D9E5F3",
-        color: "#204C9B",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontWeight: "bold",
-        fontSize: 20,
-    },
-
-    menu: {
-        position: "absolute",
-        top: 65,
-        left: 0,
-        bottom: 0,
-        width: 65,
-        backgroundColor: "#0B1B38",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        paddingTop: 45,
-        gap: 28,
-        color: "#FFFFFF",
-    },
-
-    iconeMenu: {
-        fontSize: 29,
-        color: "#FFFFFF",
-        textAlign: "center",
-    },
-
-    menuSair: {
-        position: "absolute",
-        bottom: 30,
-        fontSize: 32,
-        color: "#FFFFFF",
-    },
-
     conteudo: {
-        marginLeft: 90,
+        marginLeft: 60,
+        marginTop: 65,
         padding: "10px 12px 20px",
-        minHeight: "34px",
+        width: "calc(100% - 60px)",
+        minHeight: "calc(100vh - 65px)",
         boxSizing: "border-box",
     },
 
     titulo: {
-        margin: "0 0 12px",
-        fontSize: 22,
-        fontWeight: "semi-bold",
+        display: "flex",
+        alignItems: "center",
+        margin: "0 0 10px",
+        fontSize: 23,
+        fontWeight: 450,
         color: "#204C9B",
     },
 
     categoria: {
-        minHeight: 74,
+        minHeight: 68,
         backgroundColor: "#FFFFFF",
-        borderRadius: 10,
+        borderRadius: 8,
         display: "flex",
-        flexDirection: "row",
         alignItems: "center",
-        padding: " 14px",
+        padding: "10px 14px",
         gap: 10,
-        marginBottom: 11,
-        boxShadow: "0 10px 10px #CBD8E7",
+        marginBottom: 8,
+        boxShadow: "0 2px 4px #CBD8E7",
+        boxSizing: "border-box",
     },
 
     iconeWifi: {
         width: 44,
         height: 44,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
     },
 
     nomeCategoria: {
-        fontSize: 25,
+        fontSize: 24,
         fontWeight: "bold",
         color: "#204C9B",
         margin: 0,
     },
 
-    lista: {
+      lista: {
         backgroundColor: "#FFFFFF",
         border: "1px solid #DCE8F5",
         borderRadius: 7,
@@ -142,7 +88,7 @@ export const styles = {
 
     idTicket: {
         margin: "0 0 5px",
-        fontSize: 19,
+        fontSize: 25,
         color: "#204C9B",
     },
 
@@ -163,7 +109,7 @@ export const styles = {
     },
 
     rotulo: {
-        fontSize: 13,
+        fontSize: 19,
         color: "#0B1B38",
     },
 

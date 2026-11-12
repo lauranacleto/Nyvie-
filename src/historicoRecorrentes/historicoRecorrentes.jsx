@@ -3,7 +3,7 @@ import wifi from "../assets/wifi - reco.svg";
 import { styles } from "./historicoRecorrentesStyleSheet.js";
 import Header from "../components/header/header.jsx";
 import Aside from "../components/aside/aside.jsx";
-import Group from "../assets/Group.svg";
+import exi from "../assets/exi.svg";
 
 const HistoricoRecorrentes = () => {
     return (
@@ -15,7 +15,7 @@ const HistoricoRecorrentes = () => {
             <main style={styles.conteudo}>
                 <h2 style={styles.titulo}>
                     <img
-                        src={Group}
+                        src={exi}
                         alt="Voltar"
                         style={{
                             width: 18,
