@@ -166,38 +166,6 @@
       "status": "Concluído"
     },
     {
-<<<<<<< HEAD
-      "id": 1,
-      "usuarioId": 1,
-      "titulo": "Atendimento finalizado",
-      "mensagem": "Seu atendimento foi finalizado com sucesso. O equipamento já está pronto para uso.",
-      "tipo": "finalizado",
-      "data": "01/02/2026 16:00"
-    },
-    {
-      "id": 2,
-      "usuarioId": 1,
-      "titulo": "Atualização no sistema",
-      "mensagem": "O status de um atendimento foi atualizado.",
-      "tipo": "atualizacao",
-      "data": "01/02/2026 16:00"
-    },
-    {
-      "id": 3,
-      "usuarioId": 1,
-      "titulo": "Atendimento em atraso",
-      "mensagem": "O ticket #00109 está em atraso. Por favor verifique o andamento",
-      "tipo": "alerta",
-      "data": "01/02/2026 16:00"
-    },
-    {
-      "id": 4,
-      "usuarioId": 1,
-      "titulo": "Nova Mensagem",
-      "mensagem": "Você recebeu uma nova mensagem no ticket #00128.",
-      "tipo": "mensagem",
-      "data": "01/02/2026 16:00"
-=======
       "id": "00128",
       "descricao": "Rede de Wi-fi",
       "horario": "Aberto há 4m36s",
@@ -217,7 +185,6 @@
       "horario": "Aberto há 3m36s",
       "prazo": "01/10/2025",
       "status": "Concluído"
->>>>>>> 8167e52472ba2848885301a5356baa14a6b2716f
     }
   ],
   "departamentos": [
