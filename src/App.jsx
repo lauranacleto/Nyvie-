@@ -7,18 +7,11 @@ import Cadastro from './cadastro/cadastro';
 import EditarPerfil from './editarPerfil/editarPerfil';
 import HistoricoTicket from './historicoTicket/historicoTicket.jsx';
 import HistoricoRecorrentes from './historicoRecorrentes/historicoRecorrentes';
-<<<<<<< HEAD
-import TelaOverview from './telaOverview/TelaOverview.jsx'
-import HistoricoEquipe from './historicoEquipe/historicoEquipe.jsx';
-import TelaN2 from './components/telaN2/telaN2.jsx'
-import UsuarioProvider from './context/UsuarioProvinder.jsx'
-=======
 import TelaOverview from './telaOverview/TelaOverview.jsx';
 import HistoricoEquipe from './historicoEquipe/historicoEquipe.jsx';
 import CriarTicket from './criarTicket/criarTicket.jsx';
 import EditarTicket from './editarTicket/editarTicket.jsx';
->>>>>>> 8167e52472ba2848885301a5356baa14a6b2716f
-
+import UsuarioProvider from './context/UsuarioProvinder.jsx'
 
 export default function App() {
 
@@ -33,13 +26,7 @@ export default function App() {
         <Route path="/editarPerfil" element={<EditarPerfil />} />
         <Route path="/historicoTicket" element={<HistoricoTicket />} />
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
-<<<<<<< HEAD
-
-        <Route path="/telaOverview" element={<TelaOverview />} />
-
-=======
         <Route path="/Overview" element={<TelaOverview />} />
->>>>>>> 8167e52472ba2848885301a5356baa14a6b2716f
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
       </Routes>
     </BrowserRouter>

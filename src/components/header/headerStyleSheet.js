@@ -9,14 +9,8 @@ export const styles = {
         paddingLeft: 64,
         paddingRight: 38,
         color: "#FFFFFF",
-<<<<<<< HEAD
-        position: "fixed",
-        top: 0,
-        left: 0,
-=======
 
         position: "relative",
->>>>>>> 8167e52472ba2848885301a5356baa14a6b2716f
         width: "100%",
         boxSizing: "border-box"
     },
