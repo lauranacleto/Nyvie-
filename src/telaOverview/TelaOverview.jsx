@@ -2,8 +2,6 @@ import Header from "../components/header/header";
 import Aside from "../components/aside/aside";
 import { telaOverviewStyles } from './telaOverviewStyles';
 import icone from "../assets/clipboard.svg"
-import TelaN2 from "../components/telaN2/telaN2"
-import { Ticket } from "lucide-react";
 import { useEffect, useState } from "react";
 import api from "../../services/services";
 
@@ -16,10 +14,18 @@ export default function TelaOverview() {
         try {
             const response = await api.get('/tickets');
             setDadosTickets(response.data);
+
+            if (escolhido === "recentes") {
+                const ticketsRecentes = response.data.filter(ticket => ticket.status === "Em adoção");
+                setDadosTickets(ticketsRecentes);
+            }
+
         } catch (error) {
             console.error("Erro ao buscar tickets:", error);
         }
     };
+
+    var escolhido = "todos";
 
     useEffect(() => {
         getTickets();
@@ -37,7 +43,7 @@ export default function TelaOverview() {
                             <div style={{display: "flex", gap: "15px", alignItems: "center"}}>
                             <img
                                 src={icone}
-                                width={100}
+                                width={120}
                                 height={140}
                                 alt="Icone planilha" />
                             <div>
@@ -80,21 +86,33 @@ export default function TelaOverview() {
                         <div style={telaOverviewStyles.buttons}>
                             <button
                                 type="button"
-                                style={telaOverviewStyles.todos}
+                                style={{...(escolhido === "todos" ? telaOverviewStyles.selecionado : telaOverviewStyles.naoselecionado), ...telaOverviewStyles.botaoTodos}}
+                                onClick={() => {
+                                    escolhido = "todos";
+                                    getTickets();
+                                }}
                             >
                                 Todos
                             </button>
 
                             <button
                                 type="button"
-                                style={telaOverviewStyles.recentes}
+                                style={{...(escolhido === "recentes" ? telaOverviewStyles.selecionado : telaOverviewStyles.naoselecionado), ...telaOverviewStyles.botaoRecente}}
+                                onClick={() => {
+                                    escolhido = "recentes";
+                                    getTickets();
+                                }}
                             >
                                 Recentes
                             </button>
 
                             <button
                                 type="button"
-                                style={telaOverviewStyles.recorrentes}
+                                style={{...(escolhido === "recorrentes" ? telaOverviewStyles.selecionado : telaOverviewStyles.naoselecionado), ...telaOverviewStyles.botaoRecorrente}}
+                                onClick={() => {
+                                    escolhido = "recorrentes";
+                                    getTickets();
+                                }}
                             >
                                 Recorrentes
                             </button>
@@ -107,7 +125,7 @@ export default function TelaOverview() {
                         </div>
 
 
-
+                        <div style={telaOverviewStyles.tableContainer}>
                         <table style={telaOverviewStyles.table}>
 
                             <colgroup>
@@ -135,12 +153,14 @@ export default function TelaOverview() {
                                     <tr key={item.id} style={telaOverviewStyles.linhas}>
 
                                         <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.id }}>
-                                            <div style={{ width: "5%", height: "40px", backgroundColor: item.status === "Em Andamento" ? "rgb(232, 234, 108)" : item.status === "Concluído" ? "#C1EAD7" : "#FFE0E7" }}></div>
+                                            <div style={{ width: "5%", height: "40px", backgroundColor: item.status === "Em Andamento" ? "#feffb7" : item.status === "Concluído" ? "#C1EAD7" : "#FFE0E7" }}></div>
                                             #{item.id}
                                         </td>
 
                                         <td style={telaOverviewStyles.descricao}>
+                                            <div style={{ width: "50%", height: "30px" }}>
                                             {item.descricao}
+                                            </div>
                                         </td>
 
                                         <td style={telaOverviewStyles.prioridade}>
@@ -156,8 +176,8 @@ export default function TelaOverview() {
                                         </td>
 
                                         <td style={telaOverviewStyles.status}>
-                                            <div style={{ width: "70%", height: "30px", 
-                                                backgroundColor: item.status === "Em Andamento" ? "#e8ea6c" : item.status === "Concluído" ? "#C1EAD7" : "#FFC2D0", 
+                                            <div style={{ width: "50%", height: "30px", 
+                                                backgroundColor: item.status === "Em Andamento" ? "#feffb7" : item.status === "Concluído" ? "#C1EAD7" : "#FFC2D0", 
                                                 borderColor: item.status === 'Em Andamento' ? '#9C8A4D' : item.status === 'Concluído' ? '#245543' : '#AB2642',
                                                 color: item.status === 'Em Andamento' ? '#9C8A4D' : item.status === 'Concluído' ? '#245543' : '#AB2642',
                                                 borderRadius: "22px", display: "flex", alignItems: "center", justifyContent: "center", borderWidth: "1px", borderStyle: "solid" }}>
@@ -170,7 +190,7 @@ export default function TelaOverview() {
                                 ))}
                             </tbody>
                         </table>
-
+                        </div>
 
 
                     </div>

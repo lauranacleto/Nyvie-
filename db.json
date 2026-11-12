@@ -126,54 +126,47 @@
     {
       "id": "1",
       "descricao": "Problema na Rede de Wi-fi",
-      "prioridade": "P3 .Alto",
-      "sla": "00:23:45",
-      "tempoExcedido": "09:45:98",
+      "horario": "Aberto há 15m00s",
+      "prazo": "15/10/2025",
       "status": "Em adoção"
     },
     {
       "id": "00122",
       "descricao": "Rede de Wi-fi",
-      "prioridade": "P2 .Baixo",
-      "sla": "00:23:45",
-      "tempoExcedido": "09:50:98",
+      "horario": "Aberto há 02m00s",
+      "prazo": "16/09/2025",
       "status": "Em adoção"
     },
     {
       "id": "00123",
       "descricao": "Rede de Wi-fi",
-      "prioridade": "P2 .Baixo",
-      "sla": "00:23:45",
-      "tempoExcedido": "09:50:98",
+      "horario": "Aberto há 10m50s",
+      "prazo": "03/12/2025",
       "status": "Concluído"
     },
     {
       "id": "00124",
       "descricao": "Rede de Wi-fi",
-      "prioridade": "P2 .Baixo",
-      "sla": "00:23:45",
-      "tempoExcedido": "09:50:98",
+      "horario": "Aberto há 05m25s",
+      "prazo": "04/10/2025",
       "status": "Concluído"
     },
     {
       "id": "00125",
       "descricao": "Rede de Wi-fi",
-      "prioridade": "P2 .Baixo",
-      "sla": "00:23:45",
-      "tempoExcedido": "09:50:98",
+      "horario": "Aberto há 9m00s",
+      "prazo": "18/05/2025",
       "status": "Concluído"
     },
     {
       "id": "00127",
       "descricao": "Rede de Wi-fi",
-      "prioridade": "P2 .Baixo",
-      "sla": "00:23:45",
-      "tempoExcedido": "09:50:98",
+      "horario": "Aberto há 7m36s",
+      "prazo": "10/10/2025",
       "status": "Concluído"
-    }
-  ],
-  "notificacoes": [
+    },
     {
+<<<<<<< HEAD
       "id": 1,
       "usuarioId": 1,
       "titulo": "Atendimento finalizado",
@@ -204,6 +197,27 @@
       "mensagem": "Você recebeu uma nova mensagem no ticket #00128.",
       "tipo": "mensagem",
       "data": "01/02/2026 16:00"
+=======
+      "id": "00128",
+      "descricao": "Rede de Wi-fi",
+      "horario": "Aberto há 4m36s",
+      "prazo": "28/10/2025",
+      "status": "Concluído"
+    },
+    {
+      "id": "00129",
+      "descricao": "Rede de Wi-fi",
+      "horario": "Aberto há 17m36s",
+      "prazo": "22/11/2025",
+      "status": "Concluído"
+    },
+    {
+      "id": "00130",
+      "descricao": "Rede de Wi-fi",
+      "horario": "Aberto há 3m36s",
+      "prazo": "01/10/2025",
+      "status": "Concluído"
+>>>>>>> 8167e52472ba2848885301a5356baa14a6b2716f
     }
   ],
   "departamentos": [
