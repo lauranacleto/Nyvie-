@@ -217,7 +217,6 @@ export const telaOverviewStyles = {
         backgroundColor: "#233D6A",
         color: "#E9F1F8",
         padding: 0,
-
     },
 
     cabecalho: {
@@ -255,37 +254,32 @@ export const telaOverviewStyles = {
     },
 
     sla: {
-        color: "red",
         textAlign: "center"
     },
 
-    tempoExcedido: {
-        color: "red",
-        textAlign: "center"
+    prioridade: {
+        textAlign: "left",
     },
 
     colTicket: {
-        width: "15%"
-    },
-
-    colDescricao: {
-        width: "30%"
-    },
-
-    colPrioridade: {
         width: "10%"
     },
 
-    colSLA: {
-        width: "7%"
+    colDescricao: {
+        width: "35%"
     },
 
-    colExcedido: {
-        width: "16%"
+    colPrioridade: {
+        width: "20%",
+        textAlign: "left"
+    },
+
+    colSLA: {
+        width: "10%"
     },
 
     colStatus: {
-        width: "22%"
+        width: "20%"
     },
 
     naoselecionado: {  
@@ -301,8 +295,8 @@ export const telaOverviewStyles = {
     },
 
     selecionado: {  
-        width: "200px",
-        height: "40px",
+        width: "210px",
+        height: "44px",
         backgroundColor: "#233D6A",
         color: "#E9F1F8",
         border: "none",
@@ -310,5 +304,10 @@ export const telaOverviewStyles = {
         fontSize: "18px",
         fontWeight: "600",
         cursor: "pointer",
+    },
+
+    td: {
+        height: "50px",
     }
+
 };
