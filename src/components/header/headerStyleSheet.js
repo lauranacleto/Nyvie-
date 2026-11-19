@@ -24,7 +24,7 @@ export const styles = {
         width: "320px",
         maxHeight: "320px",
         overflowY: "auto",
-        backgroundColor: "#EAF2FA",
+        backgroundColor: "#F5FAFE",
         borderRadius: "5px",
         boxShadow: '0 1px 2px #00000020',
         zIndex: 1001,
@@ -40,11 +40,11 @@ export const styles = {
         gap: "7px",
         margin: 0,
         padding: "12px 14px",
-        color: "#19345B",
+        color: "#0A1934",
         fontSize: "24px",
         fontWeight: "bold",
         backgroundColor: "#FFFFFF",
-        borderBottom: '2px solid #A6BBDE',
+        borderBottom: '2px solid #1C4691',
     },
 
 
@@ -58,7 +58,7 @@ export const styles = {
         border: "1px solid #A6BBDE",
         borderRadius: "8px",
         backgroundColor: "#FFFFFF",
-        boxShadow: '0 1px 2px #00000020',
+
         textAlign: "left",
         boxSizing: "border-box"
     },
@@ -75,7 +75,7 @@ export const styles = {
 
     tituloCard: {
         fontSize: "12px",
-        color: "#1C4691",
+        color: "#0A1934",
         fontWeight: "bold",
         margin: "0 0 4px 0",
         textAlign: "left",
