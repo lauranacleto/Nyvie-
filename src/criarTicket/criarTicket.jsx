@@ -9,7 +9,6 @@ import api from "../../services/services";
 import Header from "../components/header/header.jsx";
 import Aside from "../components/aside/aside.jsx";
 
-// Busca os departamentos da API
 async function buscarDepartamentos() {
   try {
     const response = await api.get("/departamentos");
@@ -20,7 +19,7 @@ async function buscarDepartamentos() {
   }
 }
 
-// Formatação do telefone
+// telefone
 function formatarTelefone(valor) {
   const numeros = valor.replace(/\D/g, "").slice(0, 11);
 
@@ -37,7 +36,6 @@ function formatarTelefone(valor) {
   return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7)}`;
 }
 
-// Converter imagem para Base64
 function converterImagem(arquivo) {
   return new Promise((resolve, reject) => {
     if (!arquivo) {
@@ -47,7 +45,61 @@ function converterImagem(arquivo) {
 
     const leitor = new FileReader();
 
-    leitor.onload = () => resolve(leitor.result);
+    leitor.onload = () => {
+      const foto = new Image();
+
+      foto.onload = () => {
+        const canvas = document.createElement("canvas");
+
+        let largura = foto.width;
+        let altura = foto.height;
+
+        // Limitar o tamanho da imagem
+        const tamanhoMaximo = 800;
+
+        if (largura > tamanhoMaximo || altura > tamanhoMaximo) {
+          const proporcao = Math.min(
+            tamanhoMaximo / largura,
+            tamanhoMaximo / altura
+          );
+
+          largura = Math.round(largura * proporcao);
+          altura = Math.round(altura * proporcao);
+        }
+
+        let imagemBase64 = "";
+
+        while (true) {
+          canvas.width = largura;
+          canvas.height = altura;
+
+          const contexto = canvas.getContext("2d");
+
+          contexto.drawImage(foto, 0, 0, largura, altura);
+
+          imagemBase64 = canvas.toDataURL("image/jpeg", 0.6);
+
+          if (imagemBase64.length <= 75 * 1024) {
+            break;
+          }
+
+          if (largura <= 250 || altura <= 250) {
+            reject(new Error("Não foi possível reduzir a imagem."));
+            return;
+          }
+
+          largura = Math.round(largura * 0.8);
+          altura = Math.round(altura * 0.8);
+        }
+
+        resolve(imagemBase64);
+      };
+
+      foto.onerror = () => reject(new Error("Erro ao carregar imagem."));
+
+      foto.src = leitor.result;
+    };
+
     leitor.onerror = () => reject(new Error("Erro ao ler imagem."));
 
     leitor.readAsDataURL(arquivo);
@@ -67,12 +119,10 @@ export default function CriarTicket() {
   const [departamentos, setDepartamentos] = useState([]);
   const s = criarTicketStyles;
 
-  // Carregar departamentos
   useEffect(() => {
     buscarDepartamentos().then(setDepartamentos);
   }, []);
 
-  // Liberar URL da imagem
   useEffect(() => {
     return () => {
       if (previa) {
@@ -81,7 +131,6 @@ export default function CriarTicket() {
     };
   }, [previa]);
 
-  // Selecionar imagem
   function escolherImagem(e) {
     const arquivo = e.target.files?.[0];
 
@@ -173,13 +222,11 @@ export default function CriarTicket() {
 
   return (
     <>
-      {/* Componentes principais */}
       <Header />
       <Aside />
 
       <main style={s.container}>
 
-        {/* Banner */}
         <div style={s.banner}>
           <img
             src={iconeTicket}
@@ -233,7 +280,6 @@ export default function CriarTicket() {
               />
             </div>
 
-            {/* Campos */}
             <div style={s.campos}>
 
               <div style={s.campoContainer}>
@@ -292,7 +338,7 @@ export default function CriarTicket() {
                 </div>
 
                 <div style={s.campoTelefone}>
-                  <label htmlFor="telefone" style={s.label}>
+                  <label htmlFor="telefone" style={s.labelMenor}>
                     Telefone:
                   </label>
 
@@ -314,26 +360,28 @@ export default function CriarTicket() {
 
           {/* Descrição */}
           <div style={s.descricaoContainer}>
-            <label htmlFor="descricao" style={s.label}>
-              Descrição
-            </label>
-
             <div style={s.descricaoBox}>
-              <textarea
-                id="descricao"
-                style={s.textarea}
-                maxLength={512}
-                placeholder="Descreva o problema relatado pelo cliente"
-                value={descricao}
-                onChange={(e) => setDescricao(e.target.value)}
-              />
+              <label htmlFor="descricao" style={s.descricaoCabecalho}>
+                Descrição
+              </label>
 
-              <button
-                type="submit"
-                style={s.botaoEnviar}
-              >
-                Enviar
-              </button>
+              <div style={s.descricaoCorpo}>
+                <textarea
+                  id="descricao"
+                  style={s.textarea}
+                  maxLength={512}
+                  placeholder="Descreva o problema relatado pelo cliente"
+                  value={descricao}
+                  onChange={(e) => setDescricao(e.target.value)}
+                />
+
+                <button
+                  type="submit"
+                  style={s.botaoEnviar}
+                >
+                  Enviar
+                </button>
+              </div>
             </div>
           </div>
 
