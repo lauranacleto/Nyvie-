@@ -1,34 +1,32 @@
 export const telaOverviewStyles = {
 
     flexgrid: {
-        width: "calc(100% - 63px)",
+        width: "calc(100% - 65px)",
         display: 'flex',
-        marginLeft: '63px'
+        marginLeft: '65px'
     },
 
     container: {
         backgroundColor: "#F5FAFE",
-        minHeight: "calc(100vh - 70px)",
+        minHeight: "99vh",
         height: "auto",
         boxSizing: "border-box",
-        paddingTop: "90px",
-        paddingBottom: "30px",
         justifyContent: "flex-start",
         alignItems: "center",
         display: "flex",
         flexDirection: "column",
         gap: "5px",
+        padding: "30px 0",
+        display: "flex",
     },
 
     banner: {
-        backgroundColor: "#E6F8F8",
-        width: "90%",
+        width: "80%",
         height: 130,
+        marginTop: 45,
         boxSizing: 'border-box',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderRadius: 15,
-        boxShadow: '3px 3px 5px rgba(0, 0, 0, 0.25)',
         display: "flex",
         padding: "30px 20px",
     },
@@ -56,14 +54,14 @@ export const telaOverviewStyles = {
     },
 
     saudacao: {
-        fontSize: '24px',
+        fontSize: '32px',
         fontWeight: '700',
         margin: '0 0 2px',
         color: '#0A1934'
     },
 
     text: {
-        fontSize: '15px',
+        fontSize: '20px',
         color: '#0A1934'
     },
 
@@ -95,7 +93,7 @@ export const telaOverviewStyles = {
     },
 
     subtitulo: {
-        width: '90%',
+        width: '80%',
         marginTop: 40,
         display: "flex",
         alignItems: "flex-start"
@@ -114,7 +112,7 @@ export const telaOverviewStyles = {
         display: "flex",
         alignItems: "center",
         gap: "15px",
-        width: "90%",
+        width: "80%",
         marginTop: "50px",
     },
 
@@ -226,7 +224,7 @@ export const telaOverviewStyles = {
     },
 
     tableContainer: {
-        width: "90%",
+        width: "80%",
         borderRadius: "15px",
         boxShadow: "3px 3px 5px rgba(0, 0, 0, 0.25)",
         overflow: "hidden",

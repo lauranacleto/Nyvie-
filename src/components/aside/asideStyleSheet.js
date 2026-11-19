@@ -3,8 +3,9 @@ export const styles = {
         position: "absolute",
         top: 0,
         left: 0,
-        bottom: 0,
         width: 65,
+        minHeight: "100vh",
+        height: "100%",
         backgroundColor: "#0B1B38",
         display: "flex",
         flexDirection: "column",
@@ -12,7 +13,6 @@ export const styles = {
         paddingTop: 140,
         gap: 28,
         color: "#FFFFFF",
-        zIndex: 1000,
         boxSizing: "border-box",
     },
 

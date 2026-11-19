@@ -1,7 +1,7 @@
 import Header from "../components/header/header";
 import Aside from "../components/aside/aside";
 import { telaOverviewStyles } from './telaOverviewStyles';
-import icone from "../assets/clipboard.svg"
+import icone from "../assets/group.svg"
 import { useEffect, useState } from "react";
 import api from "../../services/services";
 
@@ -13,36 +13,47 @@ export default function TelaOverview() {
     const [escolhido, setEscolhido] = useState("todos");
 
     const getTickets = async () => {
-    try {
-        const response = await api.get('/Ticket');
-        setTodosTickets(response.data);
-    } catch (error) {
-        console.error("Erro ao buscar tickets:", error);
-    }
-};
+        try {
+            const response = await api.get('/Ticket');
+            setTodosTickets(response.data);
+        } catch (error) {
+            console.error("Erro ao buscar tickets:", error);
+        }
+    };
 
     useEffect(() => {
         getTickets();
     }, []);
 
     useEffect(() => {
-    if (escolhido === "recentes") {
-        setDadosTickets(
-            todosTickets.filter(ticket => ticket.status === "Em adoção")
-        );
-    }
-    else if (escolhido === "recorrentes") {
-        setDadosTickets(
-            todosTickets.filter(ticket => ticket.recorrente === true)
-        );
-    }
-    else {
-        setDadosTickets(todosTickets);
-    }
+        if (escolhido === "recentes") {
+
+            const agora = new Date();
+
+            setDadosTickets(
+                todosTickets.filter(ticket => {
+                    const dataTicket = new Date(ticket.dataHora);
+                    const diferenca = agora - dataTicket;
+
+                    return (
+                        diferenca >= 0 &&
+                        diferenca <= 7 * 24 * 60 * 60 * 1000
+                    );
+                })
+            );
+        }
+        else if (escolhido === "recorrentes") {
+            setDadosTickets(
+                todosTickets.filter(ticket => ticket.recorrente === true)
+            );
+        }
+        else {
+            setDadosTickets(todosTickets);
+        }
     }, [escolhido, todosTickets]);;
 
     return (
-        <div style={{ display: 'flex', minHeight: '99vh', width: '100%' }}>
+        <div style={{ display: 'flex', minHeight: '98vh', width: '100%' }}>
             <Aside />
             <div style={telaOverviewStyles.flexgrid}>
                 <div style={{ flex: 1 }}>
@@ -53,9 +64,10 @@ export default function TelaOverview() {
                             <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
                                 <img
                                     src={icone}
-                                    width={120}
-                                    height={140}
-                                    alt="Icone planilha" />
+                                    width={130}
+                                    height={130}
+                                    alt="Icone grupo" />
+                                <div style={{ width: "1px", height: "100px", backgroundColor: "#cbd5e1" }}></div>
                                 <div>
                                     <h2 style={telaOverviewStyles.saudacao}>
                                         Bom dia, Lorenzo!
@@ -65,33 +77,27 @@ export default function TelaOverview() {
                                     </p>
                                 </div>
                             </div>
-
-                            <div style={telaOverviewStyles.section}>
-                                <div style={telaOverviewStyles.dados}>
-
-                                    <section style={telaOverviewStyles.dadosTt}>
-                                        <h3>{todosTickets.length}</h3>
-                                        <p>Total de Tickets</p>
-                                    </section>
-
-                                    <section style={telaOverviewStyles.dadosEa}>
-                                        <h3>{todosTickets.filter(ticket => ticket.status === "Em adoção").length}</h3>
-                                        <p>Em adoção</p>
-                                    </section>
-
-                                    <section style={telaOverviewStyles.dadosC}>
-                                        <h3>{todosTickets.filter(ticket => ticket.status === "Concluído").length}</h3>
-                                        <p>Concluídos</p>
-                                    </section>
-
-                                    <section style={telaOverviewStyles.dadosP}>
-                                        <h3>{todosTickets.filter(ticket => ticket.status === "Pendente").length}</h3>
-                                        <p>Pendentes</p>
-                                    </section>
-
-                                </div>
-                            </div>
                         </div>
+
+                        <section style={telaOverviewStyles.dadosTt}>
+                            <h3>{todosTickets.length}</h3>
+                            <p>Total de Tickets</p>
+                        </section>
+
+                        <section style={telaOverviewStyles.dadosEa}>
+                            <h3>{todosTickets.filter(ticket => ticket.status === "Em adoção").length}</h3>
+                            <p>Em adoção</p>
+                        </section>
+
+                        <section style={telaOverviewStyles.dadosC}>
+                            <h3>{todosTickets.filter(ticket => ticket.status === "Concluído").length}</h3>
+                            <p>Concluídos</p>
+                        </section>
+
+                        <section style={telaOverviewStyles.dadosP}>
+                            <h3>{todosTickets.filter(ticket => ticket.status === "Pendente").length}</h3>
+                            <p>Pendentes</p>
+                        </section>
 
                         <div style={telaOverviewStyles.buttons}>
                             <button
@@ -150,8 +156,8 @@ export default function TelaOverview() {
                                     <tr style={telaOverviewStyles.titulos}>
                                         <th style={{ borderRadius: "15px 0 0 0" }}>N° do Ticket</th>
                                         <th style={{ textAlign: "left" }}>Descrição</th>
-                                        <th style={{ textAlign: "left" }}>Prioridade</th>
                                         <th>SLA</th>
+                                        <th style={{ textAlign: "left" }}>Prioridade</th>
                                         <th style={{ borderRadius: "0 15px 0 0", textAlign: "left" }}>Status</th>
                                     </tr>
                                 </thead>
@@ -171,12 +177,12 @@ export default function TelaOverview() {
                                                 </div>
                                             </td>
 
-                                            <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.prioridade }}>
-                                                {item.idPrioridadeNavigation?.nome}
-                                            </td>
-
                                             <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.sla }}>
                                                 {item.sla}
+                                            </td>
+
+                                            <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.prioridade }}>
+                                                {item.idPrioridadeNavigation?.nome}
                                             </td>
 
                                             <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.status }}>
