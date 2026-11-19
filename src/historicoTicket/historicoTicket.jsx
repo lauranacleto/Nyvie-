@@ -1,7 +1,7 @@
 import { historicoTicketStyles } from "./historicoTicket";
 import { useNavigate } from "react-router-dom";
 import ticketIcon from "../assets/ticket.svg"
-import perfisIcon from "../assets/perfil azul.svg"
+import perfisIcon from "../assets/perfilAzul.svg"
 import statusIcon from "../assets/status.svg"
 import checkIcon from "../assets/check.svg"
 import finalIcon from "../assets/keylock.svg"

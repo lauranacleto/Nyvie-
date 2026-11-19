@@ -6,7 +6,7 @@ import historicoStyles from '../historicoEquipe/historicoEquipe';
 import Header from '../components/header/header';
 import Aside from '../components/aside/aside';
 
-import perfilAzul from '../assets/perfil azul.svg';
+import perfilAzul from '../assets/perfilAzul.svg';
 
 import api from '../../services/services';
 

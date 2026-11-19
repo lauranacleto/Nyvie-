@@ -13,7 +13,8 @@ export const styles = {
         top: 0,
         left: 0,
         width: "100%",
-        boxSizing: "border-box"
+        boxSizing: "border-box",
+        zIndex: 1000,
     },
 
     painelNotificacoes: {
