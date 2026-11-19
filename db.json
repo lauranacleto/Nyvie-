@@ -103,6 +103,43 @@
       "data": "Vence em: 18/10/2026"
     }
   ],
+  "historicoTicket": [
+    {
+      "titulo": "Ticket aberto",
+      "descricao": "O Ticket foi aberto por Laura Kauany.",
+      "icone": "yellowTicket",
+      "usuario": "Laura Kauany",
+      "data": "10/05/2026 10:45"
+    },
+    {
+      "titulo": "Atribuído a Lorenzo Mangile",
+      "descricao": " O ticket foi atribuído a Lorenzo Mangile.",
+      "icone": "perfisIcon",
+      "usuario": "Lorenzo Mangile",
+      "data": "10/05/2026 11:45"
+    },
+    {
+      "titulo": "Status alterado",
+      "descricao": " O status foi alterado para em andamento.",
+      "icone": "statusIcon",
+      "usuario": "Lorenzo Mangile",
+      "data": "10/05/2026 11:50"
+    },
+    {
+      "titulo": "Ticket concluído",
+      "descricao": "O ticket foi marcado como Concluído por Lorenzo Mangile.",
+      "icone": "checkIcon",
+      "usuario": "Lorenzo Mangile",
+      "data": "11/05/2026 14:45"
+    },
+    {
+      "titulo": "Ticket finalizado",
+      "descricao": "O ticket foi encerrado por Lorenzo Mangile.",
+      "icone": "finalIcon",
+      "usuario": "Lorenzo Mangile",
+      "data": "11/05/2026 14:45"
+    }
+  ],
   "usuarios": [
     {
       "nome": "loras",
@@ -246,6 +283,5 @@
       "datahora": "01/02/2026 16:00"
     }
   ],
-  
   "$schema": "./node_modules/json-server/schema.json"
 }
