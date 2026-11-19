@@ -12,7 +12,9 @@ export const historicoTicketStyles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
+        backgroundColor: '#F5FAFE',
     },
+
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -26,6 +28,7 @@ export const historicoTicketStyles = {
         alignItems: 'center',
         justifyContent: 'center',
         paddingLeft: '5%',
+        backgroundColor: '#F5FAFE',
     },
 
 
@@ -34,15 +37,17 @@ export const historicoTicketStyles = {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        width: '100%',
-        height: '120px',
+        width: '82.5%',
+        height: '100px',
         padding: '0 10px',
-        boxSizing: 'border-box',
+        // boxSizing: 'border-box',
         borderRadius: '8px',
-        backgroundColor: '#F0F7FE',
-        borderBottom: '2px solid #D6E8FA',
+        backgroundColor: '#FFFFFF',
+        borderBottom: '4px solid #D8E7F9',
         flexShrink: 0,
-        marginTop: 30
+        marginTop: 30,
+        marginLeft: 'auto',
+        marginRight: 'auto',
     },
 
     areaSuperior: {
@@ -67,27 +72,30 @@ export const historicoTicketStyles = {
         display: 'flex',
         flexDirection: 'column',
         gap: '8px',
-        width: '70%',
+        width: '63%',
         height: 'auto',
         padding: '12px 8px',
         boxSizing: 'border-box',
         borderRadius: '8px',
-        backgroundColor: '#F0F7FE',
-        border: '1px solid #D6E8FA',
+        backgroundColor: '#FFFFFF',
+        border: '1px solid #D8E7F9',
+        marginLeft: 'auto',
+
     },
 
     caixaDetalhes: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
-        width: '30%',
+        width: '19%',
         height: '100%',
         padding: '20px',
         gap: '18px',
         boxSizing: 'border-box',
         borderRadius: '8px',
-        backgroundColor: '#F0F7FE',
-        border: '1px solid #D6E8FA',
+        backgroundColor: '#FFFFFF',
+        border: '1px solid #D8E7F9',
+        marginRight: 'auto',
     },
 
 
@@ -116,6 +124,8 @@ export const historicoTicketStyles = {
         gap: '5px',
         width: '100%',
         minHeight: '58px',
+        borderBottom: '2px solid #1C4691',
+        boxSizing: 'border-box',
     },
 
     cardTicket: {
@@ -127,9 +137,9 @@ export const historicoTicketStyles = {
         // flex: '1',
         padding: '8px',
         backgroundColor: '#FFFFFF',
-        border: '1px solid #D1D1D1',
-        borderRadius: '7px',
-        boxShadow: '0 1px 2px #00000020',
+
+
+        // boxShadow: '0 1px 2px #00000020',
         boxSizing: 'border-box',
     },
 
@@ -137,16 +147,16 @@ export const historicoTicketStyles = {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         gap: '8px',
-        width: '200px',
+        width: '230px',
         height: '75px',
         padding: '6px',
         backgroundColor: '#FFFFFF',
-        border: '1px solid #D1D1D1',
+        border: '1px solid #1C4691',
         borderRadius: '7px',
-        boxShadow: '0 1px 2px #00000020',
         boxSizing: 'border-box',
+        marginBottom: '6px',
     },
 
     dados: {
