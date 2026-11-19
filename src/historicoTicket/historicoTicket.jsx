@@ -11,9 +11,10 @@ import calendarioIcon from "../assets/calendar.svg"
 import atualizacaoIcon from "../assets/atualização.svg"
 import comentarioIcon from "../assets/chat.svg"
 import voltarIcon from "../assets/Group.svg"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/header/header.jsx";
 import Aside from "../components/aside/aside.jsx";
+import api from "../../services/services.js";
 
 const iconesTela = {
     "Ticket": ticketIcon,
@@ -38,6 +39,20 @@ export default function HistoricoTicket() {
     const [departamento, setDepartamento] = useState("");
     const [carregando, setCarregando] = useState(true);
     const [salvando, setSalvando] = useState(false);
+
+    const funcGet = async () => {
+        try {
+            const response = await api.get('Notificacao')
+            console.log(response.data)
+        }
+        catch (error) {
+            console.log("Erro: " + error)
+        }
+    }
+
+    useEffect(() => {
+        funcGet()
+    }, [])
 
     return (
         <>

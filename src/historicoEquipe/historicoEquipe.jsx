@@ -9,6 +9,7 @@ import Aside from '../components/aside/aside';
 import perfilAzul from '../assets/perfilAzul.svg';
 
 import api from '../../services/services';
+import oi from '../assets/oi.png'
 
 export default function Historico() {
 
@@ -35,18 +36,18 @@ export default function Historico() {
   // Buscar histórico
   async function buscarHistorico() {
     try {
-      const response = await api.get('/historico');
+      const response = await api.get('/Notificacao');
+
+      console.log(response)
       setHistorico(response.data);
+
     } catch (error) {
       console.error('Erro ao buscar histórico:', error);
       setErro('Não foi possível carregar o histórico.');
     }
   }
 
-  // Carregar dados ao abrir a tela
-  useEffect(() => {
-    async function carregarDados() {
-      setCarregando(true);
+  async function carregarDados() {
       setErro('');
 
       try {
@@ -66,6 +67,10 @@ export default function Historico() {
         setCarregando(false);
       }
     }
+  // Carregar dados ao abrir a tela
+  useEffect(() => {
+    buscarHistorico()
+    
 
     carregarDados();
   }, []);
