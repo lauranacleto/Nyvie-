@@ -1,23 +1,18 @@
 export const styles = {
     menu: {
-        top: 0,
-        left: 0,
         width: 65,
         minHeight: "100vh",
-        height: "100%",
+        alignSelf: "stretch",
         backgroundColor: "#0B1B38",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "space-between",
         paddingTop: 140,
+        paddingBottom: 30,
         gap: 28,
         color: "#FFFFFF",
         boxSizing: "border-box",
-
-        paddingBottom: 30,
-
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
+        flexShrink: 0,
     },
 };
