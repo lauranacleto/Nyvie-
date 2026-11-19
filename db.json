@@ -237,5 +237,15 @@
       "nome": "Departamento de RH"
     }
   ],
+  "notificacoes": [
+    {
+      "id": "1",
+      "titulo": "Atendimento finalizado",
+      "mensagem": "Seu atendimento foi finalizado com sucesso. O equipamento já está pronto para uso.",
+      "tipo": "finalizado",
+      "datahora": "01/02/2026 16:00"
+    }
+  ],
+  
   "$schema": "./node_modules/json-server/schema.json"
 }
