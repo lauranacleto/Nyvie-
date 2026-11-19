@@ -6,7 +6,7 @@ import historicoStyles from '../historicoEquipe/historicoEquipe';
 import Header from '../components/header/header';
 import Aside from '../components/aside/aside';
 
-import perfilAzul from '../assets/perfil azul.svg';
+import oi from '../assets/oi.png';
 
 import api from '../../services/services';
 
@@ -94,9 +94,7 @@ export default function Historico() {
 
         <main style={historicoStyles.content}>
 
-          <h2 style={historicoStyles.pageTitle}>
-            ← Histórico da equipe
-          </h2>
+         
 
           <div style={historicoStyles.painel}>
 
@@ -112,7 +110,7 @@ export default function Historico() {
                 onClick={() => setSelecionado('todos')}
               >
                 <img
-                  src={perfilAzul}
+                  src={oi}
                   alt="Todos"
                   style={historicoStyles.foto}
                 />

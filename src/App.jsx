@@ -26,6 +26,7 @@ export default function App() {
         <Route path="/editarPerfil" element={<EditarPerfil />} />
         <Route path="/historicoTicket" element={<HistoricoTicket />} />
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
+        <Route path="/criarTicket" element={<CriarTicket />} />
         <Route path="/Overview" element={<TelaOverview />} />
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
       </Routes>
