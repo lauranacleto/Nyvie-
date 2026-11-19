@@ -53,7 +53,7 @@ export default function TelaOverview() {
     }, [escolhido, todosTickets]);;
 
     return (
-        <div style={{ display: 'flex', minHeight: '98vh', width: '100%' }}>
+        <div style={{ display: 'flex', height: '100vh', width: '100%' }}>
             <Aside />
             <div style={telaOverviewStyles.flexgrid}>
                 <div style={{ flex: 1 }}>
@@ -79,25 +79,32 @@ export default function TelaOverview() {
                             </div>
                         </div>
 
-                        <section style={telaOverviewStyles.dadosTt}>
-                            <h3>{todosTickets.length}</h3>
-                            <p>Total de Tickets</p>
-                        </section>
+                        <div style={{ display: "flex", justifyContent: "space-between", width: "80%", marginTop: "10px", marginBottom: "10px" }}>
+                            <section style={telaOverviewStyles.dadosTt}>
+                                <h3>{todosTickets.length}</h3>
+                                <p>Total de Tickets</p>
+                            </section>
 
-                        <section style={telaOverviewStyles.dadosEa}>
-                            <h3>{todosTickets.filter(ticket => ticket.status === "Em adoção").length}</h3>
-                            <p>Em adoção</p>
-                        </section>
+                            <section style={telaOverviewStyles.dadosEa}>
+                                <h3>{todosTickets.filter(ticket => ticket.status === "Em adoção").length}</h3>
+                                <p>Em adoção</p>
+                            </section>
 
-                        <section style={telaOverviewStyles.dadosC}>
-                            <h3>{todosTickets.filter(ticket => ticket.status === "Concluído").length}</h3>
-                            <p>Concluídos</p>
-                        </section>
+                            <section style={telaOverviewStyles.dadosC}>
+                                <h3>{todosTickets.filter(ticket => ticket.status === "Concluído").length}</h3>
+                                <p>Concluídos</p>
+                            </section>
 
-                        <section style={telaOverviewStyles.dadosP}>
-                            <h3>{todosTickets.filter(ticket => ticket.status === "Pendente").length}</h3>
-                            <p>Pendentes</p>
-                        </section>
+                            <section style={telaOverviewStyles.dadosP}>
+                                <h3>{todosTickets.filter(ticket => ticket.status === "Pendente").length}</h3>
+                                <p>Pendentes</p>
+                            </section>
+                            
+                            <section style={telaOverviewStyles.dadosEa}>
+                                <h3>{todosTickets.filter(ticket => ticket.status === "Em adoção").length}</h3>
+                                <p>Em adoção</p>
+                            </section>
+                        </div>
 
                         <div style={telaOverviewStyles.buttons}>
                             <button

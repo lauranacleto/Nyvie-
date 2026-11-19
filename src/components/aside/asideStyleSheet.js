@@ -1,6 +1,5 @@
 export const styles = {
     menu: {
-        position: "absolute",
         top: 0,
         left: 0,
         width: 65,
@@ -14,12 +13,11 @@ export const styles = {
         gap: 28,
         color: "#FFFFFF",
         boxSizing: "border-box",
-    },
 
-    menuSair: {
-        position: "absolute",
-        bottom: 30,
-        fontSize: 32,
-        color: "#FFFFFF",
+        paddingBottom: 30,
+
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
     },
 };

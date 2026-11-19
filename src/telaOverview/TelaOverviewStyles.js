@@ -3,12 +3,11 @@ export const telaOverviewStyles = {
     flexgrid: {
         width: "calc(100% - 65px)",
         display: 'flex',
-        marginLeft: '65px'
     },
 
     container: {
         backgroundColor: "#F5FAFE",
-        minHeight: "99vh",
+        minHeight: "100vh",
         height: "auto",
         boxSizing: "border-box",
         justifyContent: "flex-start",
@@ -16,19 +15,24 @@ export const telaOverviewStyles = {
         display: "flex",
         flexDirection: "column",
         gap: "5px",
-        padding: "30px 0",
+        paddingTop: "30px",
         display: "flex",
     },
 
     banner: {
         width: "80%",
         height: 130,
-        marginTop: 45,
         boxSizing: 'border-box',
         justifyContent: 'space-between',
         alignItems: 'center',
         display: "flex",
         padding: "30px 20px",
+        paddingBottom: 75,
+        borderBottom: "1px solid #cbd5e1",
+        
+
+        marginTop: 100,
+        marginBottom: 40,
     },
 
     text: {
@@ -161,7 +165,7 @@ export const telaOverviewStyles = {
         alignItems: "flex-start",
         paddingLeft: "12px",
         height: 80,
-        width: "145px",
+        width: "250px",
         backgroundColor: "#F4FBFF",
         borderRadius: 5,
         border: "1px solid #0A1934",
@@ -175,7 +179,7 @@ export const telaOverviewStyles = {
         alignItems: "flex-start",
         paddingLeft: "12px",
         height: 80,
-        width: "145px",
+        width: "250px",
         backgroundColor: "#FFFDF3",
         borderRadius: 5,
         border: "1px solid #87782D",
@@ -189,7 +193,7 @@ export const telaOverviewStyles = {
         alignItems: "flex-start",
         paddingLeft: "12px",
         height: 80,
-        width: "145px",
+        width: "250px",
         backgroundColor: "#EEF9FA",
         border: "1px solid #245543",
         color: "#245543",
@@ -203,7 +207,7 @@ export const telaOverviewStyles = {
         alignItems: "flex-start",
         paddingLeft: "12px",
         height: 80,
-        width: "145px",
+        width: "250px",
         backgroundColor: "#FFE0E7",
         borderRadius: 5,
         border: "1px solid #571414",
