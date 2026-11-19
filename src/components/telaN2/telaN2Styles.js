@@ -1,11 +1,14 @@
 
 export const TelaN2Styles ={
      flexgrid: {
-        width: "calc(100% )",
-        display: 'flex',
-        marginLeft: '63px',
-        backgroundColor: "#F5FAFE",
-    },
+    width: "calc(100% - 63px)",
+    display: "flex",
+    marginLeft: "63px",
+    backgroundColor: "#F5FAFE",
+    paddingTop: "65px",
+    boxSizing: "border-box",
+    minHeight: "100vh",
+},
 
     containerFundo: {
         width: '100%',
@@ -110,38 +113,33 @@ select: {
     width: "100%",
     height: "100%",
     opacity: 0,
-    cursor: "pointer"
+    cursor: "pointer",
+    zIndex: 1
 },
-dados:{
-    marginTop:"30px",
-    display:"flex",
-    gap:"10px",
+dados: {
+    marginTop: "30px",
+    display: "flex",
+    gap: "20px",
     justifyContent: "space-between",
     width: "80%",
 },
 
-
-
-
-
-
-
-
 //Total Tickets
-dadosTt:{
+dadosTt: {
+    flex: 1,
     width:"24%",
-    height:"150px",
-    backgroundColor:"#EDF6FD",
-    border: "1px solid #0A3882",
-    borderRadius: "5px",
-    
-
+    height: "135px",
+    backgroundColor: "#FFFFFF",
+    border: "1px solid #05193D",
+    borderRadius: "4px",
+    overflow: "hidden",
 },
-pSecTt: {
+
+  pSecTt: {
     fontSize: "22px",
     fontWeight: "bold",
     margin: "0",
-    color:"#0A3882",
+    color:"#05193D",
     paddingTop:"5px",
     paddingLeft:"5px"
 
@@ -150,13 +148,13 @@ h3SecTt:{
      fontSize: "38px",
     fontWeight: "bold",
     margin: "0",
-    color:"#0A3882",
+    color:"#05193D",
     
 },
 pDSecTt:{
      fontSize: "14px",
     fontWeight: "bold",
-    color:"#0A3882",
+    color:"#05193D",
     paddingTop:"5px"
 
 },
@@ -172,24 +170,27 @@ setaTt: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "#0A3882",
+    color: "#05193D",
     padding:"5px"
 },
 
 //Dentro do SLA
 
-dadosDSla:{
+dadosDSla: {
+    flex: 1,
     width:"24%",
-    height:"150px",
-    backgroundColor:"#EEF9FA",
-    border: "1px solid #026C60",
-    borderRadius: "5px",
+    height: "135px",
+    backgroundColor: "#FFFFFF",
+    border: "1px solid #05193D",
+    borderRadius: "4px",
+    overflow: "hidden",
 },
+
 pSecDSla:{
      fontSize: "22px",
     fontWeight: "bold",
     margin: "0",
-    color:"#026C60",
+    color:"#05193D",
     paddingTop:"5px",
     paddingLeft:"5px"
 },
@@ -197,13 +198,13 @@ h3SecDSla:{
      fontSize: "30px",
     fontWeight: "bold",
     margin: "0",
-    color:"#026C60"
+    color:"#05193D"
 },
 pDSecDSla:{
      fontSize: "14px",
     fontWeight: "bold",
     margin: "0",
-    color:"#026C60",
+    color:"#05193D",
     
   
 },
@@ -225,18 +226,20 @@ setaDS: {
 },
 
 //Fora do SLA
-dadosFSla:{
+dadosFSla: {
+    flex: 1,
     width:"24%",
-    height:"150px",
-    backgroundColor:"#FFE0E7",
-    border: "1px solid #6C2626",
-    borderRadius: "5px",
+    height: "135px",
+    backgroundColor: "#FFFFFF",
+    border: "1px solid #05193D",
+    borderRadius: "4px",
+    overflow: "hidden",
 },
 pSecFSla:{
      fontSize: "22px",
     fontWeight: "bold",
     margin: "0",
-    color:"#AB2642",
+    color:"#05193D",
     paddingTop:"5px",
     paddingLeft:"5px"
 },
@@ -244,13 +247,13 @@ h3SecFSla:{
      fontSize: "30px",
     fontWeight: "bold",
     margin: "0",
-    color:"#AB2642"
+    color:"#05193D"
 },
 pDSecFSla:{
      fontSize: "14px",
     fontWeight: "bold",
     margin: "0",
-    color:"#AB2642",
+    color:"#05193D",
         paddingTop:"5px"
 },
 iconTFS:{
@@ -271,19 +274,20 @@ setaPFS: {
 
 
 //Tickets recorrentes
-dadosTR:{
+dadosTR: {
+    flex: 1,
     width:"24%",
-    height:"150px",
-    backgroundColor:"#FFFDF3",
-    border: "1px solid #87782D",
-    borderRadius: "5px",
+    height: "135px",
+    backgroundColor: "#FFFFFF",
+    border: "1px solid #05193D",
+    borderRadius: "4px",
+    overflow: "hidden",
 },
-
 pSecTtr:{
      fontSize: "22px",
     fontWeight: "bold",
     margin: "0",
-    color:"#87782D",
+    color:"#05193D",
     paddingTop:"5px",
     paddingLeft:"5px"
 },
@@ -291,13 +295,13 @@ h3SecTtr:{
      fontSize: "30px",
     fontWeight: "bold",
     margin: "0",
-    color:"#87782D"
+    color:"#05193D"
 },
 pDSecTtr:{
      fontSize: "14px",
     fontWeight: "bold",
     margin: "0",
-    color:"#87782D",
+    color:"#05193D",
         paddingTop:"5px"
 
 },
@@ -322,64 +326,87 @@ setaTR: {
 
 
 //buttons
+buttonsContainer: {
+    width: "80%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "50px",
+},
 
 buttons: {
     display: "flex",
     alignItems: "center",
-    gap: "10px",
-    width: "90%",
-    marginTop: "40px",
-
+    justifyContent: "flex-start",
+    gap: "20px",
+    width: "100%",
+    padding: 0,
+    margin: 0,
 },
+
+
 todos: {
-    width: "200px",
+    width: "190px",
     height: "35px",
+    boxSizing: "border-box",
     backgroundColor: "#E9F1F8",
     color: "#233D6A",
     border: "none",
-    borderRadius: "20px",
+    borderRadius: "10px",
     fontSize: "20px",
     fontWeight: "600",
     cursor: "pointer",
 },
 
 recentes: {
-    width: "300px",
+  
+width: "250px",
     height: "35px",
+    boxSizing: "border-box",
     backgroundColor: "#E9F1F8",
     color: "#233D6A",
-    borderRadius: "20px",
+    borderRadius: "10px",
     fontSize: "20px",
     fontWeight: "600",
     cursor: "pointer",
-    border: "none"
+    border: "none",
 },
 
 recorrentes: {
-    width: "300px",
+ 
+width: "250px",
     height: "35px",
+    boxSizing: "border-box",
     backgroundColor: "#E9F1F8",
     color: "#233D6A",
-    borderRadius: "20px",
+    borderRadius: "10px",
     fontSize: "20px",
     fontWeight: "600",
     cursor: "pointer",
-    border: "none"
+    border: "none",
 },
+
 naoAtribuidos: {
-    width: "300px",
+ 
+width: "250px",
     height: "35px",
+    boxSizing: "border-box",
     backgroundColor: "#233D6A",
     color: "#E9F1F8",
-    borderRadius: "20px",
+    borderRadius: "10px",
     fontSize: "20px",
     fontWeight: "600",
     cursor: "pointer",
-    border: "none"
+    border: "none",
 },
 
 
 //tabela
+prioridade: {
+     textAlign: "center",
+    verticalAlign: "middle",
+    paddingLeft: "0px",
+    paddingRight: "0px"
+},
 
 titulos: {
         height: 40,
@@ -396,13 +423,14 @@ titulos: {
     },
 
     tableContainer: {
-        width: "90%",
+        width: "80%",
         borderRadius: "15px",
-        boxShadow: "3px 3px 5px rgba(0, 0, 0, 0.25)",
         overflow: "hidden",
         backgroundColor: "#FFFFFF",
         marginTop:"50px",
-        marginBottom:"20px"
+        marginBottom:"40px",
+          marginLeft: "auto",
+    marginRight: "auto"
     },
 
     table: {
@@ -418,11 +446,21 @@ titulos: {
         borderBottom: "1px solid #f2f2f2",
         color: "#05193D",
     },
+    entrarT: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+    cursor: "pointer"
+},
 
     id: {
         display: "flex",
         alignItems: "center",
         gap: "10px",
+        fontWeight:700,
+        fontSize:18
     },
 
     sla: {
@@ -436,19 +474,24 @@ titulos: {
     },
 
     colTicket: {
-        width: "15%"
+        width: "14%"
     },
 
     colDescricao: {
-        width: "30%"
+        width: "32%"
     },
 
     colPrioridade: {
-        width: "10%"
+        
+        width: "16%",
+        
     },
 
     colSLA: {
         width: "7%"
+    },
+    colPrazo: {
+        width: "14%"
     },
 
     colExcedido: {
@@ -456,8 +499,135 @@ titulos: {
     },
 
     colStatus: {
-        width: "22%"
-    }
+        width: "17%"
+    },
+    colHorario:{
+        width: "18%"
+    },
 
+    ////recorrentes tickets
 
+cadAcesso:{
+                            width:"80%", height:"70px",
+                            backgroundColor:"#FFFFFF", borderRadius:"10px",marginTop:"50px",
+                            border:"1px solid #b1c3d6",
+                                marginBottom:"20px",
+                                marginLeft: "auto",
+                            marginRight: "auto"
+                        },
+
+intConection:{
+    width:"80%", height:"70px",
+                            backgroundColor:"#FFFFFF", borderRadius:"10px",
+                            border:"1px solid #b1c3d6",
+                                marginBottom:"20px",
+                                marginLeft: "auto",
+                            marginRight: "auto"
+},
+
+secBloqueio:{
+    width:"80%", height:"70px",
+                            backgroundColor:"#FFFFFF", borderRadius:"10px",
+                            border:"1px solid #b1c3d6",
+                                marginBottom:"20px",
+                                marginLeft: "auto",
+                            marginRight: "auto"
+},
+iconProfile:{
+    marginLeft:"5px",
+    marginTop:"6px",
+    marginBottom:"6px"
+},
+iconWifi:{
+    marginLeft:"10px",
+    marginTop:"8px",
+    marginBottom:"6px"
+},
+iconFerramenta:{
+    marginLeft:"10px",
+    marginTop:"7px",
+    marginBottom:"6px"
+},
+
+pTickets: {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "start",
+},
+tituloTProfile:{
+marginTop:"5px",
+color:"#233D6A",
+fontSize:20
+},
+
+    /////
+   // Organização interna dos cards
+
+cardContent: {
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+    minWidth: 0,
+    padding: "10px 12px",
+    justifyContent: "space-between",
+    boxSizing: "border-box",
+},
+
+cardMain: {
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    height: "100px",
+},
+
+cardIcon: {
+    width: "88px",
+    height: "88px",
+    borderRight: "1px solid #D1DCEB",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+    boxSizing: "border-box",
+},
+
+cardInfo: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    minWidth: 0,
+},
+
+cardTitle: {
+    fontSize: "18px",
+    fontWeight: "bold",
+    margin: 0,
+    color: "#05193D",
+    whiteSpace: "nowrap",
+},
+
+cardValue: {
+    fontSize: "42px",
+    fontWeight: "bold",
+    margin: 0,
+    color: "#05193D",
+    lineHeight: "46px",
+},
+
+cardTrend: {
+    display: "flex",
+    alignItems: "center",
+    gap: "5px",
+    whiteSpace: "nowrap",
+},
+
+cardTrendText: {
+    fontSize: "13px",
+    fontWeight: "bold",
+    margin: 0,
+    color: "#05193D",
+},
 }
+
+
+

@@ -1,5 +1,5 @@
 
-import wifi from "../assets/wifi - reco.svg";
+import wifi from "../assets/wifi.svg";
 import { styles } from "./historicoRecorrentesStyleSheet.js";
 import Header from "../components/header/header.jsx";
 import Aside from "../components/aside/aside.jsx";

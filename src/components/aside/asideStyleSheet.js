@@ -1,5 +1,9 @@
 export const styles = {
     menu: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        bottom: 0,
         width: 65,
         minHeight: "100vh",
         alignSelf: "stretch",
