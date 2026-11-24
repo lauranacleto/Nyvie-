@@ -1,5 +1,7 @@
 import api from "./services";
 
+
+
 const API_KEY = "";
 
 export const gerarResumo = async (listaTickets) => {
