@@ -1,230 +1,180 @@
 const detalhesStyles = {
   container: {
     display: 'flex',
-    minHeight: '99vh',
+    flexDirection: 'column',
+    height: '100vh',
+    backgroundColor: '#F2F7FF',
     width: '100%',
-    backgroundColor: '#0A1A3A',
     fontFamily: "'Noto Sans', 'Open Sans', sans-serif",
   },
-
-  // A footer
-  footer: {
-    width: 60,
-    backgroundColor: '#0A1A3A',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    paddingTop: 70,
-    paddingBottom: 30,
-    gap: 28,
-  },
-  footerIcon: {
-    width: 22,
-    height: 22,
-  },
-  footerSpacer: {
-    flex: 1,
-  },
-
-  // Tela
-  main: {
+  corpo: {
     flex: 1,
     display: 'flex',
-    flexDirection: 'column',
-  },
-
-  // header
-  header: {
-    height: 55,
-    backgroundColor: '#0A1A3A',
-    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '0 20px',
-    color: '#fff',
   },
-  logo: {
-    height: 80,
-  },
-  headerMedida: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 20,
-  },
-  Sino: {
-    width: 22,
-    height: 22,
-  },
-  perfil: {
-    width: 40,
-    height: 40,
-    borderRadius: '50%',
-    backgroundColor: '#5C7AA8',
-  },
-
-  // Conteúdo
   content: {
     flex: 1,
+    minWidth: 0,
+    minHeight: 0,
+    overflow: 'hidden',
     backgroundColor: '#F2F7FF',
-    padding: '20px 18px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 65,
+  },
+  conteudoInterno: {
+    marginTop: 60,
+    width: '150%',
+    maxWidth: 1200,
+    maxHeight: '100%',
     display: 'flex',
     flexDirection: 'column',
-    gap: 12,
-  },
-  pageTitulo: {
-    fontSize: 22,
-    fontWeight: 700,
-    color: '#24406E',
-    margin: '0 0 0 10px',
+    gap: 'clamp(8px, 2vh, 20px)',
   },
 
-  // Banner do ticket
+  // Banner
   banner: {
     display: 'flex',
     alignItems: 'center',
     gap: 20,
-    padding: '13px 20px',
+    padding: 'clamp(8px, 1.5vh, 15px) 25px',
     borderRadius: 8,
-    background: 'linear-gradient(90deg, #BFD9FF 0%, #7DB8FF 100%)',
+    background: 'linear-gradient(90deg, #deebff 0%, #7DB8FF 100%)',
     color: '#1B3A6B',
+    flexShrink: 0,
   },
   bannerIcon: {
-    width: 40,
-    height: 40,
+    width: 44,
+    height: 44,
+    flexShrink: 0,
   },
-  TituloBanner: {
-    fontSize: 28,
+  tituloBanner: {
+    fontSize: 'clamp(20px, 4vw, 30px)',
     fontWeight: 800,
     margin: 0,
   },
-  IdBanner: {
-    fontSize: 22,
+  idBanner: {
+    fontSize: 'clamp(16px, 3vw, 22px)',
     fontWeight: 800,
     margin: 0,
   },
 
-  // Card td
-  card: {
-    backgroundColor: '#F5F9FF',
-    border: '1px solid #D6E2F2',
-    borderRadius: 8,
-    padding: 12,
+  // Linha do meio: imagem + informações
+  linhaMeio: {
     display: 'flex',
-    flexDirection: 'column',
     gap: 20,
+    flexShrink: 0,
   },
-  topRow: {
-    display: 'flex',
-    gap: 12,
-  },
-  image: {
-    width: 178,
-    height: 145,
-    objectFit: 'cover',
-    borderRadius: 8,
-    backgroundColor: '#B8BEC7',
-  },
-  descricaoBox: {
+  imagem: {
     flex: 1,
-    border: '1px solid #D6E2F2',
-    borderRadius: 8,
-    padding: '10px 12px',
-    backgroundColor: '#F5F9FF',
+    minWidth: 0,
+    objectFit: 'cover',
+    borderRadius: 4,
+    border: '2px solid #24406E',
+    backgroundColor: '#B8BEC7',
+    boxSizing: 'border-box',
   },
-  descricaoTitulo: {
-    fontSize: 25,
-    fontWeight: 700,
-    color: '#24406E',
-    margin: 0,
-  },
-  descricaoTexto: {
-    fontSize: 15,
-    color: '#24406E',
-    margin: '4px 0 0 0',
-    maxWidth: 360,
+  infoCaixa: {
+    flex: 1,
+    minWidth: 0,
+    border: '2px solid #24406E',
+    backgroundColor: '#fff',
+    boxSizing: 'border-box',
   },
 
-  // Informações do ticket
-  infoBox: {
-    position: 'relative',
-    border: '2px solid #D6E2F2',
-    borderRadius: 8,
-    padding: '10px 12px',
+  // Faixa azul-escura dos títulos
+  faixaTitulo: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#24406E',
+    padding: '8px 12px',
   },
-  infoTitulo: {
-    fontSize: 22,
-    fontWeight: 500,
-    color: '#24406E',
+  faixaTexto: {
+    fontSize: 20,
+    fontWeight: 700,
+    color: '#fff',
     margin: 0,
   },
-  adocao: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    backgroundColor: '#FFE9B8',
-    border: '1px solid #E6B94D',
-    borderRadius: 20,
-    padding: '1px 8px',
-    fontSize: 14,
-    color: '#7A5A10',
+  status: {
+    backgroundColor: '#D9822B',
+    color: '#fff',
+    borderRadius: 10,
+    padding: '2px 8px',
+    fontSize: 13,
   },
-  infoGrid: {
-    display: 'grid',
-    gridTemplateColumns: '185px 1fr',
-    rowGap: 14,
-    marginTop: 8,
+
+  // Células de informação
+  linhaCelulas: {
+    display: 'flex',
+    borderBottom: '1px solid #24406E',
+  },
+  celulaEsquerda: {
+    flex: 1,
+    padding: '8px 12px',
+    borderRight: '1px solid #24406E',
+  },
+  celulaDireita: {
+    flex: 1,
+    padding: '8px 12px',
   },
   label: {
-    fontSize: 17,
+    fontSize: 15,
     fontWeight: 700,
     color: '#24406E',
     margin: 0,
   },
   valor: {
-    fontSize: 15,
+    fontSize: 13,
     color: '#24406E',
-    margin: 0,
+    margin: '4px 0 0 0',
+    overflowWrap: 'anywhere',
   },
 
-  // Cliente mais o botão de sair
-  botaoRow: {
+  // Descrição
+  descricaoCaixa: {
+    flex: 1,
+    minHeight: 0,
     display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    flexDirection: 'column',
+    border: '2px solid #24406E',
+    backgroundColor: '#fff',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
   },
-  clienteBox: {
-    width: 260,
-    border: '2px solid #D6E2F2',
-    borderRadius: 8,
-    padding: '10px 12px',
+  descricaoCorpo: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: 'clamp(160px, 25vh, 240px)',
+    padding: 16,
+    overflowY: 'auto',
   },
-  clienteTitulo: {
-    fontSize: 20,
-    fontWeight: 500,
-    color: '#24406E',
-    margin: '0 0 14px 0',
-  },
-  clienteLabel: {
-    fontSize: 18,
-    fontWeight: 700,
-    color: '#24406E',
-    margin: 0,
-  },
-  clienteValor: {
+  descricaoTexto: {
     fontSize: 15,
     color: '#24406E',
-    margin: '0 0 18px 0',
+    margin: 0,
+    flex: 1,
+    overflowWrap: 'anywhere',
+    wordBreak: 'break-word',
+    whiteSpace: 'pre-wrap',
   },
-  botaoVoltar: {
-    width: 130,
+  botaoArea: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  botaoEditar: {
+    width: 100,
     height: 30,
     backgroundColor: '#1D63C9',
     color: '#fff',
     border: 'none',
-    borderRadius: 8,
-    fontSize: 20,
+    borderRadius: 4,
+    fontSize: 18,
     fontWeight: 600,
     cursor: 'pointer',
+    marginBottom: 10,
   },
 };
 

@@ -12,7 +12,7 @@ import api from '../../services/services';
 
 export default function Historico() {
 
-  // Estados
+  // Estado
   const [selecionado, setSelecionado] = useState('todos');
 
   const [funcionarios, setFuncionarios] = useState([]);
@@ -43,7 +43,7 @@ export default function Historico() {
     }
   }
 
-  // Carregar dados ao abrir a tela
+  // Carrega os dados 
   useEffect(() => {
     async function carregarDados() {
       setCarregando(true);
@@ -70,12 +70,12 @@ export default function Historico() {
     carregarDados();
   }, []);
 
-  // Encontrar funcionário selecionado
+  // Encontra o funcionário selecionado
   const funcionarioAtual = funcionarios.find(
     (func) => String(func.id) === String(selecionado)
   );
 
-  // Filtrar eventos
+  // Aqui filtra o historico
   const eventos = selecionado === 'todos'
     ? historico
     : historico.filter(
