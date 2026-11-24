@@ -6,13 +6,13 @@ import historicoStyles from '../historicoEquipe/historicoEquipe';
 import Header from '../components/header/header';
 import Aside from '../components/aside/aside';
 
-import perfilAzul from '../assets/perfil azul.svg';
+import perfilAzul from '../assets/perfilAzul.svg';
 
 import api from '../../services/services';
 
 export default function Historico() {
 
-  // Estado
+  // Estados
   const [selecionado, setSelecionado] = useState('todos');
 
   const [funcionarios, setFuncionarios] = useState([]);
@@ -43,7 +43,7 @@ export default function Historico() {
     }
   }
 
-  // Carrega os dados 
+  // Carregar dados ao abrir a tela
   useEffect(() => {
     async function carregarDados() {
       setCarregando(true);
@@ -70,12 +70,12 @@ export default function Historico() {
     carregarDados();
   }, []);
 
-  // Encontra o funcionário selecionado
+  // Encontrar funcionário selecionado
   const funcionarioAtual = funcionarios.find(
     (func) => String(func.id) === String(selecionado)
   );
 
-  // Aqui filtra o historico
+  // Filtrar eventos
   const eventos = selecionado === 'todos'
     ? historico
     : historico.filter(

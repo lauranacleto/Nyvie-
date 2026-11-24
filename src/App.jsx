@@ -28,7 +28,7 @@ export default function App() {
         <Route path="/criarTicket" element={<CriarTicket />} />
         <Route path="/editarTicket/:id" element={<EditarTicket />} />
         <Route path="/historicoTicket" element={<HistoricoTicket />} />
-        <Route path="/detalhes" element={<Detalhes />} />
+        <Route path="/detalhes/:id" element={<Detalhes />} />
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
         <Route path="/telaOverview" element={<TelaOverview />} />
         <Route path="/telaOverview" element={<telaOverview />} />
