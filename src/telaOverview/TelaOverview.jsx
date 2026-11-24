@@ -4,13 +4,19 @@ import { telaOverviewStyles } from './telaOverviewStyles';
 import icone from "../assets/group.svg"
 import { useEffect, useState } from "react";
 import api from "../../services/services";
+import { useNavigate } from "react-router-dom";
+import { gerarResumo } from "../../services/IAServices";
+import ImagemSeta from "../assets/entrarT.svg"
+import "./Carregamento.css"
 
-export default function TelaOverview() {
-
+export default function Overview() {
 
     const [dadosTickets, setDadosTickets] = useState([]);
     const [todosTickets, setTodosTickets] = useState([]);
+    const [carregando, setCarregando] = useState(false);
     const [escolhido, setEscolhido] = useState("todos");
+
+    const navigate = useNavigate();
 
     const getTickets = async () => {
         try {
@@ -43,9 +49,48 @@ export default function TelaOverview() {
             );
         }
         else if (escolhido === "recorrentes") {
-            setDadosTickets(
-                todosTickets.filter(ticket => ticket.recorrente === true)
-            );
+            setCarregando(true)
+            const definirTickets = async () => {
+                try {
+                    const agora = new Date();
+
+                    const ticketsRecentes = todosTickets.filter(ticket => {
+                        const dataTicket = new Date(ticket.dataHora);
+                        const diferenca = agora - dataTicket;
+
+                        return (
+                            diferenca >= 0 &&
+                            diferenca <= 7 * 24 * 60 * 60 * 1000
+                        );
+                    });
+
+                    const respostaIA = await gerarResumo(ticketsRecentes);
+
+                    // 3. Filtra os tickets que aparecem na resposta da IA
+                    const descricoesIA = respostaIA.map(item =>
+                        (item.description || item.descricao || "")
+                            .trim()
+                            .toLowerCase()
+                    );
+
+                    const ticketRecorrentes = ticketsRecentes.filter(ticket =>
+                        descricoesIA.includes(
+                            (ticket.descricao || "").trim().toLowerCase()
+                        )
+                    );
+
+                    setDadosTickets(ticketRecorrentes);
+                }
+                catch (error) {
+                    console.log("Erro ao buscar recorrentes: ", error)
+                }
+                finally {
+                    setCarregando(false)
+                }
+            }
+            definirTickets()
+
+
         }
         else {
             setDadosTickets(todosTickets);
@@ -99,7 +144,7 @@ export default function TelaOverview() {
                                 <h3>{todosTickets.filter(ticket => ticket.status === "Pendente").length}</h3>
                                 <p>Pendentes</p>
                             </section>
-                            
+
                             <section style={telaOverviewStyles.dadosEa}>
                                 <h3>{todosTickets.filter(ticket => ticket.status === "Em adoção").length}</h3>
                                 <p>Em adoção</p>
@@ -112,7 +157,6 @@ export default function TelaOverview() {
                                 style={{ ...(escolhido === "todos" ? telaOverviewStyles.selecionado : telaOverviewStyles.naoselecionado), ...telaOverviewStyles.botaoTodos }}
                                 onClick={() => {
                                     setEscolhido("todos");
-                                    getTickets();
                                 }}
                             >
                                 Todos
@@ -123,7 +167,6 @@ export default function TelaOverview() {
                                 style={{ ...(escolhido === "recentes" ? telaOverviewStyles.selecionado : telaOverviewStyles.naoselecionado), ...telaOverviewStyles.botaoRecente }}
                                 onClick={() => {
                                     setEscolhido("recentes");
-                                    getTickets();
                                 }}
                             >
                                 Recentes
@@ -134,7 +177,6 @@ export default function TelaOverview() {
                                 style={{ ...(escolhido === "recorrentes" ? telaOverviewStyles.selecionado : telaOverviewStyles.naoselecionado), ...telaOverviewStyles.botaoRecorrente }}
                                 onClick={() => {
                                     setEscolhido("recorrentes");
-                                    getTickets();
                                 }}
                             >
                                 Recorrentes
@@ -165,48 +207,74 @@ export default function TelaOverview() {
                                         <th style={{ textAlign: "left" }}>Descrição</th>
                                         <th>SLA</th>
                                         <th style={{ textAlign: "left" }}>Prioridade</th>
-                                        <th style={{ borderRadius: "0 15px 0 0", textAlign: "left" }}>Status</th>
+                                        <th style={{ textAlign: "left" }}>Status</th>
+                                        <th style={{ borderRadius: "0 15px 0 0" }}></th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    {dadosTickets.map((item, index) => (
-                                        <tr key={item.idTicket} style={telaOverviewStyles.linhas}>
 
-                                            <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.id }}>
-                                                <div style={{ width: "5%", height: "50px", backgroundColor: item.idStatusTicketNavigation?.nome === "Em Andamento" ? "#feffb7" : item.idStatusTicketNavigation?.nome === "Concluído" ? "#C1EAD7" : "#FFE0E7" }}></div>
-                                                #{String(index + 1).padStart(4, "0")}
+                                    {carregando ? (
+                                        <tr>
+                                            <td colSpan="6" style={{
+                                                textAlign: "center",
+                                                padding: "40px"
+                                            }}>
+                                                <div className="spinner"></div>
+                                                <p style={{ color: "#1F3A6E" }}>
+                                                    Carregando...
+                                                </p>
                                             </td>
-
-                                            <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.descricao }}>
-                                                <div style={{ width: "100%", height: "30px" }}>
-                                                    {item.descricao}
-                                                </div>
-                                            </td>
-
-                                            <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.sla }}>
-                                                {item.sla}
-                                            </td>
-
-                                            <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.prioridade }}>
-                                                {item.idPrioridadeNavigation?.nome}
-                                            </td>
-
-                                            <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.status }}>
-                                                <div style={{
-                                                    width: "65%", height: "30px",
-                                                    backgroundColor: item.idStatusTicketNavigation?.nome === "Em Andamento" ? "#feffb7" : item.idStatusTicketNavigation?.nome === "Concluído" ? "#C1EAD7" : "#FFC2D0",
-                                                    borderColor: item.idStatusTicketNavigation?.nome === 'Em Andamento' ? '#9C8A4D' : item.idStatusTicketNavigation?.nome === 'Concluído' ? '#245543' : '#AB2642',
-                                                    color: item.idStatusTicketNavigation?.nome === 'Em Andamento' ? '#9C8A4D' : item.idStatusTicketNavigation?.nome === 'Concluído' ? '#245543' : '#AB2642',
-                                                    borderRadius: "22px", display: "flex", alignItems: "center", justifyContent: "center", borderWidth: "1px", borderStyle: "solid"
-                                                }}>
-                                                    {item.idStatusTicketNavigation?.nome}
-                                                </div>
-
-                                            </td>
-
                                         </tr>
-                                    ))}
+                                    ) : (
+                                        dadosTickets.map((item, index) => (
+                                            <tr key={item.idTicket} style={telaOverviewStyles.linhas}>
+
+                                                <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.id }}>
+                                                    <div style={{ width: "5%", height: "50px", backgroundColor: item.idStatusTicketNavigation?.nome === "Em Andamento" ? "#feffb7" : item.idStatusTicketNavigation?.nome === "Concluído" ? "#C1EAD7" : "#FFE0E7" }}></div>
+                                                    #{String(index + 1).padStart(4, "0")}
+                                                </td>
+
+                                                <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.descricao }}>
+                                                    <div style={{ width: "100%", height: "30px" }}>
+                                                        {item.descricao}
+                                                    </div>
+                                                </td>
+
+                                                <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.sla }}>
+                                                    {item.sla}
+                                                </td>
+
+                                                <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.prioridade }}>
+                                                    {item.idPrioridadeNavigation?.nome}
+                                                </td>
+
+                                                <td style={{ ...telaOverviewStyles.td, ...telaOverviewStyles.status }}>
+                                                    <div style={{
+                                                        width: "65%", height: "30px",
+                                                        backgroundColor: item.idStatusTicketNavigation?.nome === "Em Andamento" ? "#feffb7" : item.idStatusTicketNavigation?.nome === "Concluído" ? "#C1EAD7" : "#FFC2D0",
+                                                        borderColor: item.idStatusTicketNavigation?.nome === 'Em Andamento' ? '#9C8A4D' : item.idStatusTicketNavigation?.nome === 'Concluído' ? '#245543' : '#AB2642',
+                                                        color: item.idStatusTicketNavigation?.nome === 'Em Andamento' ? '#9C8A4D' : item.idStatusTicketNavigation?.nome === 'Concluído' ? '#245543' : '#AB2642',
+                                                        borderRadius: "22px", display: "flex", alignItems: "center", justifyContent: "center", borderWidth: "1px", borderStyle: "solid"
+                                                    }}>
+                                                        {item.idStatusTicketNavigation?.nome}
+                                                    </div>
+
+                                                </td>
+
+                                                <td>
+                                                    <img
+                                                        src={ImagemSeta}
+                                                        width={30}
+                                                        height={30}
+                                                    />
+
+
+                                                </td>
+
+                                            </tr>
+                                        ))
+                                    )}
                                 </tbody>
                             </table>
                         </div>

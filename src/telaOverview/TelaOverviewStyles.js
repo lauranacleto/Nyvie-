@@ -311,5 +311,4 @@ export const telaOverviewStyles = {
     td: {
         height: "50px",
     }
-
 };
