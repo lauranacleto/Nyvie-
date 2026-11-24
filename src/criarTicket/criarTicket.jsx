@@ -23,9 +23,9 @@ export default function CriarTicket() {
   async function buscarDepartamentos() {
     try {
       const response = await api.get("/Departamento");
-      dados = await response.data
+      const dados = await response.data
 
-      set
+      setDepartamentos(dados)
     } 
     catch (error) {
       console.log("Erro ao buscar departamentos:", error);
