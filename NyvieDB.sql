@@ -52,13 +52,20 @@ CREATE TABLE Ticket (
     IdCliente UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Cliente(IdCliente),
     IdUsuario VARCHAR(40) FOREIGN KEY REFERENCES Usuario(IdUsuario),
     IdStatusTicket UNIQUEIDENTIFIER FOREIGN KEY REFERENCES StatusTicket(IdStatusTicket),
-    IdDepartamento UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Departamento(IdDepartamento)
+    IdDepartamento UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Departamento(IdDepartamento),
+    IdPrioridade UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Prioridade(IdPrioridade)
 );
 GO
 
 CREATE TABLE TipoNotificacao (
     IdTipoNotificacao UNIQUEIDENTIFIER PRIMARY KEY DEFAULT ((NEWID())),
     Nome VARCHAR(100) NOT NULL
+);
+GO
+
+CREATE TABLE Prioridade (
+   IdPrioridade UNIQUEIDENTIFIER PRIMARY KEY DEFAULT ((NEWID())),
+   Nome VARCHAR(100) NOT NULL
 );
 GO
 

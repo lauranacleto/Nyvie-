@@ -10,7 +10,6 @@ export const criarTicketStyles = {
     display: 'flex',
     flexDirection: 'column',
     width: 'calc(100% - 70px)',
-    minHeight: 'calc(100vh - 65px)',
     marginLeft: '65px',
     marginTop: '65px',
     padding: '14px 8% 32px',

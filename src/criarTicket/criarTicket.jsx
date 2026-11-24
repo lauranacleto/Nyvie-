@@ -9,120 +9,56 @@ import api from "../../services/services";
 import Header from "../components/header/header.jsx";
 import Aside from "../components/aside/aside.jsx";
 
-async function buscarDepartamentos() {
-  try {
-    const response = await api.get("/departamentos");
-    return response.data;
-  } catch (error) {
-    console.log("Erro ao buscar departamentos:", error);
-    return [];
-  }
-}
-
-// telefone
-function formatarTelefone(valor) {
-  const numeros = valor.replace(/\D/g, "").slice(0, 11);
-
-  if (numeros.length <= 2) return numeros;
-
-  if (numeros.length <= 6) {
-    return `(${numeros.slice(0, 2)}) ${numeros.slice(2)}`;
-  }
-
-  if (numeros.length <= 10) {
-    return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 6)}-${numeros.slice(6)}`;
-  }
-
-  return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7)}`;
-}
-
-function converterImagem(arquivo) {
-  return new Promise((resolve, reject) => {
-    if (!arquivo) {
-      resolve(null);
-      return;
-    }
-
-    const leitor = new FileReader();
-
-    leitor.onload = () => {
-      const foto = new Image();
-
-      foto.onload = () => {
-        const canvas = document.createElement("canvas");
-
-        let largura = foto.width;
-        let altura = foto.height;
-
-        // Limitar o tamanho da imagem
-        const tamanhoMaximo = 800;
-
-        if (largura > tamanhoMaximo || altura > tamanhoMaximo) {
-          const proporcao = Math.min(
-            tamanhoMaximo / largura,
-            tamanhoMaximo / altura
-          );
-
-          largura = Math.round(largura * proporcao);
-          altura = Math.round(altura * proporcao);
-        }
-
-        let imagemBase64 = "";
-
-        while (true) {
-          canvas.width = largura;
-          canvas.height = altura;
-
-          const contexto = canvas.getContext("2d");
-
-          contexto.drawImage(foto, 0, 0, largura, altura);
-
-          imagemBase64 = canvas.toDataURL("image/jpeg", 0.6);
-
-          if (imagemBase64.length <= 75 * 1024) {
-            break;
-          }
-
-          if (largura <= 250 || altura <= 250) {
-            reject(new Error("Não foi possível reduzir a imagem."));
-            return;
-          }
-
-          largura = Math.round(largura * 0.8);
-          altura = Math.round(altura * 0.8);
-        }
-
-        resolve(imagemBase64);
-      };
-
-      foto.onerror = () => reject(new Error("Erro ao carregar imagem."));
-
-      foto.src = leitor.result;
-    };
-
-    leitor.onerror = () => reject(new Error("Erro ao ler imagem."));
-
-    leitor.readAsDataURL(arquivo);
-  });
-}
 
 export default function CriarTicket() {
-  const inputArquivoRef = useRef(null);
 
   const [titulo, setTitulo] = useState("");
   const [departamento, setDepartamento] = useState("");
   const [cliente, setCliente] = useState("");
   const [telefone, setTelefone] = useState("");
   const [descricao, setDescricao] = useState("");
-  const [imagem, setImagem] = useState(null);
   const [previa, setPrevia] = useState(null);
   const [departamentos, setDepartamentos] = useState([]);
+
+  async function buscarDepartamentos() {
+    try {
+      const response = await api.get("/Departamento");
+      dados = await response.data
+
+      set
+    } 
+    catch (error) {
+      console.log("Erro ao buscar departamentos:", error);
+    }
+  }
+
+  // Formatar telefone
+  function formatarTelefone(valor) {
+    const numeros = valor.replace(/\D/g, "").slice(0, 11);
+
+    if (numeros.length <= 2) return numeros;
+
+    if (numeros.length <= 6) {
+      return `(${numeros.slice(0, 2)}) ${numeros.slice(2)}`;
+    }
+
+    if (numeros.length <= 10) {
+      return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 6)}-${numeros.slice(6)}`;
+    }
+
+    return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7)}`;
+  }
+
+  const inputArquivoRef = useRef(null);
+
   const s = criarTicketStyles;
 
+  // Buscar departamentos
   useEffect(() => {
-    buscarDepartamentos().then(setDepartamentos);
+    buscarDepartamentos()
   }, []);
 
+  // Liberar URL da imagem
   useEffect(() => {
     return () => {
       if (previa) {
@@ -131,6 +67,7 @@ export default function CriarTicket() {
     };
   }, [previa]);
 
+  // Escolher imagem
   function escolherImagem(e) {
     const arquivo = e.target.files?.[0];
 
@@ -148,7 +85,6 @@ export default function CriarTicket() {
       return;
     }
 
-    setImagem(arquivo);
     setPrevia(URL.createObjectURL(arquivo));
   }
 
@@ -184,15 +120,12 @@ export default function CriarTicket() {
     }
 
     try {
-      const imagemBase64 = await converterImagem(imagem);
-
       const dadosTicket = {
         titulo: titulo.trim(),
         departamento,
         cliente: cliente.trim(),
         telefone: numeroTelefone,
         descricao: descricao.trim(),
-        imagem: imagemBase64,
         status: "Aberto",
         dataCriacao: new Date()
       };
@@ -207,7 +140,6 @@ export default function CriarTicket() {
       setCliente("");
       setTelefone("");
       setDescricao("");
-      setImagem(null);
       setPrevia(null);
 
       if (inputArquivoRef.current) {
@@ -278,6 +210,7 @@ export default function CriarTicket() {
                 style={s.inputArquivo}
                 onChange={escolherImagem}
               />
+
             </div>
 
             <div style={s.campos}>
@@ -312,9 +245,9 @@ export default function CriarTicket() {
                     Selecione o departamento
                   </option>
 
-                  {departamentos.map((d) => (
-                    <option key={d.id} value={d.id}>
-                      {d.nome}
+                  {departamentos.map((departamento) => (
+                    <option key={departamento.idDepartamento} value={departamento.idDepartamento}>
+                      {departamento.nome}
                     </option>
                   ))}
                 </select>
@@ -361,6 +294,7 @@ export default function CriarTicket() {
           {/* Descrição */}
           <div style={s.descricaoContainer}>
             <div style={s.descricaoBox}>
+
               <label htmlFor="descricao" style={s.descricaoCabecalho}>
                 Descrição
               </label>
@@ -382,6 +316,7 @@ export default function CriarTicket() {
                   Enviar
                 </button>
               </div>
+
             </div>
           </div>
 
