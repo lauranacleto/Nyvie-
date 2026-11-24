@@ -27,12 +27,9 @@ export default function App() {
         <Route path="/editarPerfil" element={<EditarPerfil />} />
         <Route path="/historicoTicket" element={<HistoricoTicket />} />
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
-<<<<<<< HEAD
         <Route path="/telaOverview" element={<TelaOverview />} />
-=======
         <Route path="/telaOverview" element={<telaOverview />} />
 
->>>>>>> historicoEquipe
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
       </Routes>
     </BrowserRouter>
