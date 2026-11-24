@@ -3,13 +3,14 @@ import { UsuarioContext } from "./UsuarioContext";
 
 
 export const UsuarioProvider = ({ children }) => {
-
-
-    const [usuario, setUsuario] = useState(null)
+  
+    const [token, setToken] = useState(localStorage.getItem("token") == null || localStorage.getItem("token") === "undefined" ? null : localStorage.getItem("token"))
     
     return (
-        <UsuarioContext.Provider value={{ usuario, setUsuario }}>
+        <UsuarioContext.Provider value={{ token, setToken }}>
             {children}
         </UsuarioContext.Provider>
     )
 }
+
+export default UsuarioProvider

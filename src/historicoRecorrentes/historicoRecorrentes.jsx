@@ -1,9 +1,9 @@
 
-import wifi from "../assets/wifi - reco.svg";
+import wifi from "../assets/wifi.svg";
 import { styles } from "./historicoRecorrentesStyleSheet.js";
 import Header from "../components/header/header.jsx";
 import Aside from "../components/aside/aside.jsx";
-import Group from "../assets/Group.svg";
+import exi from "../assets/exi.svg";
 
 const HistoricoRecorrentes = () => {
     return (
@@ -13,19 +13,6 @@ const HistoricoRecorrentes = () => {
 
             {/* Conteúdo principal */}
             <main style={styles.conteudo}>
-                <h2 style={styles.titulo}>
-                    <img
-                        src={Group}
-                        alt="Voltar"
-                        style={{
-                            width: 18,
-                            height: 18,
-                            marginRight: 10,
-                            border: "none",
-                        }}
-                    />
-                    Recorrentes
-                </h2>
 
                 {/* Categoria */}
                 <section style={styles.categoria}>
@@ -43,80 +30,6 @@ const HistoricoRecorrentes = () => {
 
                 {/* Lista de tickets */}
                 <section style={styles.lista}>
-                    <article style={styles.ticket}>
-                        <div style={styles.infoTicket}>
-                            <h3 style={styles.idTicket}>#00127</h3>
-                            <p style={styles.descricao}>Problema na Rede de Wi-Fi</p>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Prioridade:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.prioridadeAlta }}>P3 Alto</span>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Status:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.statusAdocao }}>Em adoção</span>
-                        </div>
-                    </article>
-
-                    <article style={styles.ticket}>
-                        <div style={styles.infoTicket}>
-                            <h3 style={styles.idTicket}>#00129</h3>
-                            <p style={styles.descricao}>Problema na Rede de Wi-Fi</p>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Prioridade:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.prioridadeMedia }}>P2 Médio</span>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Status:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.statusPendente }}>Pendente</span>
-                        </div>
-                    </article>
-                    
-                    <article style={styles.ticket}>
-                        <div style={styles.infoTicket}>
-                            <h3 style={styles.idTicket}>#00129</h3>
-                            <p style={styles.descricao}>Problema na Rede de Wi-Fi</p>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Prioridade:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.prioridadeMedia }}>P2 Médio</span>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Status:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.statusPendente }}>Pendente</span>
-                        </div>
-                    </article>
-
-                    <article style={styles.ticket}>
-                        <div style={styles.infoTicket}>
-                            <h3 style={styles.idTicket}>#00129</h3>
-                            <p style={styles.descricao}>Problema na Rede de Wi-Fi</p>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Prioridade:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.prioridadeMedia }}>P2 Médio</span>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Status:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.statusPendente }}>Pendente</span>
-                        </div>
-                    </article>
-
-                    <article style={styles.ticket}>
-                        <div style={styles.infoTicket}>
-                            <h3 style={styles.idTicket}>#00129</h3>
-                            <p style={styles.descricao}>Problema na Rede de Wi-Fi</p>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Prioridade:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.prioridadeMedia }}>P2 Médio</span>
-                        </div>
-                        <div style={styles.colunaTicket}>
-                            <span style={styles.rotulo}>Status:</span>
-                            <span style={{ ...styles.etiqueta, ...styles.statusPendente }}>Pendente</span>
-                        </div>
-                    </article>
 
                     <article style={styles.ticket}>
                         <div style={styles.infoTicket}>
@@ -132,7 +45,6 @@ const HistoricoRecorrentes = () => {
                             <span style={{ ...styles.etiqueta, ...styles.statusConcluido }}>Concluído</span>
                         </div>
                     </article>
-
                     <article style={styles.ticket}>
                         <div style={styles.infoTicket}>
                             <h3 style={styles.idTicket}>#00133</h3>
@@ -148,6 +60,20 @@ const HistoricoRecorrentes = () => {
                         </div>
                     </article>
 
+                    <article style={styles.ticket}>
+                        <div style={styles.infoTicket}>
+                            <h3 style={styles.idTicket}>#00137</h3>
+                            <p style={styles.descricao}>Problema na Rede de Wi-Fi</p>
+                        </div>
+                        <div style={styles.colunaTicket}>
+                            <span style={styles.rotulo}>Prioridade:</span>
+                            <span style={{ ...styles.etiqueta, ...styles.prioridadeBaixa }}>P1 Baixo</span>
+                        </div>
+                        <div style={styles.colunaTicket}>
+                            <span style={styles.rotulo}>Status:</span>
+                            <span style={{ ...styles.etiqueta, ...styles.statusAdocao }}>Em adoção</span>
+                        </div>
+                    </article>
                     <article style={styles.ticket}>
                         <div style={styles.infoTicket}>
                             <h3 style={styles.idTicket}>#00137</h3>

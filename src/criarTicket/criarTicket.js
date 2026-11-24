@@ -1,51 +1,60 @@
-const fonte = 'Inter, system-ui, sans-serif';
+
+const fonte = "'Open Sans', 'Noto Sans', Inter, system-ui, sans-serif";
+
+const azulEscuro = '#1F3A6E';
+const azulBotao = '#1C63C2';
+const bordaClara = '#D8E4F2';
 
 export const criarTicketStyles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    width: '100%',
-    minHeight: '100vh',
-    padding: '22px 24px 24px',
-    backgroundColor: '#EFF6FD',
+    width: 'calc(100% - 70px)',
+    minHeight: 'calc(100vh - 65px)',
+    marginLeft: '65px',
+    marginTop: '65px',
+    padding: '14px 8% 32px',
+    backgroundColor: '#F4F9FE',
     boxSizing: 'border-box',
-    gap: '6px',
+    gap: '14px',
     fontFamily: fonte,
   },
 
+  // Banner
   banner: {
     display: 'flex',
-    flexDirection: 'row',
     alignItems: 'center',
     gap: '22px',
-    height: '88px',
-    padding: '0 16px',
-    borderRadius: '10px',
-    background: 'linear-gradient(90deg, #DCEBFF 0%, #A9D0FF 50%, #77B1FF 100%)',
+    height: '104px',
+    minHeight: '104px',
+    padding: '0 48px',
+    borderRadius: '12px',
+    background: 'linear-gradient(90deg, #E6F0FD 0%, #B5D5FE 55%, #7DB8FF 100%)',
     boxSizing: 'border-box',
-    marginBottom: '4px',
   },
 
   bannerIcone: {
-    width: '48px',
-    height: '48px',
+    width: '52px',
+    height: '52px',
   },
 
   bannerTitulo: {
     margin: 0,
-    color: '#1C3F7A',
-    fontSize: '30px',
+    color: azulEscuro,
+    fontSize: '34px',
     fontWeight: '700',
   },
 
+  // Card
   card: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '16px',
-    padding: '12px',
-    border: '1px solid #D5E1F0',
-    borderRadius: '10px',
-    backgroundColor: '#EFF6FD',
+    gap: '24px',
+    flex: 1,
+    padding: '20px 16px 24px',
+    border: `1px solid ${bordaClara}`,
+    borderRadius: '12px',
+    backgroundColor: '#EEF5FD',
     boxSizing: 'border-box',
   },
 
@@ -53,30 +62,26 @@ export const criarTicketStyles = {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    gap: '14px',
+    gap: '22px',
     flexWrap: 'wrap',
   },
 
-  // foto
+  // Foto
   fotoWrapper: {
-    position: 'relative',
-    width: '218px',
-    height: '218px',
-    flex: '0 0 218px',
-    padding: '4px',
-    border: '1px solid #D5E1F0',
-    borderRadius: '12px',
-    boxSizing: 'border-box',
-    backgroundColor: '#FFFFFF',
-  },
+  position: "relative",
+  width: "420px",
+  height: "280px",
+  flexShrink: 0,
+},
 
-  foto: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    borderRadius: '10px',
-    display: 'block',
-  },
+foto: {
+  width: "100%",
+  height: "100%",
+  objectFit: "contain",
+  backgroundColor: "#F5F8FC",
+  borderRadius: "12px",
+  display: "block",
+},
 
   fotoVazia: {
     display: 'flex',
@@ -96,16 +101,16 @@ export const criarTicketStyles = {
 
   botaoCamera: {
     position: 'absolute',
-    right: '-6px',
-    bottom: '-6px',
+    right: '-8px',
+    bottom: '-10px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '36px',
-    height: '36px',
+    width: '40px',
+    height: '40px',
     borderRadius: '50%',
-    border: '3px solid #EFF6FD',
-    backgroundColor: '#1C63C2',
+    border: '3px solid #EEF5FD',
+    backgroundColor: azulBotao,
     cursor: 'pointer',
     padding: 0,
   },
@@ -114,95 +119,129 @@ export const criarTicketStyles = {
     display: 'none',
   },
 
-  // campos para digitar
+  // Campos
   campos: {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
     minWidth: '280px',
-    gap: '14px',
+    gap: '10px',
   },
 
   campoContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
+    gap: '4px',
     width: '100%',
   },
 
   linhaCampos: {
     display: 'flex',
     flexDirection: 'row',
-    gap: '20px',
+    flexWrap: 'nowrap',
+    alignItems: 'flex-end',
+    gap: '24px',
     width: '100%',
-    flexWrap: 'wrap',
   },
 
   campoCliente: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
-    flex: '1 1 260px',
+    gap: '4px',
+    flex: '1.8 1 0',
     minWidth: 0,
   },
 
   campoTelefone: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px',
-    flex: '0 0 190px',
-    minWidth: '190px',
+    gap: '4px',
+    flex: '1 1 0',
+    minWidth: 0,
   },
 
   label: {
-    color: '#0B2A5B',
-    fontSize: '15px',
+    color: azulEscuro,
+    fontSize: '22px',
     fontWeight: '700',
+    lineHeight: '1.2',
+  },
+
+  labelMenor: {
+    color: azulEscuro,
+    fontSize: '17px',
+    fontWeight: '700',
+    lineHeight: '1.2',
   },
 
   input: {
     width: '100%',
-    height: '36px',
-    padding: '0 14px',
+    height: '38px',
+    padding: '0 12px',
     boxSizing: 'border-box',
-    border: '1px solid #E5E7EB',
+    border: '1px solid #E3EAF3',
     borderRadius: '6px',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAFCFF',
     color: '#0B1B38',
     fontSize: '13px',
     outline: 'none',
     fontFamily: fonte,
   },
 
-  // descricao
+  // Descrição
   descricaoContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-    padding: '4px 4px 0',
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 'none',
+  alignItems: 'stretch',   // era 'flex-start'
+  width: '100%',
+  padding: '0 6px',
+  boxSizing: 'border-box',
+},
+
+descricaoBox: {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',           // era '90%'
+  minWidth: '320px',
+  height: '230px',
+  minHeight: '230px',
+  flex: '0 0 230px',
+  border: `2px solid ${azulEscuro}`,
+  borderRadius: '4px',
+  backgroundColor: '#FFFFFF',
+  boxSizing: 'border-box',
+  overflow: 'hidden',
+},
+
+  descricaoCabecalho: {
+    display: 'block',
+    padding: '4px 20px',
+    backgroundColor: azulEscuro,
+    color: '#FFFFFF',
+    fontSize: '22px',
+    fontWeight: '700',
+    lineHeight: '1.3',
   },
 
-  descricaoBox: {
-    position: 'relative',
+  descricaoCorpo: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '150px',
-    border: '1px solid #D5E1F0',
-    borderRadius: '8px',
-    backgroundColor: '#F3F8FE',
+    flex: 1,
+    minHeight: 0,
+    padding: '8px 28px 10px',
     boxSizing: 'border-box',
-    padding: '14px 14px 12px',
   },
 
   textarea: {
     flex: 1,
     width: '100%',
-    minHeight: '90px',
+    minHeight: 0,
     border: 'none',
     outline: 'none',
     resize: 'none',
     backgroundColor: 'transparent',
-    color: '#0B2A5B',
+    color: azulEscuro,
     fontSize: '13px',
     lineHeight: '20px',
     fontFamily: fonte,
@@ -210,22 +249,16 @@ export const criarTicketStyles = {
 
   botaoEnviar: {
     alignSelf: 'flex-end',
-    width: '148px',
+    minWidth: '120px',
     height: '34px',
+    padding: '0 18px',
     border: 'none',
-    borderRadius: '8px',
-    backgroundColor: '#1C63C2',
-    boxShadow: '0 3px 6px rgba(4, 34, 74, 0.35)',
+    borderRadius: '4px',
+    backgroundColor: azulBotao,
     color: '#FFFFFF',
-    fontSize: '15px',
+    fontSize: '14px',
     fontWeight: '700',
     cursor: 'pointer',
     fontFamily: fonte,
-  },
-
-  mensagem: {
-    margin: 0,
-    fontSize: '13px',
-    fontWeight: '600',
   },
 };

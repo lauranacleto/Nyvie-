@@ -9,16 +9,15 @@ import HistoricoTicket from './historicoTicket/historicoTicket.jsx';
 import HistoricoRecorrentes from './historicoRecorrentes/historicoRecorrentes';
 import Detalhes from './detalhes/detalhes.jsx';
 import TelaOverview from './telaOverview/TelaOverview.jsx';
-import telaOverview from './telaOverview/TelaOverview.jsx'
 import HistoricoEquipe from './historicoEquipe/historicoEquipe.jsx';
 import CriarTicket from './criarTicket/criarTicket.jsx';
-
-import { UsuarioProvider } from './context/UsuarioProvinder.jsx';
+import EditarTicket from './editarTicket/editarTicket.jsx';
 
 
 export default function App() {
+
   return (
-    <UsuarioProvider>
+    // <UsuarioProvider>
     <BrowserRouter>
     
       <Routes>
@@ -26,6 +25,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/editarPerfil" element={<EditarPerfil />} />
+        <Route path="/criarTicket" element={<CriarTicket />} />
+        <Route path="/editarTicket/:id" element={<EditarTicket />} />
         <Route path="/historicoTicket" element={<HistoricoTicket />} />
         <Route path="/detalhes" element={<Detalhes />} />
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
@@ -35,6 +36,6 @@ export default function App() {
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
       </Routes>
     </BrowserRouter>
-    </UsuarioProvider>
+    // </UsuarioProvider>
   );
 }

@@ -5,9 +5,9 @@ import { useState, useContext } from "react";
 import { UsuarioContext } from "../../context/UsuarioContext.jsx";
 import api from "../../../services/services.js";
 import { styles } from "./headerStyleSheet.js";
-import iconFinalizado from "../../assets/check2.svg";
-import iconAtualizacao from "../../assets/up.svg";
-import iconAlerta from "../../assets/attention.svg";
+import iconFinalizado from "../../assets/check.svg";
+import iconAtualizacao from "../../assets/status.svg";
+import iconAlerta from "../../assets/danger.svg";
 import iconMensagem from "../../assets/message.svg";
 
 const Header = () => {
@@ -21,13 +21,15 @@ const Header = () => {
             icone: iconFinalizado
         },
         atualizacao: {
-            icone: iconAtualizacao
+            icone: iconAtualizacao,
+            backgroundColor: "#6E389A"
         },
         alerta: {
             icone: iconAlerta
         },
         mensagem: {
-            icone: iconMensagem
+            icone: iconMensagem,
+            backgroundColor: "#0A3882"
         }
     };
 
@@ -37,17 +39,14 @@ const Header = () => {
             return;
         }
 
+        setAberto(true);
+
         try {
-            const resposta = await api.get("/notificacoes");
-
+            const resposta = await api.get("http://localhost:3000/notificacoes");
             setNotificacoes(resposta.data);
-            setAberto(true);
-
         } catch (error) {
             console.error("Erro ao buscar notificações:", error);
         }
-
-
     };
 
     return (

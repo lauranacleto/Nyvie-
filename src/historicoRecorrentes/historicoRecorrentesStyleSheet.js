@@ -1,155 +1,104 @@
-
-
 export const styles = {
     container: {
         width: "100%",
         minHeight: "100vh",
-        backgroundColor: "#EDF5FC",
-        fontFamily: "Arial, sans-serif",
+        backgroundColor: "#F4F8FC",
+        fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
         boxSizing: "border-box",
-    },
-
-    logo: {
-        fontSize: 32,
-        fontWeight: "bold",
-        color: "#FFFFFF",
-        margin: 0,
-    },
-
-    usuario: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 28,
-    },
-
-    sino: {
-        fontSize: 24,
-        color: "#FFFFFF",
-    },
-
-    avatar: {
-        width: 46,
-        height: 46,
-        borderRadius: 50,
-        backgroundColor: "#D9E5F3",
-        color: "#204C9B",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontWeight: "bold",
-        fontSize: 20,
-    },
-
-    menu: {
-        position: "absolute",
-        top: 65,
-        left: 0,
-        bottom: 0,
-        width: 65,
-        backgroundColor: "#0B1B38",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        paddingTop: 45,
-        gap: 28,
-        color: "#FFFFFF",
-    },
-
-    iconeMenu: {
-        fontSize: 29,
-        color: "#FFFFFF",
-        textAlign: "center",
-    },
-
-    menuSair: {
-        position: "absolute",
-        bottom: 30,
-        fontSize: 32,
-        color: "#FFFFFF",
     },
 
     conteudo: {
-        marginLeft: 90,
-        padding: "10px 12px 20px",
-        minHeight: "34px",
+        marginLeft: 92,
+        marginTop: 64,
+        width: "calc(100% - 92px)",
+        padding: "32px 24px 20px 24px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         boxSizing: "border-box",
     },
 
-    titulo: {
-        margin: "0 0 12px",
-        fontSize: 22,
-        fontWeight: "semi-bold",
-        color: "#204C9B",
-    },
-
     categoria: {
-        minHeight: 74,
+        width: "80%",
+        height: 82,
         backgroundColor: "#FFFFFF",
         borderRadius: 10,
         display: "flex",
-        flexDirection: "row",
         alignItems: "center",
-        padding: " 14px",
-        gap: 10,
-        marginBottom: 11,
-        boxShadow: "0 10px 10px #CBD8E7",
+        padding: "10px 20px",
+        gap: 18,
+        marginBottom: 32,
+        boxShadow: "0 2px 0px #BCC9D8",
+        boxSizing: "border-box",
     },
 
-    iconeWifi: {
-        width: 44,
-        height: 44,
+    iconeCategoria: {
+        width: 48,
+        height: 48,
+        borderRadius: "50%",
+        backgroundColor: "#DCE7F5",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#0F1E36",
+        boxShadow: "0 2px 3px rgba(0, 0, 0, 0.12)",
+        flexShrink: 0,
     },
 
     nomeCategoria: {
-        fontSize: 25,
+        fontSize: 26,
         fontWeight: "bold",
-        color: "#204C9B",
+        color: "#1B3F8B",
         margin: 0,
     },
 
     lista: {
         backgroundColor: "#FFFFFF",
-        border: "1px solid #DCE8F5",
-        borderRadius: 7,
-        padding: 17,
-        width: "100%",
-        minHeight: 480,
+        border: "1px solid #CFDCEB",
+        borderRadius: 8,
+        padding: 0,
+        width: "80%",
+        minHeight: 360,
         boxSizing: "border-box",
+        overflow: "hidden",
     },
 
     ticket: {
-        minHeight: 78,
+        height: 68,
         width: "100%",
-        backgroundColor: "#EFF6FD",
-        border: "1px solid #DCE7F1",
-        borderRadius: 7,
-        boxShadow: "0 1px 2px #C2CBD4",
+        backgroundColor: "#FFFFFF",
+        border: "none",
+        borderBottom: "1px solid #333333",
+        borderRadius: 0,
+        boxShadow: "none",
         display: "grid",
-        gridTemplateColumns: "minmax(0, 1fr) 122px 108px",
+        gridTemplateColumns: "minmax(0, 1fr) 145px 175px",
         alignItems: "stretch",
-        marginBottom: 10,
+        marginBottom: 0,
         overflow: "hidden",
         boxSizing: "border-box",
     },
 
     infoTicket: {
-        padding: "7px 9px",
+        padding: "6px 18px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        minWidth: 0,
     },
 
     idTicket: {
-        margin: "0 0 5px",
-        fontSize: 19,
-        color: "#204C9B",
+        margin: "0 0 4px",
+        fontSize: 25,
+        fontWeight: "600",
+        color: "#1B3F8B",
     },
 
     descricao: {
         margin: 0,
         fontSize: 15,
-        color: "#0B1B38",
+        color: "#1E293B",
+        fontWeight: "500",
     },
 
     colunaTicket: {
@@ -157,59 +106,57 @@ export const styles = {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: 9,
-        borderLeft: "1px solid #DCE5EF",
-        padding: 5,
+        gap: 7,
+        borderLeft: "1px solid #E2E8F0",
+        padding: "6px 14px",
+        boxSizing: "border-box",
     },
 
     rotulo: {
         fontSize: 13,
-        color: "#0B1B38",
+        color: "#0F1E36",
+        fontWeight: "500",
     },
 
     etiqueta: {
-        minWidth: 67,
-        padding: "3px 4px",
-        borderRadius: 15,
-        border: "1px solid",
+        width: "80%",
+        padding: "4px 12px",
+        borderRadius: 8,
+        border: "none",
         textAlign: "center",
-        fontSize: 13,
+        fontSize: 12,
+        fontWeight: "semi-bold",
         whiteSpace: "nowrap",
+        boxSizing: "border-box",
     },
 
     prioridadeAlta: {
-        backgroundColor: "#FFF0E4",
-        borderColor: "#F4B88D",
-        color: "#BD7138",
+        backgroundColor: "#C5630A",
+        color: "#FFFFFF",
     },
 
     prioridadeMedia: {
-        backgroundColor: "#E0EBFF",
-        borderColor: "#8AA9F4",
-        color: "#4168C5",
+        backgroundColor: "#CEAE00",
+        color: "#FFFFFF",
     },
 
     prioridadeBaixa: {
-        backgroundColor: "#D9F2E9",
-        borderColor: "#83C9B5",
-        color: "#36856F",
+        backgroundColor: "#00695C",
+        color: "#FFFFFF",
     },
 
     statusAdocao: {
-        backgroundColor: "#FFF0B9",
-        borderColor: "#D6B957",
-        color: "#89743A",
+        backgroundColor: "#CEAE00",
+        color: "#FFFFFF",
     },
 
     statusPendente: {
-        backgroundColor: "#FFDDDD",
-        borderColor: "#D99B9B",
-        color: "#9B5555",
+        backgroundColor: "#A80028",
+        color: "#FFFFFF",
     },
 
     statusConcluido: {
-        backgroundColor: "#C6EBDC",
-        borderColor: "#83C8AD",
-        color: "#437B66",
+        backgroundColor: "#00695C",
+        color: "#FFFFFF",
     },
 };

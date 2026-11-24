@@ -1,10 +1,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Camera } from "lucide-react";
+
 import { criarTicketStyles } from "./criarTicket.js";
 import iconeTicket from "../assets/ticket.svg";
 import api from "../../services/services";
 
+import Header from "../components/header/header.jsx";
+import Aside from "../components/aside/aside.jsx";
 
 async function buscarDepartamentos() {
   try {
@@ -16,10 +19,7 @@ async function buscarDepartamentos() {
   }
 }
 
-
-
-
-// Formatar telefone
+// telefone
 function formatarTelefone(valor) {
   const numeros = valor.replace(/\D/g, "").slice(0, 11);
 
@@ -36,7 +36,6 @@ function formatarTelefone(valor) {
   return `(${numeros.slice(0, 2)}) ${numeros.slice(2, 7)}-${numeros.slice(7)}`;
 }
 
-// Converter imagem para Base64
 function converterImagem(arquivo) {
   return new Promise((resolve, reject) => {
     if (!arquivo) {
@@ -46,8 +45,62 @@ function converterImagem(arquivo) {
 
     const leitor = new FileReader();
 
-    leitor.onload = () => resolve(leitor.result);
-    leitor.onerror = () => reject(new Error("Erro ao ler a imagem."));
+    leitor.onload = () => {
+      const foto = new Image();
+
+      foto.onload = () => {
+        const canvas = document.createElement("canvas");
+
+        let largura = foto.width;
+        let altura = foto.height;
+
+        // Limitar o tamanho da imagem
+        const tamanhoMaximo = 800;
+
+        if (largura > tamanhoMaximo || altura > tamanhoMaximo) {
+          const proporcao = Math.min(
+            tamanhoMaximo / largura,
+            tamanhoMaximo / altura
+          );
+
+          largura = Math.round(largura * proporcao);
+          altura = Math.round(altura * proporcao);
+        }
+
+        let imagemBase64 = "";
+
+        while (true) {
+          canvas.width = largura;
+          canvas.height = altura;
+
+          const contexto = canvas.getContext("2d");
+
+          contexto.drawImage(foto, 0, 0, largura, altura);
+
+          imagemBase64 = canvas.toDataURL("image/jpeg", 0.6);
+
+          if (imagemBase64.length <= 75 * 1024) {
+            break;
+          }
+
+          if (largura <= 250 || altura <= 250) {
+            reject(new Error("Não foi possível reduzir a imagem."));
+            return;
+          }
+
+          largura = Math.round(largura * 0.8);
+          altura = Math.round(altura * 0.8);
+        }
+
+        resolve(imagemBase64);
+      };
+
+      foto.onerror = () => reject(new Error("Erro ao carregar imagem."));
+
+      foto.src = leitor.result;
+    };
+
+    leitor.onerror = () => reject(new Error("Erro ao ler imagem."));
 
     leitor.readAsDataURL(arquivo);
   });
@@ -67,9 +120,7 @@ export default function CriarTicket() {
   const s = criarTicketStyles;
 
   useEffect(() => {
-    buscarDepartamentos().then((dados) => {
-      setDepartamentos(dados);
-    });
+    buscarDepartamentos().then(setDepartamentos);
   }, []);
 
   useEffect(() => {
@@ -80,14 +131,13 @@ export default function CriarTicket() {
     };
   }, [previa]);
 
-  // Escolher imagem
   function escolherImagem(e) {
     const arquivo = e.target.files?.[0];
 
     if (!arquivo) return;
 
     if (!arquivo.type.startsWith("image/")) {
-      alert("Selecione um arquivo de imagem válido.");
+      alert("Selecione uma imagem válida.");
       e.target.value = "";
       return;
     }
@@ -102,7 +152,7 @@ export default function CriarTicket() {
     setPrevia(URL.createObjectURL(arquivo));
   }
 
-
+  // Enviar ticket
   async function funcEnviar(e) {
     e.preventDefault();
 
@@ -124,12 +174,12 @@ export default function CriarTicket() {
     }
 
     if (numeroTelefone.length < 10) {
-      alert("Informe um telefone válido com DDD.");
+      alert("Informe um telefone válido.");
       return;
     }
 
     if (!descricao.trim()) {
-      alert("Descreva o problema relatado pelo cliente.");
+      alert("Descreva o problema.");
       return;
     }
 
@@ -150,10 +200,8 @@ export default function CriarTicket() {
       const response = await api.post("/tickets", dadosTicket);
 
       console.log("Ticket cadastrado:", response.data);
-
       alert("Ticket cadastrado com sucesso!");
 
-      // Limpar formulário
       setTitulo("");
       setDepartamento("");
       setCliente("");
@@ -162,6 +210,10 @@ export default function CriarTicket() {
       setImagem(null);
       setPrevia(null);
 
+      if (inputArquivoRef.current) {
+        inputArquivoRef.current.value = "";
+      }
+
     } catch (error) {
       console.error("Erro ao cadastrar ticket:", error);
       alert("Não foi possível cadastrar o ticket.");
@@ -169,157 +221,172 @@ export default function CriarTicket() {
   }
 
   return (
-    <main style={s.container}>
-      <div style={s.banner}>
-        <img
-          src={iconeTicket}
-          alt=""
-          style={s.bannerIcone}
-        />
+    <>
+      <Header />
+      <Aside />
 
-        <h1 style={s.bannerTitulo}>Criar Ticket</h1>
-      </div>
+      <main style={s.container}>
 
-      <form style={s.card} onSubmit={funcEnviar}>
-        <div style={s.topo}>
+        <div style={s.banner}>
+          <img
+            src={iconeTicket}
+            alt=""
+            style={s.bannerIcone}
+          />
 
-          {/* Foto do problema */}
-          <div style={s.fotoWrapper}>
-            {previa ? (
-              <img
-                src={previa}
-                alt="Foto do problema"
-                style={s.foto}
-              />
-            ) : (
-              <div style={s.fotoVazia}>
-                Adicione uma foto do problema
-              </div>
-            )}
+          <h1 style={s.bannerTitulo}>
+            Criar Ticket
+          </h1>
+        </div>
 
-            <button
-              type="button"
-              style={s.botaoCamera}
-              aria-label="Adicionar foto"
-              onClick={() => inputArquivoRef.current?.click()}
-            >
-              <Camera
-                size={18}
-                color="#FFFFFF"
-                strokeWidth={2}
-              />
-            </button>
+        <form style={s.card} onSubmit={funcEnviar}>
 
-            <input
-              ref={inputArquivoRef}
-              type="file"
-              accept="image/*"
-              capture="environment"
-              style={s.inputArquivo}
-              onChange={escolherImagem}
-            />
-          </div>
+          <div style={s.topo}>
 
-          {/* Campos do ticket */}
-          <div style={s.campos}>
-            <div style={s.campoContainer}>
-              <label htmlFor="titulo" style={s.label}>
-                Título:
-              </label>
+            {/* Imagem */}
+            <div style={s.fotoWrapper}>
+
+              {previa ? (
+                <img
+                  src={previa}
+                  alt="Foto do problema"
+                  style={s.foto}
+                />
+              ) : (
+                <div style={s.fotoVazia}>
+                  Adicione uma foto do problema
+                </div>
+              )}
+
+              <button
+                type="button"
+                style={s.botaoCamera}
+                onClick={() => inputArquivoRef.current?.click()}
+                aria-label="Adicionar foto"
+              >
+                <Camera
+                  size={20}
+                  color="#FFFFFF"
+                />
+              </button>
 
               <input
-                id="titulo"
-                type="text"
-                placeholder="Digite o título do ticket"
-                style={s.input}
-                value={titulo}
-                onChange={(e) => setTitulo(e.target.value)}
+                ref={inputArquivoRef}
+                type="file"
+                accept="image/*"
+                capture="environment"
+                style={s.inputArquivo}
+                onChange={escolherImagem}
               />
             </div>
 
-            <div style={s.campoContainer}>
-              <label htmlFor="departamento" style={s.label}>
-                Departamento:
+            <div style={s.campos}>
+
+              <div style={s.campoContainer}>
+                <label htmlFor="titulo" style={s.label}>
+                  Título:
+                </label>
+
+                <input
+                  id="titulo"
+                  type="text"
+                  placeholder="Digite o título do ticket"
+                  style={s.input}
+                  value={titulo}
+                  onChange={(e) => setTitulo(e.target.value)}
+                />
+              </div>
+
+              <div style={s.campoContainer}>
+                <label htmlFor="departamento" style={s.label}>
+                  Departamento:
+                </label>
+
+                <select
+                  id="departamento"
+                  style={s.input}
+                  value={departamento}
+                  onChange={(e) => setDepartamento(e.target.value)}
+                >
+                  <option value="">
+                    Selecione o departamento
+                  </option>
+
+                  {departamentos.map((d) => (
+                    <option key={d.id} value={d.id}>
+                      {d.nome}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div style={s.linhaCampos}>
+
+                <div style={s.campoCliente}>
+                  <label htmlFor="cliente" style={s.label}>
+                    Cliente:
+                  </label>
+
+                  <input
+                    id="cliente"
+                    type="text"
+                    placeholder="Digite o nome do cliente"
+                    style={s.input}
+                    value={cliente}
+                    onChange={(e) => setCliente(e.target.value)}
+                  />
+                </div>
+
+                <div style={s.campoTelefone}>
+                  <label htmlFor="telefone" style={s.labelMenor}>
+                    Telefone:
+                  </label>
+
+                  <input
+                    id="telefone"
+                    type="tel"
+                    placeholder="(11) 99999-9999"
+                    style={s.input}
+                    value={telefone}
+                    onChange={(e) =>
+                      setTelefone(formatarTelefone(e.target.value))
+                    }
+                  />
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          {/* Descrição */}
+          <div style={s.descricaoContainer}>
+            <div style={s.descricaoBox}>
+              <label htmlFor="descricao" style={s.descricaoCabecalho}>
+                Descrição
               </label>
 
-              <select
-                id="departamento"
-                style={s.input}
-                value={departamento}
-                onChange={(e) => setDepartamento(e.target.value)}
-              >
-                <option value="">Selecione o departamento</option>
-
-                {departamentos.map((d) => (
-                  <option key={d.id} value={d.id}>
-                    {d.nome}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div style={s.linhaCampos}>
-              <div style={s.campoCliente}>
-                <label htmlFor="cliente" style={s.label}>
-                  Cliente:
-                </label>
-                
-                <input
-                  id="cliente"
-                  type="text"
-                  placeholder="Digite o nome do cliente"
-                  style={s.input}
-                  value={cliente}
-                  onChange={(e) => setCliente(e.target.value)}
+              <div style={s.descricaoCorpo}>
+                <textarea
+                  id="descricao"
+                  style={s.textarea}
+                  maxLength={512}
+                  placeholder="Descreva o problema relatado pelo cliente"
+                  value={descricao}
+                  onChange={(e) => setDescricao(e.target.value)}
                 />
 
-              </div>
-
-              <div style={s.campoTelefone}>
-                <label htmlFor="telefone" style={s.label}>
-                  Telefone:
-                </label>
-
-                <input
-                  id="telefone"
-                  type="tel"
-                  placeholder="(11) 99999-9999"
-                  style={s.input}
-                  value={telefone}
-                  onChange={(e) =>
-                    setTelefone(formatarTelefone(e.target.value))
-                  }
-                />
+                <button
+                  type="submit"
+                  style={s.botaoEnviar}
+                >
+                  Enviar
+                </button>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Descrição */}
-        <div style={s.descricaoContainer}>
-          <label htmlFor="descricao" style={s.label}>
-            Descrição
-          </label>
-
-          <div style={s.descricaoBox}>
-            <textarea
-              id="descricao"
-              style={s.textarea}
-              maxLength={512}
-              placeholder="Descreva o problema relatado pelo cliente"
-              value={descricao}
-              onChange={(e) => setDescricao(e.target.value)}
-            />
-
-            <button
-              type="submit"
-              style={s.botaoEnviar}
-            >
-              Enviar
-            </button>
-          </div>
-        </div>
-      </form>
-    </main >
+        </form>
+      </main>
+    </>
   );
 }

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UsuarioContext } from "../context/UsuarioContext";
-import logo from "../assets/logo.svg";
 import { perfilStyles } from "./perfilStyles";
+import { jwtDecode } from "jwt-decode";
+import logo from "../assets/logo.svg";
 import api from "../../services/services";
 
 export default function LoginUsuario() {
@@ -12,34 +13,47 @@ export default function LoginUsuario() {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const { setUsuario } = useContext(UsuarioContext);
+  const { token, setToken } = useContext(UsuarioContext);
 
-     const funcEntrar = async () => {
-        console.log("Email:", email);
-        console.log("Senha:", senha);
-     
-        try
-        {   
-            const objLogin = {
-                email: email,
-                senha: senha
-            }
+  useEffect(() => {
+    checarToken(token);
+}, []);
 
-            const response = await api.post('/usuarios', objLogin);
-            console.log("Resposta do login:", response.data);
-            navigate('/Overview');
+  const checarToken = (tokenRecebido) => {
+    if (!tokenRecebido) {
+      return
+    }
 
-            setUsuario(response.data)
+    console.log(jwtDecode(tokenRecebido));
 
-        } 
-        catch (error) 
-        {
-            console.error("Erro ao fazer login:", error);
-        }
-    } 
+    navigate('/Overview');
+  }
+
+  const funcEntrar = async () => {
+    console.log("Email:", email);
+    console.log("Senha:", senha);
+
+    try {
+      const objLogin = {
+        email: email,
+        senha: senha
+      }
+
+      const response = await api.post('/Login', objLogin);
+      console.log("Resposta do login:", response.data.token);
+
+      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
+
+      navigate('/Overview');
+    }
+    catch (error) {
+      console.error("Erro ao fazer login:", error);
+    }
+  }
 
   return (
-    <div style={perfilStyles.container}>
+    <div style={perfilStyles.container} >
 
       <div style={perfilStyles.ladoEsquerdo}>
         <div style={perfilStyles.bolaSE} />
