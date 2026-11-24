@@ -24,6 +24,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/editarPerfil" element={<EditarPerfil />} />
+        <Route path="/criarTicket" element={<CriarTicket />} />
+        <Route path="/editarTicket/:id" element={<EditarTicket />} />
         <Route path="/historicoTicket" element={<HistoricoTicket />} />
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
         <Route path="/criarTicket" element={<CriarTicket />} />

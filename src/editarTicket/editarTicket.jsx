@@ -369,7 +369,7 @@ export default function EditarTicket() {
                     </div>
 
                     <div style={s.campoTelefone}>
-                      <label htmlFor="telefone" style={s.label}>
+                      <label htmlFor="telefone" style={s.labelMenor}>
                         Telefone:
                       </label>
 
@@ -391,27 +391,29 @@ export default function EditarTicket() {
 
               {/* descrição */}
               <div style={s.descricaoContainer}>
-                <label htmlFor="descricao" style={s.label}>
-                  Descrição
-                </label>
-
                 <div style={s.descricaoBox}>
-                  <textarea
-                    id="descricao"
-                    style={s.textarea}
-                    maxLength={512}
-                    placeholder="Descreva o problema relatado pelo cliente"
-                    value={descricao}
-                    onChange={(e) => setDescricao(e.target.value)}
-                  />
+                  <label htmlFor="descricao" style={s.descricaoCabecalho}>
+                    Descrição
+                  </label>
 
-                  <button
-                    type="submit"
-                    style={s.botaoEnviar}
-                    disabled={salvando}
-                  >
-                    {salvando ? "Salvando..." : "Salvar alterações"}
-                  </button>
+                  <div style={s.descricaoCorpo}>
+                    <textarea
+                      id="descricao"
+                      style={s.textarea}
+                      maxLength={512}
+                      placeholder="Descreva o problema relatado pelo cliente"
+                      value={descricao}
+                      onChange={(e) => setDescricao(e.target.value)}
+                    />
+
+                    <button
+                      type="submit"
+                      style={s.botaoEnviar}
+                      disabled={salvando}
+                    >
+                      {salvando ? "Salvando..." : "Salvar alterações"}
+                    </button>
+                  </div>
                 </div>
               </div>
 
