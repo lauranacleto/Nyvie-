@@ -11,7 +11,8 @@ import TelaOverview from './telaOverview/TelaOverview.jsx';
 import HistoricoEquipe from './historicoEquipe/historicoEquipe.jsx';
 import CriarTicket from './criarTicket/criarTicket.jsx';
 import EditarTicket from './editarTicket/editarTicket.jsx';
-
+import TelaN3 from './components/telaN3/telaN3.jsx';
+import TelaN2 from './components/telaN2/telaN2.jsx';
 
 export default function App() {
 
@@ -30,6 +31,8 @@ export default function App() {
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
         <Route path="/criarTicket" element={<CriarTicket />} />
         <Route path="/Overview" element={<TelaOverview />} />
+        <Route path="/overviewN2" element={<TelaN2 />} />
+        <Route path="/overviewN3" element={<TelaN3 />} />
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
       </Routes>
     </BrowserRouter>
