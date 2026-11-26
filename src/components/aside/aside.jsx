@@ -14,7 +14,8 @@ const aside = () => {
                     <img src={casa} alt="Casa" style={{ width: 24, height: 24 }} />
                 </span>
                 <span style={styles.iconeMenu}>
-                    <img src={create} alt="Criar" style={{ width: 24, height: 24 }} />
+                    <img src={create} alt="Criar" style={{ width: 24, height: 24 }}/>
+                    
                 </span>
                 <span style={styles.iconeMenu}>
                     <img src={profile} alt="Perfil" style={{ width: 24, height: 24 }} />
