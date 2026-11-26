@@ -18,5 +18,6 @@ export const styles = {
         color: "#FFFFFF",
         boxSizing: "border-box",
         flexShrink: 0,
+        zIndex: 1001
     },
 };

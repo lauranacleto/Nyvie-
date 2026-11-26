@@ -43,7 +43,7 @@ const Header = () => {
         setAberto(true);
 
         try {
-            const resposta = await api.get("http://localhost:3000/notificacoes");
+            const resposta = await api.get("/notificacao");
             setNotificacoes(resposta.data);
         } catch (error) {
             console.error("Erro ao buscar notificações:", error);
@@ -51,6 +51,18 @@ const Header = () => {
     };
 
     return (
+        <>
+    {aberto && (
+    <div
+        style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.45)",
+            zIndex: 998
+        }}
+        onClick={() => setAberto(false)}
+    />
+    )}
         <header style={styles.header}>
             <h1 style={styles.logo}>
                 <img
@@ -93,20 +105,21 @@ const Header = () => {
                         </h3>
 
                         {notificacoes.length === 0 ? (
-                            <p>Você não possui notificações.</p>
+                            <p style={{marginLeft: 10, marginTop: 10 }}>Você não possui notificações.</p>
                         ) : (
                             notificacoes.map((item) => {
+
                                 const tipo = tiposNotificacao[item.tipo] || tiposNotificacao.mensagem;
 
                                 return (
-                                    <div key={item.id} style={styles.cardNotificacao}>
+                                    <div key={item.idNotificacao} style={styles.cardNotificacao}>
 
                                         <div style={{
                                             ...styles.iconeNotificacao,
                                             backgroundColor: tipo.cor
                                         }}>
                                             <img
-                                                src={tipo.icone}
+                                                src={item.tipoNotificacao?.nome == "Criar" ? iconFinalizado : iconFinalizado}
                                                 alt={item.tipo}
                                                 style={{
                                                     width: "35px",
@@ -118,11 +131,11 @@ const Header = () => {
 
                                         <div style={styles.conteudoNotificacao}>
                                             <strong style={styles.tituloCard}>
-                                                {item.titulo}
+                                                {item.tipoNotificacao?.nome == "Criar" ? "O ticket foi criado " : "ticket"}
                                             </strong>
 
                                             <p style={styles.mensagemNotificacao}>
-                                                {item.mensagem}
+                                                {item.tipoNotificacao?.nome == "Criar" ? "O ticket foi criado com sucesso" : "ticket"}
                                             </p>
                                         </div>
 
@@ -136,6 +149,7 @@ const Header = () => {
                 <div style={styles.avatar}></div>
             </div>
         </header>
+    </>
     );
 };
 

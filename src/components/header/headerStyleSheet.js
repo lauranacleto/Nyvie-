@@ -8,7 +8,7 @@ export const styles = {
         justifyContent: "space-between",
         paddingLeft: 64,
         paddingRight: 38,
-        color: "#FFFFFF",
+        color: "#000000",
         position: "fixed",
         top: 0,
         left: 0,
@@ -27,7 +27,8 @@ export const styles = {
         backgroundColor: "#F5FAFE",
         borderRadius: "5px",
         boxShadow: '0 1px 2px #00000020',
-        zIndex: 1001,
+        overlay: 998,
+        zIndex: 1000,
         padding: "0 0 10px",
         boxSizing: "border-box"
     },

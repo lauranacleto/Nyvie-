@@ -212,10 +212,10 @@ export default function Overview() {
 
     const cards = [
         { chave: "tt", cor: "#1F4E9E", valor: todosTickets.length, rotulo: "Total de Tickets" },
-        { chave: "ea", cor: "#F29900", valor: todosTickets.filter(ticket => ticket.status === "Em adoção").length, rotulo: "Em adoção" },
-        { chave: "c", cor: "#26806F", valor: todosTickets.filter(ticket => ticket.status === "Concluído").length, rotulo: "Concluídos" },
-        { chave: "p", cor: "#E0264B", valor: todosTickets.filter(ticket => ticket.status === "Pendente").length, rotulo: "Pendentes" },
-        { chave: "ea2", cor: "#F29900", valor: todosTickets.filter(ticket => ticket.status === "Em adoção").length, rotulo: "Em adoção" },
+        { chave: "c", cor: "#26806F", valor: todosTickets.filter(ticket => ticket.idStatusTicketNavigation?.nome === "Concluído").length, rotulo: "Concluídos" },
+        { chave: "ea", cor: "#F29900", valor: todosTickets.filter(ticket => ticket.idStatusTicketNavigation?.nome === "Em adoção").length, rotulo: "Em adoção" },
+        { chave: "p", cor: "#E0264B", valor: todosTickets.filter(ticket => ticket.idStatusTicketNavigation?.nome === "Pendente").length, rotulo: "Pendentes" },
+        { chave: "ea2", cor: "#C9A801", valor: todosTickets.filter(ticket => ticket.idStatusTicketNavigation?.nome === "Em Andamento").length, rotulo: "Em andamento" },
     ];
 
     return (
