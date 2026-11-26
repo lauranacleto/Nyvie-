@@ -129,6 +129,7 @@ export default function Overview() {
     const [todosTickets, setTodosTickets] = useState([]);
     const [carregando, setCarregando] = useState(false);
     const [escolhido, setEscolhido] = useState("todos");
+    const [agora, setAgora] = useState(Date.now());
 
     const navigate = useNavigate();
 
@@ -143,6 +144,14 @@ export default function Overview() {
 
     useEffect(() => {
         getTickets();
+    }, []);
+
+    useEffect(() => {
+    const intervalo = setInterval(() => {
+        setAgora(Date.now());
+    }, 1000);
+
+    return () => clearInterval(intervalo);
     }, []);
 
     useEffect(() => {
@@ -209,6 +218,33 @@ export default function Overview() {
             setDadosTickets(todosTickets);
         }
     }, [escolhido, todosTickets]);;
+
+    function calcularSLA(item) {
+    const horas = {
+        "Baixa": 72,
+        "Media": 48,
+        "Média": 48,
+        "Alta": 24,
+        "Critica": 4,
+        "Crítica": 4
+    };
+
+    const prioridade = item.idPrioridadeNavigation?.nome;
+    const prazo = horas[prioridade];
+
+    if (!prazo || !item.dataHora) return "N/A";
+
+    const abertura = new Date(item.dataHora).getTime();
+    const limite = abertura + prazo * 60 * 60 * 1000;
+    const restante = limite - agora;
+
+    if (restante <= 0) return "Vencido";
+
+    const h = Math.floor(restante / 3600000);
+    const m = Math.floor((restante % 3600000) / 60000);
+
+    return `${h}h ${m}min`;
+}
 
     const cards = [
         { chave: "tt", cor: "#1F4E9E", valor: todosTickets.length, rotulo: "Total de Tickets" },
@@ -345,7 +381,9 @@ export default function Overview() {
                                             </td>
 
                                             <td style={celula({ textAlign: "center" })}>
-                                                {item.sla}
+                                                
+                                                    {calcularSLA(item)}
+                                                
                                             </td>
 
                                             <td style={celula({ textAlign: "center" })}>
