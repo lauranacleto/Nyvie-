@@ -378,7 +378,7 @@ export default function Overview() {
                                                     src={ImagemSeta}
                                                     width={30}
                                                     height={30}
-                                                    onClick={() => navigate(`/detalhes/:{item.idTicket}`)}
+                                                    onClick={() => navigate(`/detalhes/:${item.idTicket}`)}
                                                 />
                                             </td>
 
