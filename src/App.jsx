@@ -33,7 +33,6 @@ export default function App() {
         <Route path="/historicoRecorrentes" element={<HistoricoRecorrentes />} />
         <Route path="/Overview" element={<Overview />} />
         <Route path="/criarTicket" element={<CriarTicket />} />
-        <Route path="/Overview" element={<Overview />} />
         <Route path="/overviewN2" element={<TelaN2 />} />
         <Route path="/overviewN3" element={<TelaN3 />} />
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
