@@ -46,7 +46,6 @@ CREATE TABLE Ticket (
     IdTicket UNIQUEIDENTIFIER PRIMARY KEY DEFAULT ((NEWID())),
     Nome VARCHAR(150),
     Descricao VARCHAR(512) NOT NULL,
-    Situacao VARCHAR(512) NOT NULL,
     DataHora DATETIME NOT NULL DEFAULT GETDATE(),
     Imagem VARCHAR(255),
     IdCliente UNIQUEIDENTIFIER FOREIGN KEY REFERENCES Cliente(IdCliente),
@@ -78,3 +77,7 @@ CREATE TABLE Notificacao (
     TipoNotificacaoID UNIQUEIDENTIFIER  FOREIGN KEY REFERENCES TipoNotificacao(IdTipoNotificacao),
 );
 GO
+
+
+
+SELECT * FROM Ticket
