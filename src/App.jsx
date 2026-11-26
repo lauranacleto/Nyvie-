@@ -14,6 +14,7 @@ import CriarTicket from './criarTicket/criarTicket.jsx';
 import EditarTicket from './editarTicket/editarTicket.jsx';
 import TelaN3 from './components/telaN3/telaN3.jsx';
 import TelaN2 from './components/telaN2/telaN2.jsx';
+import TelaN4 from './components/telaN4/telaN4.jsx';
 
 export default function App() {
 
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/criarTicket" element={<CriarTicket />} />
         <Route path="/overviewN2" element={<TelaN2 />} />
         <Route path="/overviewN3" element={<TelaN3 />} />
+        <Route path="/overviewN4" element={<TelaN4 />} />
         <Route path="/historicoEquipe" element={<HistoricoEquipe />} />
       </Routes>
     </BrowserRouter>
