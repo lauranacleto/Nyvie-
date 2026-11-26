@@ -161,6 +161,7 @@ export const perfilStyles = {
   botaoEntrar: {
     width: '590px',
     alignSelf: 'center',
+    marginTop:"0px",
     height: '54px',
     border: 'none',
     borderRadius: '6px',
