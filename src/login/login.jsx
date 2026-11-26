@@ -125,18 +125,7 @@ export default function LoginUsuario() {
             />
           </div>
 
-          <div style={perfilStyles.cadastroContainer}>
-            <p style={perfilStyles.textoCadastro}>
-              Não tem uma conta?
-            </p>
-
-            <a
-              href="/cadastro"
-              style={perfilStyles.linkCadastro}
-            >
-              Cadastre-se
-            </a>
-          </div>
+         
 
           <button
             type="button"
