@@ -9,6 +9,7 @@ import iconFinalizado from "../../assets/check.svg";
 import iconAtualizacao from "../../assets/status.svg";
 import iconAlerta from "../../assets/danger.svg";
 import iconMensagem from "../../assets/message.svg";
+import notificacaoAzul from "../../assets/notificacaoazul.svg";
 
 const Header = () => {
 
@@ -79,6 +80,15 @@ const Header = () => {
                 {aberto && (
                     <div style={styles.painelNotificacoes}>
                         <h3 style={styles.tituloNotificacoes}>
+                            <img
+                                src={notificacaoAzul}
+                                alt="Notificações"
+                                style={{
+                                    width: "24px",
+                                    height: "24px",
+                                    objectFit: "contain"
+                                }}
+                            />
                             Notificações
                         </h3>
 

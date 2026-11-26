@@ -19,7 +19,7 @@ export const styles = {
 
     painelNotificacoes: {
         position: "fixed",
-        top: "40px",
+        top: "65px",
         right: "0px",
         width: "320px",
         maxHeight: "320px",
@@ -37,14 +37,14 @@ export const styles = {
         alignItems: "center",
         justifyContent: "flex-start",
         textAlign: "left",
-        gap: "7px",
+        gap: "8px",
         margin: 0,
         padding: "12px 14px",
         color: "#0A1934",
         fontSize: "24px",
         fontWeight: "bold",
         backgroundColor: "#FFFFFF",
-        borderBottom: '2px solid #1C4691',
+        borderBottom: "2px solid #1C4691",
     },
 
 
